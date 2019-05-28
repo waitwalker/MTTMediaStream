@@ -1,0 +1,586 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CA0498BE229CE26F00409977 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0498BD229CE26F00409977 /* AppDelegate.m */; };
+		CA0498C1229CE26F00409977 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0498C0229CE26F00409977 /* ViewController.m */; };
+		CA0498C4229CE26F00409977 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA0498C2229CE26F00409977 /* Main.storyboard */; };
+		CA0498C6229CE27100409977 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA0498C5229CE27100409977 /* Assets.xcassets */; };
+		CA0498C9229CE27100409977 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA0498C7229CE27100409977 /* LaunchScreen.storyboard */; };
+		CA0498CC229CE27100409977 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0498CB229CE27100409977 /* main.m */; };
+		CA0498D6229CE27100409977 /* MTTMediaStreamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0498D5229CE27100409977 /* MTTMediaStreamTests.m */; };
+		CA0498E1229CE27100409977 /* MTTMediaStreamUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0498E0229CE27100409977 /* MTTMediaStreamUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CA0498D2229CE27100409977 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CA0498B1229CE26F00409977 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CA0498B8229CE26F00409977;
+			remoteInfo = MTTMediaStream;
+		};
+		CA0498DD229CE27100409977 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CA0498B1229CE26F00409977 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CA0498B8229CE26F00409977;
+			remoteInfo = MTTMediaStream;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CA0498B9229CE26F00409977 /* MTTMediaStream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MTTMediaStream.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA0498BC229CE26F00409977 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CA0498BD229CE26F00409977 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CA0498BF229CE26F00409977 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		CA0498C0229CE26F00409977 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		CA0498C3229CE26F00409977 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CA0498C5229CE27100409977 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CA0498C8229CE27100409977 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CA0498CA229CE27100409977 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA0498CB229CE27100409977 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CA0498D1229CE27100409977 /* MTTMediaStreamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MTTMediaStreamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA0498D5229CE27100409977 /* MTTMediaStreamTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTTMediaStreamTests.m; sourceTree = "<group>"; };
+		CA0498D7229CE27100409977 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA0498DC229CE27100409977 /* MTTMediaStreamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MTTMediaStreamUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA0498E0229CE27100409977 /* MTTMediaStreamUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTTMediaStreamUITests.m; sourceTree = "<group>"; };
+		CA0498E2229CE27100409977 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CA0498B6229CE26F00409977 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA0498CE229CE27100409977 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA0498D9229CE27100409977 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CA0498B0229CE26F00409977 = {
+			isa = PBXGroup;
+			children = (
+				CA0498BB229CE26F00409977 /* MTTMediaStream */,
+				CA0498D4229CE27100409977 /* MTTMediaStreamTests */,
+				CA0498DF229CE27100409977 /* MTTMediaStreamUITests */,
+				CA0498BA229CE26F00409977 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CA0498BA229CE26F00409977 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CA0498B9229CE26F00409977 /* MTTMediaStream.app */,
+				CA0498D1229CE27100409977 /* MTTMediaStreamTests.xctest */,
+				CA0498DC229CE27100409977 /* MTTMediaStreamUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CA0498BB229CE26F00409977 /* MTTMediaStream */ = {
+			isa = PBXGroup;
+			children = (
+				CA0498BC229CE26F00409977 /* AppDelegate.h */,
+				CA0498BD229CE26F00409977 /* AppDelegate.m */,
+				CA0498BF229CE26F00409977 /* ViewController.h */,
+				CA0498C0229CE26F00409977 /* ViewController.m */,
+				CA0498C2229CE26F00409977 /* Main.storyboard */,
+				CA0498C5229CE27100409977 /* Assets.xcassets */,
+				CA0498C7229CE27100409977 /* LaunchScreen.storyboard */,
+				CA0498CA229CE27100409977 /* Info.plist */,
+				CA0498CB229CE27100409977 /* main.m */,
+			);
+			path = MTTMediaStream;
+			sourceTree = "<group>";
+		};
+		CA0498D4229CE27100409977 /* MTTMediaStreamTests */ = {
+			isa = PBXGroup;
+			children = (
+				CA0498D5229CE27100409977 /* MTTMediaStreamTests.m */,
+				CA0498D7229CE27100409977 /* Info.plist */,
+			);
+			path = MTTMediaStreamTests;
+			sourceTree = "<group>";
+		};
+		CA0498DF229CE27100409977 /* MTTMediaStreamUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CA0498E0229CE27100409977 /* MTTMediaStreamUITests.m */,
+				CA0498E2229CE27100409977 /* Info.plist */,
+			);
+			path = MTTMediaStreamUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CA0498B8229CE26F00409977 /* MTTMediaStream */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA0498E5229CE27100409977 /* Build configuration list for PBXNativeTarget "MTTMediaStream" */;
+			buildPhases = (
+				CA0498B5229CE26F00409977 /* Sources */,
+				CA0498B6229CE26F00409977 /* Frameworks */,
+				CA0498B7229CE26F00409977 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MTTMediaStream;
+			productName = MTTMediaStream;
+			productReference = CA0498B9229CE26F00409977 /* MTTMediaStream.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CA0498D0229CE27100409977 /* MTTMediaStreamTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA0498E8229CE27100409977 /* Build configuration list for PBXNativeTarget "MTTMediaStreamTests" */;
+			buildPhases = (
+				CA0498CD229CE27100409977 /* Sources */,
+				CA0498CE229CE27100409977 /* Frameworks */,
+				CA0498CF229CE27100409977 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CA0498D3229CE27100409977 /* PBXTargetDependency */,
+			);
+			name = MTTMediaStreamTests;
+			productName = MTTMediaStreamTests;
+			productReference = CA0498D1229CE27100409977 /* MTTMediaStreamTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CA0498DB229CE27100409977 /* MTTMediaStreamUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA0498EB229CE27100409977 /* Build configuration list for PBXNativeTarget "MTTMediaStreamUITests" */;
+			buildPhases = (
+				CA0498D8229CE27100409977 /* Sources */,
+				CA0498D9229CE27100409977 /* Frameworks */,
+				CA0498DA229CE27100409977 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CA0498DE229CE27100409977 /* PBXTargetDependency */,
+			);
+			name = MTTMediaStreamUITests;
+			productName = MTTMediaStreamUITests;
+			productReference = CA0498DC229CE27100409977 /* MTTMediaStreamUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CA0498B1229CE26F00409977 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = waitwalker;
+				TargetAttributes = {
+					CA0498B8229CE26F00409977 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					CA0498D0229CE27100409977 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = CA0498B8229CE26F00409977;
+					};
+					CA0498DB229CE27100409977 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = CA0498B8229CE26F00409977;
+					};
+				};
+			};
+			buildConfigurationList = CA0498B4229CE26F00409977 /* Build configuration list for PBXProject "MTTMediaStream" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CA0498B0229CE26F00409977;
+			productRefGroup = CA0498BA229CE26F00409977 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CA0498B8229CE26F00409977 /* MTTMediaStream */,
+				CA0498D0229CE27100409977 /* MTTMediaStreamTests */,
+				CA0498DB229CE27100409977 /* MTTMediaStreamUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CA0498B7229CE26F00409977 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA0498C9229CE27100409977 /* LaunchScreen.storyboard in Resources */,
+				CA0498C6229CE27100409977 /* Assets.xcassets in Resources */,
+				CA0498C4229CE26F00409977 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA0498CF229CE27100409977 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA0498DA229CE27100409977 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CA0498B5229CE26F00409977 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA0498C1229CE26F00409977 /* ViewController.m in Sources */,
+				CA0498CC229CE27100409977 /* main.m in Sources */,
+				CA0498BE229CE26F00409977 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA0498CD229CE27100409977 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA0498D6229CE27100409977 /* MTTMediaStreamTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA0498D8229CE27100409977 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA0498E1229CE27100409977 /* MTTMediaStreamUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CA0498D3229CE27100409977 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CA0498B8229CE26F00409977 /* MTTMediaStream */;
+			targetProxy = CA0498D2229CE27100409977 /* PBXContainerItemProxy */;
+		};
+		CA0498DE229CE27100409977 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CA0498B8229CE26F00409977 /* MTTMediaStream */;
+			targetProxy = CA0498DD229CE27100409977 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CA0498C2229CE26F00409977 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CA0498C3229CE26F00409977 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CA0498C7229CE27100409977 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CA0498C8229CE27100409977 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CA0498E3229CE27100409977 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		CA0498E4229CE27100409977 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CA0498E6229CE27100409977 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NV5J27ZQZQ;
+				INFOPLIST_FILE = MTTMediaStream/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = cn.waitwalker.MTTMediaStream;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CA0498E7229CE27100409977 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NV5J27ZQZQ;
+				INFOPLIST_FILE = MTTMediaStream/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = cn.waitwalker.MTTMediaStream;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CA0498E9229CE27100409977 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NV5J27ZQZQ;
+				INFOPLIST_FILE = MTTMediaStreamTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = cn.waitwalker.MTTMediaStreamTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MTTMediaStream.app/MTTMediaStream";
+			};
+			name = Debug;
+		};
+		CA0498EA229CE27100409977 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NV5J27ZQZQ;
+				INFOPLIST_FILE = MTTMediaStreamTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = cn.waitwalker.MTTMediaStreamTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MTTMediaStream.app/MTTMediaStream";
+			};
+			name = Release;
+		};
+		CA0498EC229CE27100409977 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NV5J27ZQZQ;
+				INFOPLIST_FILE = MTTMediaStreamUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = cn.waitwalker.MTTMediaStreamUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MTTMediaStream;
+			};
+			name = Debug;
+		};
+		CA0498ED229CE27100409977 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NV5J27ZQZQ;
+				INFOPLIST_FILE = MTTMediaStreamUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = cn.waitwalker.MTTMediaStreamUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MTTMediaStream;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CA0498B4229CE26F00409977 /* Build configuration list for PBXProject "MTTMediaStream" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA0498E3229CE27100409977 /* Debug */,
+				CA0498E4229CE27100409977 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CA0498E5229CE27100409977 /* Build configuration list for PBXNativeTarget "MTTMediaStream" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA0498E6229CE27100409977 /* Debug */,
+				CA0498E7229CE27100409977 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CA0498E8229CE27100409977 /* Build configuration list for PBXNativeTarget "MTTMediaStreamTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA0498E9229CE27100409977 /* Debug */,
+				CA0498EA229CE27100409977 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CA0498EB229CE27100409977 /* Build configuration list for PBXNativeTarget "MTTMediaStreamUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA0498EC229CE27100409977 /* Debug */,
+				CA0498ED229CE27100409977 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CA0498B1229CE26F00409977 /* Project object */;
+}
