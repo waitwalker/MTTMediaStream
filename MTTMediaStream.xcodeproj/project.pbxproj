@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3CE5074631F66F2A2CCB5FDB /* libPods-MTTMediaStreamUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B581AFC23C2F5E6EF749343 /* libPods-MTTMediaStreamUITests.a */; };
+		528E7C0943CC9FB6A140C480 /* libPods-MTTMediaStream.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC59C5E404CDEBBB677903C9 /* libPods-MTTMediaStream.a */; };
+		A7ED307C19A5F77F90453DD1 /* libPods-MTTMediaStreamTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 062EBA31A87A82A2B938AA53 /* libPods-MTTMediaStreamTests.a */; };
 		CA0498BE229CE26F00409977 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0498BD229CE26F00409977 /* AppDelegate.m */; };
 		CA0498C1229CE26F00409977 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0498C0229CE26F00409977 /* ViewController.m */; };
 		CA0498C4229CE26F00409977 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA0498C2229CE26F00409977 /* Main.storyboard */; };
@@ -35,6 +38,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		062EBA31A87A82A2B938AA53 /* libPods-MTTMediaStreamTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MTTMediaStreamTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		223713DC0C2C754AA617EA49 /* Pods-MTTMediaStream.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MTTMediaStream.debug.xcconfig"; path = "Target Support Files/Pods-MTTMediaStream/Pods-MTTMediaStream.debug.xcconfig"; sourceTree = "<group>"; };
+		23664012C1EB0606768E736C /* Pods-MTTMediaStreamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MTTMediaStreamTests.debug.xcconfig"; path = "Target Support Files/Pods-MTTMediaStreamTests/Pods-MTTMediaStreamTests.debug.xcconfig"; sourceTree = "<group>"; };
+		45AFC58F6F090BAC404EBB66 /* Pods-MTTMediaStreamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MTTMediaStreamTests.release.xcconfig"; path = "Target Support Files/Pods-MTTMediaStreamTests/Pods-MTTMediaStreamTests.release.xcconfig"; sourceTree = "<group>"; };
+		4A116D7278FF0263A61498C8 /* Pods-MTTMediaStream.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MTTMediaStream.release.xcconfig"; path = "Target Support Files/Pods-MTTMediaStream/Pods-MTTMediaStream.release.xcconfig"; sourceTree = "<group>"; };
+		5B581AFC23C2F5E6EF749343 /* libPods-MTTMediaStreamUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MTTMediaStreamUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		77E1C3C9C65E6AF6DEE31131 /* Pods-MTTMediaStreamUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MTTMediaStreamUITests.release.xcconfig"; path = "Target Support Files/Pods-MTTMediaStreamUITests/Pods-MTTMediaStreamUITests.release.xcconfig"; sourceTree = "<group>"; };
 		CA0498B9229CE26F00409977 /* MTTMediaStream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MTTMediaStream.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA0498BC229CE26F00409977 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CA0498BD229CE26F00409977 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -51,6 +61,8 @@
 		CA0498DC229CE27100409977 /* MTTMediaStreamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MTTMediaStreamUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA0498E0229CE27100409977 /* MTTMediaStreamUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTTMediaStreamUITests.m; sourceTree = "<group>"; };
 		CA0498E2229CE27100409977 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3F4CF4059F44607EDDD4FBE /* Pods-MTTMediaStreamUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MTTMediaStreamUITests.debug.xcconfig"; path = "Target Support Files/Pods-MTTMediaStreamUITests/Pods-MTTMediaStreamUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		FC59C5E404CDEBBB677903C9 /* libPods-MTTMediaStream.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MTTMediaStream.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				528E7C0943CC9FB6A140C480 /* libPods-MTTMediaStream.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7ED307C19A5F77F90453DD1 /* libPods-MTTMediaStreamTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,12 +86,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CE5074631F66F2A2CCB5FDB /* libPods-MTTMediaStreamUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2DFB62A5658E503B5E5923EB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FC59C5E404CDEBBB677903C9 /* libPods-MTTMediaStream.a */,
+				062EBA31A87A82A2B938AA53 /* libPods-MTTMediaStreamTests.a */,
+				5B581AFC23C2F5E6EF749343 /* libPods-MTTMediaStreamUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8CF0EE37856A835FF4A73077 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				223713DC0C2C754AA617EA49 /* Pods-MTTMediaStream.debug.xcconfig */,
+				4A116D7278FF0263A61498C8 /* Pods-MTTMediaStream.release.xcconfig */,
+				23664012C1EB0606768E736C /* Pods-MTTMediaStreamTests.debug.xcconfig */,
+				45AFC58F6F090BAC404EBB66 /* Pods-MTTMediaStreamTests.release.xcconfig */,
+				F3F4CF4059F44607EDDD4FBE /* Pods-MTTMediaStreamUITests.debug.xcconfig */,
+				77E1C3C9C65E6AF6DEE31131 /* Pods-MTTMediaStreamUITests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		CA0498B0229CE26F00409977 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +124,8 @@
 				CA0498D4229CE27100409977 /* MTTMediaStreamTests */,
 				CA0498DF229CE27100409977 /* MTTMediaStreamUITests */,
 				CA0498BA229CE26F00409977 /* Products */,
+				8CF0EE37856A835FF4A73077 /* Pods */,
+				2DFB62A5658E503B5E5923EB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -139,9 +180,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA0498E5229CE27100409977 /* Build configuration list for PBXNativeTarget "MTTMediaStream" */;
 			buildPhases = (
+				FFE466E2388C181122C66A00 /* [CP] Check Pods Manifest.lock */,
 				CA0498B5229CE26F00409977 /* Sources */,
 				CA0498B6229CE26F00409977 /* Frameworks */,
 				CA0498B7229CE26F00409977 /* Resources */,
+				875CEB03286550D9BFB7255D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -156,6 +199,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA0498E8229CE27100409977 /* Build configuration list for PBXNativeTarget "MTTMediaStreamTests" */;
 			buildPhases = (
+				9686C172FC87B3C91FAD0C86 /* [CP] Check Pods Manifest.lock */,
 				CA0498CD229CE27100409977 /* Sources */,
 				CA0498CE229CE27100409977 /* Frameworks */,
 				CA0498CF229CE27100409977 /* Resources */,
@@ -174,6 +218,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA0498EB229CE27100409977 /* Build configuration list for PBXNativeTarget "MTTMediaStreamUITests" */;
 			buildPhases = (
+				FFACBFF78462D59CE218BA9B /* [CP] Check Pods Manifest.lock */,
 				CA0498D8229CE27100409977 /* Sources */,
 				CA0498D9229CE27100409977 /* Frameworks */,
 				CA0498DA229CE27100409977 /* Resources */,
@@ -256,6 +301,105 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		875CEB03286550D9BFB7255D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MTTMediaStream/Pods-MTTMediaStream-resources.sh",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_amatorka.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_miss_etikate.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_1.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_2.png",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_amatorka.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_miss_etikate.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_soft_elegance_1.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_soft_elegance_2.png",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MTTMediaStream/Pods-MTTMediaStream-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9686C172FC87B3C91FAD0C86 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MTTMediaStreamTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FFACBFF78462D59CE218BA9B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MTTMediaStreamUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FFE466E2388C181122C66A00 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MTTMediaStream-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CA0498B5229CE26F00409977 /* Sources */ = {
@@ -433,6 +577,7 @@
 		};
 		CA0498E6229CE27100409977 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 223713DC0C2C754AA617EA49 /* Pods-MTTMediaStream.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -451,6 +596,7 @@
 		};
 		CA0498E7229CE27100409977 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4A116D7278FF0263A61498C8 /* Pods-MTTMediaStream.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -469,6 +615,7 @@
 		};
 		CA0498E9229CE27100409977 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 23664012C1EB0606768E736C /* Pods-MTTMediaStreamTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -488,6 +635,7 @@
 		};
 		CA0498EA229CE27100409977 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 45AFC58F6F090BAC404EBB66 /* Pods-MTTMediaStreamTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -507,6 +655,7 @@
 		};
 		CA0498EC229CE27100409977 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F3F4CF4059F44607EDDD4FBE /* Pods-MTTMediaStreamUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NV5J27ZQZQ;
@@ -525,6 +674,7 @@
 		};
 		CA0498ED229CE27100409977 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 77E1C3C9C65E6AF6DEE31131 /* Pods-MTTMediaStreamUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NV5J27ZQZQ;
