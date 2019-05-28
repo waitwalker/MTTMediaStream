@@ -27,13 +27,13 @@ typedef enum : NSUInteger {
 // MARK: - 音频采样率(默认44.1KHz)
 typedef enum : NSUInteger {
     // 16KHz 采样率
-    MTTLiveAudioSample_16000Hz = 16000,
+    MTTLiveAudioSampleRate_16000Hz = 16000,
     // 44.1KHz 采样率
-    MTTLiveAudioSample_44100Hz = 44100,
+    MTTLiveAudioSampleRate_44100Hz = 44100,
     // 48KHz 采样率
     MTTLiveAudioSampleRate_48000Hz = 48000,
     // 默认采样率
-    MTTLiveAudioSampleRate_Default = MTTLiveAudioSample_44100Hz
+    MTTLiveAudioSampleRate_Default = MTTLiveAudioSampleRate_44100Hz
 } MTTLiveAudioSampleRate;
 
 // MARK: - 音频质量
