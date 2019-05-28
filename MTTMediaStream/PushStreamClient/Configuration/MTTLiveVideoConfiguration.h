@@ -13,8 +13,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 // MARK: - 视频采集分辨率
 typedef enum : NSUInteger {
+    // 低分辨率
     MTTCaptureSessionPreset360x640  = 0,
+    // 中分辨率
     MTTCaptureSessionPreset540x960  = 1,
+    // 高分辨率
     MTTCaptureSessionPreset720x1280 = 2,
 } MTTCaptureSessionPreset;
 
@@ -38,6 +41,7 @@ typedef enum : NSUInteger {
     MTTLiveVideoQuality_High2   = 7,
     // 分辨率:720 x 1280 帧数:30 码率:1200Kps
     MTTLiveVideoQuality_High3   = 8,
+    // 默认质量
     MTTLiveVideoQuality_Default = MTTLiveVideoQuality_Low2,
 } MTTLiveVideoQuality;
 
