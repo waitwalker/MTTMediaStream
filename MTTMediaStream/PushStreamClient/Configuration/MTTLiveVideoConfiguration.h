@@ -75,7 +75,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) CGSize videoSize;
 
 // 输出图像是否等比例, 默认false
-@property (nonatomic, assign) BOOL   videoSizeRespectRatio;
+@property (nonatomic, assign) BOOL videoSizeRespectingAspectRatio;
 
 // 视频输出方向
 @property (nonatomic, assign) UIInterfaceOrientation outputOrientation;
@@ -97,6 +97,12 @@ typedef enum : NSUInteger {
 
 // 视频码率
 @property (nonatomic, assign) NSUInteger videoBitRate;
+
+// 视频最大码率
+@property (nonatomic, assign) NSUInteger videoMaxBitRate;
+
+// 视频最小码率
+@property (nonatomic, assign) NSUInteger videoMinBitRate;
 
 // 采集分辨率
 @property (nonatomic, assign) MTTCaptureSessionPreset sessionPreset;
