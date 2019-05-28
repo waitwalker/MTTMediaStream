@@ -18,6 +18,7 @@
 		CA0498CC229CE27100409977 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0498CB229CE27100409977 /* main.m */; };
 		CA0498D6229CE27100409977 /* MTTMediaStreamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0498D5229CE27100409977 /* MTTMediaStreamTests.m */; };
 		CA0498E1229CE27100409977 /* MTTMediaStreamUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0498E0229CE27100409977 /* MTTMediaStreamUITests.m */; };
+		CA0498F3229CE83D00409977 /* MTTLiveVideoConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0498F2229CE83D00409977 /* MTTLiveVideoConfiguration.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,8 @@
 		CA0498DC229CE27100409977 /* MTTMediaStreamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MTTMediaStreamUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA0498E0229CE27100409977 /* MTTMediaStreamUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTTMediaStreamUITests.m; sourceTree = "<group>"; };
 		CA0498E2229CE27100409977 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA0498F1229CE83D00409977 /* MTTLiveVideoConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTLiveVideoConfiguration.h; sourceTree = "<group>"; };
+		CA0498F2229CE83D00409977 /* MTTLiveVideoConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTTLiveVideoConfiguration.m; sourceTree = "<group>"; };
 		F3F4CF4059F44607EDDD4FBE /* Pods-MTTMediaStreamUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MTTMediaStreamUITests.debug.xcconfig"; path = "Target Support Files/Pods-MTTMediaStreamUITests/Pods-MTTMediaStreamUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FC59C5E404CDEBBB677903C9 /* libPods-MTTMediaStream.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MTTMediaStream.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -113,7 +116,6 @@
 				F3F4CF4059F44607EDDD4FBE /* Pods-MTTMediaStreamUITests.debug.xcconfig */,
 				77E1C3C9C65E6AF6DEE31131 /* Pods-MTTMediaStreamUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -142,6 +144,8 @@
 		CA0498BB229CE26F00409977 /* MTTMediaStream */ = {
 			isa = PBXGroup;
 			children = (
+				CA0498EF229CE4BF00409977 /* PushStreamClient */,
+				CA0498EE229CE45600409977 /* PullStreamClient */,
 				CA0498BC229CE26F00409977 /* AppDelegate.h */,
 				CA0498BD229CE26F00409977 /* AppDelegate.m */,
 				CA0498BF229CE26F00409977 /* ViewController.h */,
@@ -171,6 +175,30 @@
 				CA0498E2229CE27100409977 /* Info.plist */,
 			);
 			path = MTTMediaStreamUITests;
+			sourceTree = "<group>";
+		};
+		CA0498EE229CE45600409977 /* PullStreamClient */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PullStreamClient;
+			sourceTree = "<group>";
+		};
+		CA0498EF229CE4BF00409977 /* PushStreamClient */ = {
+			isa = PBXGroup;
+			children = (
+				CA0498F0229CE4D100409977 /* Configuration */,
+			);
+			path = PushStreamClient;
+			sourceTree = "<group>";
+		};
+		CA0498F0229CE4D100409977 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				CA0498F1229CE83D00409977 /* MTTLiveVideoConfiguration.h */,
+				CA0498F2229CE83D00409977 /* MTTLiveVideoConfiguration.m */,
+			);
+			path = Configuration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -408,6 +436,7 @@
 			files = (
 				CA0498C1229CE26F00409977 /* ViewController.m in Sources */,
 				CA0498CC229CE27100409977 /* main.m in Sources */,
+				CA0498F3229CE83D00409977 /* MTTLiveVideoConfiguration.m in Sources */,
 				CA0498BE229CE26F00409977 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
