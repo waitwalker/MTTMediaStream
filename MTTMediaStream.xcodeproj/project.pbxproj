@@ -19,6 +19,7 @@
 		CA0498D6229CE27100409977 /* MTTMediaStreamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0498D5229CE27100409977 /* MTTMediaStreamTests.m */; };
 		CA0498E1229CE27100409977 /* MTTMediaStreamUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0498E0229CE27100409977 /* MTTMediaStreamUITests.m */; };
 		CA0498F3229CE83D00409977 /* MTTLiveVideoConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0498F2229CE83D00409977 /* MTTLiveVideoConfiguration.m */; };
+		CA0498F6229D200D00409977 /* MTTLiveAudioConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0498F5229D200D00409977 /* MTTLiveAudioConfiguration.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,8 @@
 		CA0498E2229CE27100409977 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA0498F1229CE83D00409977 /* MTTLiveVideoConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTLiveVideoConfiguration.h; sourceTree = "<group>"; };
 		CA0498F2229CE83D00409977 /* MTTLiveVideoConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTTLiveVideoConfiguration.m; sourceTree = "<group>"; };
+		CA0498F4229D200D00409977 /* MTTLiveAudioConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTLiveAudioConfiguration.h; sourceTree = "<group>"; };
+		CA0498F5229D200D00409977 /* MTTLiveAudioConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTTLiveAudioConfiguration.m; sourceTree = "<group>"; };
 		F3F4CF4059F44607EDDD4FBE /* Pods-MTTMediaStreamUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MTTMediaStreamUITests.debug.xcconfig"; path = "Target Support Files/Pods-MTTMediaStreamUITests/Pods-MTTMediaStreamUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FC59C5E404CDEBBB677903C9 /* libPods-MTTMediaStream.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MTTMediaStream.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -197,6 +200,8 @@
 			children = (
 				CA0498F1229CE83D00409977 /* MTTLiveVideoConfiguration.h */,
 				CA0498F2229CE83D00409977 /* MTTLiveVideoConfiguration.m */,
+				CA0498F4229D200D00409977 /* MTTLiveAudioConfiguration.h */,
+				CA0498F5229D200D00409977 /* MTTLiveAudioConfiguration.m */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -434,6 +439,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA0498F6229D200D00409977 /* MTTLiveAudioConfiguration.m in Sources */,
 				CA0498C1229CE26F00409977 /* ViewController.m in Sources */,
 				CA0498CC229CE27100409977 /* main.m in Sources */,
 				CA0498F3229CE83D00409977 /* MTTLiveVideoConfiguration.m in Sources */,
