@@ -145,7 +145,7 @@
             filter = [GPUImageGrayscaleFilter new];
             break;
         case MTTGPUImageTransformFilter:
-            filter = [GPUImageTransformFilter new];<#code#>
+            filter = [GPUImageTransformFilter new];
             break;
         case MTTGPUImageChromaKeyBlendFilter:
             filter = [GPUImageChromaKeyBlendFilter new];
