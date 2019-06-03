@@ -22,6 +22,7 @@
 		CA0498F6229D200D00409977 /* MTTLiveAudioConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0498F5229D200D00409977 /* MTTLiveAudioConfiguration.m */; };
 		CA4AF85822A4BDFE00E15880 /* MTTGPUImageBeautyFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4AF85722A4BDFE00E15880 /* MTTGPUImageBeautyFilter.m */; };
 		CA4AF85B22A4C74B00E15880 /* MTTGPUImageEmptyFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4AF85A22A4C74B00E15880 /* MTTGPUImageEmptyFilter.m */; };
+		CA4AF85F22A4C95100E15880 /* MTTAudioCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4AF85E22A4C95100E15880 /* MTTAudioCapture.m */; };
 		CA947697229FB7740095174D /* MTTGPUImageFilterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CA947696229FB7740095174D /* MTTGPUImageFilterManager.m */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +75,8 @@
 		CA4AF85722A4BDFE00E15880 /* MTTGPUImageBeautyFilter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTTGPUImageBeautyFilter.m; sourceTree = "<group>"; };
 		CA4AF85922A4C74B00E15880 /* MTTGPUImageEmptyFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTGPUImageEmptyFilter.h; sourceTree = "<group>"; };
 		CA4AF85A22A4C74B00E15880 /* MTTGPUImageEmptyFilter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTTGPUImageEmptyFilter.m; sourceTree = "<group>"; };
+		CA4AF85D22A4C95100E15880 /* MTTAudioCapture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTAudioCapture.h; sourceTree = "<group>"; };
+		CA4AF85E22A4C95100E15880 /* MTTAudioCapture.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTTAudioCapture.m; sourceTree = "<group>"; };
 		CA947695229FB7740095174D /* MTTGPUImageFilterManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTGPUImageFilterManager.h; sourceTree = "<group>"; };
 		CA947696229FB7740095174D /* MTTGPUImageFilterManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTTGPUImageFilterManager.m; sourceTree = "<group>"; };
 		F3F4CF4059F44607EDDD4FBE /* Pods-MTTMediaStreamUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MTTMediaStreamUITests.debug.xcconfig"; path = "Target Support Files/Pods-MTTMediaStreamUITests/Pods-MTTMediaStreamUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -199,6 +202,7 @@
 		CA0498EF229CE4BF00409977 /* PushStreamClient */ = {
 			isa = PBXGroup;
 			children = (
+				CA4AF85C22A4C93500E15880 /* 1.Capture */,
 				CA947694229FB4F90095174D /* 2.Render */,
 				CA0498F0229CE4D100409977 /* Configuration */,
 			);
@@ -214,6 +218,15 @@
 				CA0498F5229D200D00409977 /* MTTLiveAudioConfiguration.m */,
 			);
 			path = Configuration;
+			sourceTree = "<group>";
+		};
+		CA4AF85C22A4C93500E15880 /* 1.Capture */ = {
+			isa = PBXGroup;
+			children = (
+				CA4AF85D22A4C95100E15880 /* MTTAudioCapture.h */,
+				CA4AF85E22A4C95100E15880 /* MTTAudioCapture.m */,
+			);
+			path = 1.Capture;
 			sourceTree = "<group>";
 		};
 		CA947694229FB4F90095174D /* 2.Render */ = {
@@ -464,6 +477,7 @@
 			files = (
 				CA947697229FB7740095174D /* MTTGPUImageFilterManager.m in Sources */,
 				CA0498F6229D200D00409977 /* MTTLiveAudioConfiguration.m in Sources */,
+				CA4AF85F22A4C95100E15880 /* MTTAudioCapture.m in Sources */,
 				CA0498C1229CE26F00409977 /* ViewController.m in Sources */,
 				CA0498CC229CE27100409977 /* main.m in Sources */,
 				CA4AF85B22A4C74B00E15880 /* MTTGPUImageEmptyFilter.m in Sources */,
