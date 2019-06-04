@@ -71,6 +71,18 @@
     }
 }
 
+// MARK: - setter getter
+- (GPUImageVideoCamera *)videoCamera {
+    if (_videoCamera == nil) {
+        _videoCamera = [[GPUImageVideoCamera alloc]initWithSessionPreset:_configuration.avSessionPreset cameraPosition:AVCaptureDevicePositionFront];
+        _videoCamera.outputImageOrientation = _configuration.outputOrientation;
+        _videoCamera.horizontallyMirrorFrontFacingCamera = false;
+        _videoCamera.horizontallyMirrorRearFacingCamera = false;
+        _videoCamera.frameRate = (int32_t)_configuration.videoFrameRate;
+    }
+    return _videoCamera;
+}
+
 - (void)willEnterBackground:(NSNotification *)notification {
     
     // 是否一直亮屏
