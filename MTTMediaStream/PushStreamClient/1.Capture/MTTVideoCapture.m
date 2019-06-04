@@ -187,6 +187,17 @@
     return _beautyLevel;
 }
 
+- (void)setBrightLevel:(CGFloat)brightLevel {
+    _brightLevel = brightLevel;
+    if (self.beautyFilter) {
+        [self.beautyFilter setBrightLevel:_brightLevel];
+    }
+}
+
+- (CGFloat)brightLevel {
+    return _brightLevel;
+}
+
 // MARK: - private
 - (void)reloadFilter {
     [self.filter removeAllTargets];
