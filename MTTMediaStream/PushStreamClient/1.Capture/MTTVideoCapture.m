@@ -118,6 +118,23 @@
     }
 }
 
+- (UIView *)preView {
+    return self.gpuImageView.superview;
+}
+
+- (void)setCaptureDevicePosition:(AVCaptureDevicePosition)captureDevicePosition {
+    if (captureDevicePosition == self.videoCamera.cameraPosition) {
+        return;
+    }
+    
+    [self.videoCamera rotateCamera];
+    self.videoCamera.frameRate = (int32_t)_configuration.videoFrameRate;
+    [self reloadMirror];
+}
+
+- (AVCaptureDevicePosition)captureDevicePosition {
+    return [self.videoCamera cameraPosition];
+}
 
 // MARK: - private
 - (void)reloadFilter {
