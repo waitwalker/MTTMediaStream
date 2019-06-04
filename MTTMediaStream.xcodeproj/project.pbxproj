@@ -205,6 +205,7 @@
 		CA947697229FB7740095174D /* MTTGPUImageFilterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CA947696229FB7740095174D /* MTTGPUImageFilterManager.m */; };
 		CAA828B622A658CC00E49423 /* MTTFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA828B522A658CC00E49423 /* MTTFrame.m */; };
 		CAA828B922A669B200E49423 /* MTTAudioFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA828B822A669B200E49423 /* MTTAudioFrame.m */; };
+		CAA828BC22A66A0200E49423 /* MTTVideoFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA828BB22A66A0200E49423 /* MTTVideoFrame.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -629,6 +630,8 @@
 		CAA828B522A658CC00E49423 /* MTTFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTTFrame.m; sourceTree = "<group>"; };
 		CAA828B722A669B200E49423 /* MTTAudioFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTAudioFrame.h; sourceTree = "<group>"; };
 		CAA828B822A669B200E49423 /* MTTAudioFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTTAudioFrame.m; sourceTree = "<group>"; };
+		CAA828BA22A66A0200E49423 /* MTTVideoFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTVideoFrame.h; sourceTree = "<group>"; };
+		CAA828BB22A66A0200E49423 /* MTTVideoFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTTVideoFrame.m; sourceTree = "<group>"; };
 		F3F4CF4059F44607EDDD4FBE /* Pods-MTTMediaStreamUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MTTMediaStreamUITests.debug.xcconfig"; path = "Target Support Files/Pods-MTTMediaStreamUITests/Pods-MTTMediaStreamUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FC59C5E404CDEBBB677903C9 /* libPods-MTTMediaStream.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MTTMediaStream.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1221,6 +1224,8 @@
 				CAA828B522A658CC00E49423 /* MTTFrame.m */,
 				CAA828B722A669B200E49423 /* MTTAudioFrame.h */,
 				CAA828B822A669B200E49423 /* MTTAudioFrame.m */,
+				CAA828BA22A66A0200E49423 /* MTTVideoFrame.h */,
+				CAA828BB22A66A0200E49423 /* MTTVideoFrame.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1533,6 +1538,7 @@
 				CA22E22122A608F800FE7ABE /* GPUImageRGBErosionFilter.m in Sources */,
 				CA22E1DC22A608F800FE7ABE /* GPUImageErosionFilter.m in Sources */,
 				CA22E24622A608F800FE7ABE /* GPUImageBulgeDistortionFilter.m in Sources */,
+				CAA828BC22A66A0200E49423 /* MTTVideoFrame.m in Sources */,
 				CA22E1BF22A608F800FE7ABE /* GPUImageHistogramFilter.m in Sources */,
 				CA22E24122A608F800FE7ABE /* GPUImageLuminosityBlendFilter.m in Sources */,
 				CA22E24E22A608F800FE7ABE /* GPUImageDarkenBlendFilter.m in Sources */,
