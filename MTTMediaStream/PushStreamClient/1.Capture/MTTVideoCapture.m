@@ -83,6 +83,104 @@
     return _videoCamera;
 }
 
+- (void)setRunning:(BOOL)running {
+    if (_running == running) {
+        return;
+    }
+    
+    _running = running;
+    if (!_running) {
+        [UIApplication sharedApplication].idleTimerDisabled = false;
+        [self.videoCamera stopCameraCapture];
+        if (self.saveLocalVideo) {
+            [self.movieWriter finishRecording];
+        }
+    } else {
+        [UIApplication sharedApplication].idleTimerDisabled = true;
+        [];
+    }
+    
+}
+
+// MARK: - private
+- (void)reloadFilter {
+    [self.filter removeAllTargets];
+    [self.blendFilter removeAllTargets];
+    [self.uiElementInput removeAllTargets];
+    [self.videoCamera removeAllTargets];
+    [self.output removeAllTargets];
+    [self.cropfilter removeAllTargets];
+    
+    if (self.beautyFace) {
+        self.output = [[MTTGPUImageEmptyFilter alloc]init];
+        self.filter = [[MTTGPUImageBeautyFilter alloc]init];
+        self.beautyFilter = (MTTGPUImageBeautyFilter *)self.filter;
+    } else {
+        self.output = [[MTTGPUImageEmptyFilter alloc]init];
+        self.filter = [[MTTGPUImageEmptyFilter alloc]init];
+        self.beautyFilter = nil;
+    }
+    
+    // 调节镜像
+    [self reloadMirror];
+    
+    // 设置输出
+    if ([self.configuration.avSessionPreset isEqualToString:AVCaptureSessionPreset640x480]) {
+        CGRect cropRect = self.configuration.landscape ? CGRectMake(0, 0.125, 1, 0.75) : CGRectMake(0.125, 0, 0.75, 1);
+        self.cropfilter = [[GPUImageCropFilter alloc]initWithCropRegion:cropRect];
+        [self.videoCamera addTarget:self.cropfilter];
+        [self.videoCamera addTarget:self.filter];
+    } else {
+        [self.videoCamera addTarget:self.filter];
+    }
+    
+    // 添加水印
+    if (self.waterMarkView) {
+        [self.filter addTarget:self.blendFilter];
+        [self.uiElementInput addTarget:self.blendFilter];
+        [self.blendFilter addTarget:self.gpuImageView];
+        if (self.saveLocalVideo) {
+            [self.blendFilter addTarget:self.movieWriter];
+        }
+        [self.filter addTarget:self.output];
+        [self.uiElementInput update];
+    } else {
+        [self.filter addTarget:self.output];
+        [self.output addTarget:self.gpuImageView];
+        if (self.saveLocalVideo) {
+            [self.output addTarget:self.movieWriter];
+        }
+    }
+    
+    [self.filter forceProcessingAtSize:self.configuration.videoSize];
+    [self.output forceProcessingAtSize:self.configuration.videoSize];
+    [self.blendFilter forceProcessingAtSize:self.configuration.videoSize];
+    [self.uiElementInput forceProcessingAtSize:self.configuration.videoSize];
+    
+    // 输出数据
+    __weak typeof (self) _self = self;
+    [self.output setFrameProcessingCompletionBlock:^(GPUImageOutput *output, CMTime time) {
+        [_self ];
+    }];
+}
+
+- (void)reloadMirror {
+    if (self.mirror && self.captureDevicePosition == AVCaptureDevicePositionFront) {
+        self.videoCamera.horizontallyMirrorFrontFacingCamera = true;
+    } else {
+        self.videoCamera.horizontallyMirrorFrontFacingCamera = false;
+    }
+}
+
+- (void)processVideo:(GPUImageOutput *)output {
+    __weak typeof(self) _self = self;
+    @autoreleasepool {
+        GPUImageFramebuffer *imageFrameBuffer = output.framebufferForOutput;
+        CVPixelBufferRef pixelBuffer = imageFrameBuffer
+    }
+}
+
+// MARK: - notification action call back
 - (void)willEnterBackground:(NSNotification *)notification {
     
     // 是否一直亮屏
