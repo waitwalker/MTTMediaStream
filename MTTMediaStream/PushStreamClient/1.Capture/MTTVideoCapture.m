@@ -136,6 +136,37 @@
     return [self.videoCamera cameraPosition];
 }
 
+- (void)setTorch:(BOOL)torch {
+    BOOL ret = false;
+    if (!self.videoCamera.captureSession) {
+        return;
+    }
+    
+    AVCaptureSession *session = (AVCaptureSession *)self.videoCamera.captureSession;
+    [session beginConfiguration];
+    if (self.videoCamera.inputCamera) {
+        if (self.videoCamera.inputCamera.torchAvailable) {
+            NSError *err = nil;
+            if ([self.videoCamera.inputCamera lockForConfiguration:&err]) {
+                [self.videoCamera.inputCamera setTorchMode:(torch ? AVCaptureTorchModeOn : AVCaptureTorchModeOff)];
+                [self.videoCamera.inputCamera unlockForConfiguration];
+                ret = (self.videoCamera.inputCamera.torchMode == AVCaptureTorchModeOn);
+            } else {
+                NSLog(@"Error while locking device for torch: %@",err);
+                ret = false;
+            }
+        } else {
+            NSLog(@"没有手电筒");
+        }
+    }
+    [session commitConfiguration];
+    _torch = ret;
+}
+
+- (BOOL)torch {
+    return self.videoCamera.inputCamera.torchMode;
+}
+
 // MARK: - private
 - (void)reloadFilter {
     [self.filter removeAllTargets];
