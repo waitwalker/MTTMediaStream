@@ -632,6 +632,7 @@
 		CAA828B822A669B200E49423 /* MTTAudioFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTTAudioFrame.m; sourceTree = "<group>"; };
 		CAA828BA22A66A0200E49423 /* MTTVideoFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTVideoFrame.h; sourceTree = "<group>"; };
 		CAA828BB22A66A0200E49423 /* MTTVideoFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTTVideoFrame.m; sourceTree = "<group>"; };
+		CAA828BD22A66DE300E49423 /* MTTVideoEncodeInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTVideoEncodeInterface.h; sourceTree = "<group>"; };
 		F3F4CF4059F44607EDDD4FBE /* Pods-MTTMediaStreamUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MTTMediaStreamUITests.debug.xcconfig"; path = "Target Support Files/Pods-MTTMediaStreamUITests/Pods-MTTMediaStreamUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FC59C5E404CDEBBB677903C9 /* libPods-MTTMediaStream.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MTTMediaStream.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1192,6 +1193,7 @@
 			isa = PBXGroup;
 			children = (
 				CA6F065822A623FE00FEECF9 /* MTTAudioEncodeInterface.h */,
+				CAA828BD22A66DE300E49423 /* MTTVideoEncodeInterface.h */,
 			);
 			path = 3.Encoder;
 			sourceTree = "<group>";
