@@ -258,6 +258,24 @@
     return _gpuImageView;
 }
 
+- (UIImage *)currentImage {
+    if (_filter) {
+        [_filter useNextFrameForImageCapture];
+        return _filter.imageFromCurrentFramebuffer;
+    }
+    return nil;
+}
+
+- (GPUImageMovieWriter *)movieWriter {
+    if (!_movieWriter) {
+        _movieWriter = [[GPUImageMovieWriter alloc]initWithMovieURL:self.saveLocalVideoPath size:self.configuration.videoSize];
+        _movieWriter.encodingLiveVideo = true;
+        _movieWriter.shouldPassthroughAudio = true;
+        self.videoCamera.audioEncodingTarget = self.movieWriter;
+    }
+    return _movieWriter;
+}
+
 // MARK: - private
 - (void)reloadFilter {
     [self.filter removeAllTargets];
