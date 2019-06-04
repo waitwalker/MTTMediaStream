@@ -61,6 +61,16 @@
     return self;
 }
 
+- (void)dealloc {
+    [UIApplication sharedApplication].idleTimerDisabled = false;
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+    [_videoCamera stopCameraCapture];
+    if (_gpuImageView) {
+        [_gpuImageView removeFromSuperview];
+        _gpuImageView = nil;
+    }
+}
+
 - (void)willEnterBackground:(NSNotification *)notification {
     
     // 是否一直亮屏
