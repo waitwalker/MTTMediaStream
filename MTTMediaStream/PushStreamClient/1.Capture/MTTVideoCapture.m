@@ -232,6 +232,15 @@
     return _uiElementInput;
 }
 
+- (GPUImageAlphaBlendFilter *)blendFilter {
+    if (!_blendFilter) {
+        _blendFilter = [[GPUImageAlphaBlendFilter alloc]init];
+        _blendFilter.mix = 1.0;
+        [_blendFilter disableSecondFrameCheck];
+    }
+    return _blendFilter;
+}
+
 // MARK: - private
 - (void)reloadFilter {
     [self.filter removeAllTargets];
