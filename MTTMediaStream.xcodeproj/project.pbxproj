@@ -203,6 +203,7 @@
 		CA4AF85F22A4C95100E15880 /* MTTAudioCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4AF85E22A4C95100E15880 /* MTTAudioCapture.m */; };
 		CA4AF86222A50E5C00E15880 /* MTTVideoCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4AF86122A50E5C00E15880 /* MTTVideoCapture.m */; };
 		CA947697229FB7740095174D /* MTTGPUImageFilterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CA947696229FB7740095174D /* MTTGPUImageFilterManager.m */; };
+		CAA828B622A658CC00E49423 /* MTTFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA828B522A658CC00E49423 /* MTTFrame.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -620,8 +621,11 @@
 		CA4AF85E22A4C95100E15880 /* MTTAudioCapture.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTTAudioCapture.m; sourceTree = "<group>"; };
 		CA4AF86022A50E5C00E15880 /* MTTVideoCapture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTVideoCapture.h; sourceTree = "<group>"; };
 		CA4AF86122A50E5C00E15880 /* MTTVideoCapture.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTTVideoCapture.m; sourceTree = "<group>"; };
+		CA6F065822A623FE00FEECF9 /* MTTAudioEncodeInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTAudioEncodeInterface.h; sourceTree = "<group>"; };
 		CA947695229FB7740095174D /* MTTGPUImageFilterManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTGPUImageFilterManager.h; sourceTree = "<group>"; };
 		CA947696229FB7740095174D /* MTTGPUImageFilterManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTTGPUImageFilterManager.m; sourceTree = "<group>"; };
+		CAA828B422A658CB00E49423 /* MTTFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTFrame.h; sourceTree = "<group>"; };
+		CAA828B522A658CC00E49423 /* MTTFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTTFrame.m; sourceTree = "<group>"; };
 		F3F4CF4059F44607EDDD4FBE /* Pods-MTTMediaStreamUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MTTMediaStreamUITests.debug.xcconfig"; path = "Target Support Files/Pods-MTTMediaStreamUITests/Pods-MTTMediaStreamUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FC59C5E404CDEBBB677903C9 /* libPods-MTTMediaStream.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MTTMediaStream.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -746,6 +750,8 @@
 		CA0498EF229CE4BF00409977 /* PushStreamClient */ = {
 			isa = PBXGroup;
 			children = (
+				CAA828B222A657E500E49423 /* 4.PushStream */,
+				CA6F065422A6226600FEECF9 /* 3.Encoder */,
 				CA4AF85C22A4C93500E15880 /* 1.Capture */,
 				CA947694229FB4F90095174D /* 2.Render */,
 				CA0498F0229CE4D100409977 /* Configuration */,
@@ -1176,6 +1182,14 @@
 			path = 1.Capture;
 			sourceTree = "<group>";
 		};
+		CA6F065422A6226600FEECF9 /* 3.Encoder */ = {
+			isa = PBXGroup;
+			children = (
+				CA6F065822A623FE00FEECF9 /* MTTAudioEncodeInterface.h */,
+			);
+			path = 3.Encoder;
+			sourceTree = "<group>";
+		};
 		CA947694229FB4F90095174D /* 2.Render */ = {
 			isa = PBXGroup;
 			children = (
@@ -1187,6 +1201,23 @@
 				CA4AF85A22A4C74B00E15880 /* MTTGPUImageEmptyFilter.m */,
 			);
 			path = 2.Render;
+			sourceTree = "<group>";
+		};
+		CAA828B222A657E500E49423 /* 4.PushStream */ = {
+			isa = PBXGroup;
+			children = (
+				CAA828B322A657EE00E49423 /* Model */,
+			);
+			path = 4.PushStream;
+			sourceTree = "<group>";
+		};
+		CAA828B322A657EE00E49423 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CAA828B422A658CB00E49423 /* MTTFrame.h */,
+				CAA828B522A658CC00E49423 /* MTTFrame.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1501,6 +1532,7 @@
 				CA22E24E22A608F800FE7ABE /* GPUImageDarkenBlendFilter.m in Sources */,
 				CA22E22A22A608F800FE7ABE /* GPUImageLocalBinaryPatternFilter.m in Sources */,
 				CA22E23622A608F800FE7ABE /* GPUImageAddBlendFilter.m in Sources */,
+				CAA828B622A658CC00E49423 /* MTTFrame.m in Sources */,
 				CA22E23C22A608F800FE7ABE /* GPUImageHighlightShadowFilter.m in Sources */,
 				CA22E22B22A608F800FE7ABE /* GPUImagePinchDistortionFilter.m in Sources */,
 				CA22E23D22A608F800FE7ABE /* GPUImageKuwaharaFilter.m in Sources */,
