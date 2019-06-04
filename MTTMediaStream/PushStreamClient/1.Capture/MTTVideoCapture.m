@@ -241,6 +241,14 @@
     return _blendFilter;
 }
 
+- (UIView *)waterMarkContainerView {
+    if (!_waterMarkContainerView) {
+        _waterMarkContainerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.configuration.videoSize.width, self.configuration.videoSize.height)];
+        _waterMarkContainerView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    }
+    return _waterMarkContainerView;
+}
+
 // MARK: - private
 - (void)reloadFilter {
     [self.filter removeAllTargets];
