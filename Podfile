@@ -6,7 +6,7 @@ target 'MTTMediaStream' do
   # use_frameworks!
 
   # Pods for MTTMediaStream
-  pod 'GPUImage'
+  #pod 'GPUImage'
 
 
   target 'MTTMediaStreamTests' do

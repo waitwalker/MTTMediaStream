@@ -7,7 +7,13 @@
 //
 
 #import "MTTVideoCapture.h"
+#if __has_include(<GPUImage/GPUImage.h>)
 #import <GPUImage/GPUImage.h>
+#elif __has_include("GPUImage/GPUImage.h")
+#import "GPUImage/GPUImage.h"
+#else
+#import "GPUImage.h"
+#endif
 #import "MTTGPUImageBeautyFilter.h"
 #import "MTTGPUImageEmptyFilter.h"
 
@@ -97,7 +103,11 @@
         }
     } else {
         [UIApplication sharedApplication].idleTimerDisabled = true;
-        [];
+        [self reloadFilter];
+        [self.videoCamera startCameraCapture];
+        if (self.saveLocalVideo) {
+            [self.movieWriter startRecording];
+        }
     }
     
 }
@@ -160,7 +170,7 @@
     // 输出数据
     __weak typeof (self) _self = self;
     [self.output setFrameProcessingCompletionBlock:^(GPUImageOutput *output, CMTime time) {
-        [_self ];
+        [_self processVideo:output];
     }];
 }
 
@@ -176,7 +186,10 @@
     __weak typeof(self) _self = self;
     @autoreleasepool {
         GPUImageFramebuffer *imageFrameBuffer = output.framebufferForOutput;
-        CVPixelBufferRef pixelBuffer = imageFrameBuffer
+        CVPixelBufferRef pixelBuffer = [imageFrameBuffer pixelBuffer];
+        if (pixelBuffer && _self.delegate && [_self.delegate respondsToSelector:@selector(captureOutput:pixelBuffer:)]) {
+            [_self.delegate captureOutput:_self pixelBuffer:pixelBuffer];
+        }
     }
 }
 
