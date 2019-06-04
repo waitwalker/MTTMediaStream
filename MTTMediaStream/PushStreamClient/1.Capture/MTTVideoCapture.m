@@ -198,6 +198,21 @@
     return _brightLevel;
 }
 
+- (void)setZoomScale:(NSInteger)zoomScale {
+    if (self.videoCamera && self.videoCamera.inputCamera) {
+        AVCaptureDevice *device = (AVCaptureDevice *)self.videoCamera.inputCamera;
+        if ([device lockForConfiguration:nil]) {
+            device.videoZoomFactor = zoomScale;
+            [device unlockForConfiguration];
+            _zoomScale = zoomScale;
+        }
+    }
+}
+
+- (NSInteger)zoomScale {
+    return _zoomScale;
+}
+
 // MARK: - private
 - (void)reloadFilter {
     [self.filter removeAllTargets];
