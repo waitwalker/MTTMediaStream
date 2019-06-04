@@ -108,9 +108,16 @@
         if (self.saveLocalVideo) {
             [self.movieWriter startRecording];
         }
-    }
-    
+    }    
 }
+
+- (void)setPreView:(UIView *)preView {
+    if (self.gpuImageView.superview) {
+        [preView insertSubview:self.gpuImageView atIndex:0];
+        self.gpuImageView.frame = CGRectMake(0, 0, preView.frame.size.width, preView.frame.size.height);
+    }
+}
+
 
 // MARK: - private
 - (void)reloadFilter {
