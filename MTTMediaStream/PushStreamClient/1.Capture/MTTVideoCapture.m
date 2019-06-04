@@ -198,7 +198,7 @@
     return _brightLevel;
 }
 
-- (void)setZoomScale:(NSInteger)zoomScale {
+- (void)setZoomScale:(CGFloat)zoomScale {
     if (self.videoCamera && self.videoCamera.inputCamera) {
         AVCaptureDevice *device = (AVCaptureDevice *)self.videoCamera.inputCamera;
         if ([device lockForConfiguration:nil]) {
@@ -209,7 +209,7 @@
     }
 }
 
-- (NSInteger)zoomScale {
+- (CGFloat)zoomScale {
     return _zoomScale;
 }
 

@@ -54,8 +54,8 @@ NS_ASSUME_NONNULL_BEGIN
 // 亮度强度
 @property (nonatomic, assign) CGFloat brightLevel;
 
-// 缩放比例 1-3
-@property (nonatomic, assign) NSInteger zoomScale;
+// 缩放比例 1.0-3.0
+@property (nonatomic, assign) CGFloat zoomScale;
 
 // fps
 @property (nonatomic, assign) NSInteger videoFrameRate;
