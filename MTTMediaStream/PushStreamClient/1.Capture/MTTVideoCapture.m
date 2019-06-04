@@ -213,6 +213,25 @@
     return _zoomScale;
 }
 
+- (void)setWaterMarkView:(UIView *)waterMarkView {
+    if (_waterMarkView && _waterMarkView.superview) {
+        [_waterMarkView removeFromSuperview];
+        _waterMarkView = nil;
+    }
+    
+    _waterMarkView = waterMarkView;
+    self.blendFilter.mix = waterMarkView.alpha;
+    [self.waterMarkContainerView addSubview:_waterMarkView];
+    [self reloadFilter];
+}
+
+- (GPUImageUIElement *)uiElementInput {
+    if (_uiElementInput == nil) {
+        _uiElementInput = [[GPUImageUIElement alloc]initWithView:self.waterMarkContainerView];
+    }
+    return _uiElementInput;
+}
+
 // MARK: - private
 - (void)reloadFilter {
     [self.filter removeAllTargets];
