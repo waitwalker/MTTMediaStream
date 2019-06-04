@@ -167,6 +167,26 @@
     return self.videoCamera.inputCamera.torchMode;
 }
 
+- (void)setMirror:(BOOL)mirror {
+    _mirror = mirror;
+}
+
+- (void)setBeautyFace:(BOOL)beautyFace {
+    _beautyFace = beautyFace;
+    [self reloadFilter];
+}
+
+- (void)setBeautyLevel:(CGFloat)beautyLevel {
+    _beautyLevel = beautyLevel;
+    if (self.beautyFilter) {
+        [self.beautyFilter setBeautyLevel:_beautyLevel];
+    }
+}
+
+- (CGFloat)beautyLevel {
+    return _beautyLevel;
+}
+
 // MARK: - private
 - (void)reloadFilter {
     [self.filter removeAllTargets];
