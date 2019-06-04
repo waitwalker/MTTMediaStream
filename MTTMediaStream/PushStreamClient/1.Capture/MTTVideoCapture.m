@@ -249,6 +249,15 @@
     return _waterMarkContainerView;
 }
 
+- (GPUImageView *)gpuImageView {
+    if (!_gpuImageView) {
+        _gpuImageView = [[GPUImageView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+        [_gpuImageView setFillMode:kGPUImageFillModePreserveAspectRatioAndFill];
+        [_gpuImageView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
+    }
+    return _gpuImageView;
+}
+
 // MARK: - private
 - (void)reloadFilter {
     [self.filter removeAllTargets];
