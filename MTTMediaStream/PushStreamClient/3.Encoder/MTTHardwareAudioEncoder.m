@@ -8,6 +8,20 @@
 
 #import "MTTHardwareAudioEncoder.h"
 
+@interface MTTHardwareAudioEncoder(){
+    AudioConverterRef m_converter;
+    char *leftBuf;
+    char *accBuf;
+    NSInteger leftLength;
+    FILE *fp;
+    BOOL enabledWirteAudioFile;
+}
+@property (nonatomic, strong) MTTLiveAudioConfiguration *configuration;
+@property (nonatomic, weak) id<MTTAudioEncodeDelegate>accDelegate;
+
+
+@end
+
 @implementation MTTHardwareAudioEncoder
 
 @end
