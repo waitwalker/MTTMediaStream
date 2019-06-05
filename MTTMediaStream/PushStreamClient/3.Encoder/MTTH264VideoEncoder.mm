@@ -105,6 +105,16 @@
     if (!_videoSPSAndPPS) {
         [self generateSPSAndPPS];
     }
+    
+    CMTime pts = CMTimeMake(ptsValue, _timeSacle);
+    if (self.orphanedFrames.count > 0) {
+        CMTime ptsDiff = CMTimeSubtract(pts, _lastPTS);
+        NSUInteger orphanedFramesCount = self.orphanedFrames.count;
+        for (NSData *frame in self.orphanedFrames) {
+            CMTime fakePTSDiff = CMTimeMultiplyByFloat64(ptsDiff, 1.0 / (orphanedFramesCount + 1));
+            CMTime fakePTS = CMTimeAdd(_lastPTS, fakePTSDiff);
+        }
+    }
 }
 
 - (void)addOrphanedFramesFromArray:(NSArray *)frames {
@@ -145,6 +155,60 @@
     [_videoSPSAndPPS appendData:spsData];
     [_videoSPSAndPPS appendData:_naluStartCode];
     [_videoSPSAndPPS appendData:ppsData];
+}
+
+- (void)writeVideoFrames:(NSArray *)frames pts:(CMTime)pts {
+    NSMutableArray *totalFrames = [NSMutableArray array];
+    if (self.orphanedSEIFrames.count > 0) {
+        [totalFrames addObjectsFromArray:self.orphanedSEIFrames];
+        [self.orphanedSEIFrames removeAllObjects];
+    }
+    [totalFrames addObjectsFromArray:frames];
+    
+    NSMutableData *aggregateFrameData = [NSMutableData data];
+    
+    for (NSData *data in totalFrames) {
+        unsigned char *pNal = (unsigned char *)[data bytes];
+        int idc = pNal[0] & 0x60;
+        int naltype = pNal[0] & 0x1f;
+        NSData *videoData = nil;
+        
+        if (idc == 0 && naltype == 6) {
+            _sei = [NSMutableData dataWithData:data];
+            continue;
+        } else if (naltype == 5) {
+            NSMutableData *IDRData = [NSMutableData dataWithData:_videoSPSAndPPS];
+            if (_sei) {
+                [IDRData appendData:_naluStartCode];
+                [IDRData appendData:_sei];
+                _sei = nil;
+            }
+            [IDRData appendData:_naluStartCode];
+            [IDRData appendData:data];
+            videoData = IDRData;
+        } else {
+            NSMutableData *regularData = [NSMutableData dataWithData:_naluStartCode];
+            [regularData appendData:data];
+            videoData = regularData;
+        }
+        [aggregateFrameData appendData:videoData];
+        
+        MTTVideoFrame *videoFrame = [MTTVideoFrame new];
+        const char *dataBuffer = (const char *)aggregateFrameData.bytes;
+        videoFrame.data = [NSMutableData dataWithBytes:dataBuffer + _naluStartCode.length length:aggregateFrameData.length - _naluStartCode.length];
+        videoFrame.timeStamp = pts.value;
+        videoFrame.isKeyFrame = (naltype == 5);
+        videoFrame.sps = _spsData;
+        videoFrame.pps = _ppsData;
+        if (self.h264Delegate && [self.h264Delegate respondsToSelector:@selector(videoEncoder:videoFrame:)]) {
+            [self.h264Delegate videoEncoder:self videoFrame:videoFrame];
+        }
+    }
+    
+    if (self->enabledWirteVideoFile) {
+        fwrite(aggregateFrameData.bytes, 1, aggregateFrameData.length, self->fp);
+    }
+    
 }
 
 @end
