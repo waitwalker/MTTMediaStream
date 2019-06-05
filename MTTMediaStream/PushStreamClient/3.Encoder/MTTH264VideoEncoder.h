@@ -7,10 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MTTVideoEncodeInterface.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MTTH264VideoEncoder : NSObject
+@interface MTTH264VideoEncoder : NSObject<MTTVideoEncodeInterface>
+
+
+/**
+ 关闭
+ */
+- (void)shutdown;
 
 @end
 
