@@ -75,9 +75,16 @@
         memcpy(totalBuf + leftLength, audioData.bytes, audioData.length);
         
         for (NSInteger index = 0; index < encodeCount; index ++) {
-            <#statements#>
+            [self encodeBuffer:p timeStamp:timeStamp];
+            p += self.configuration.bufferLength;
         }
-        
+        leftLength = totalSize % self.configuration.bufferLength;
+        memset(leftBuf, 0, self.configuration.bufferLength);
+        memcpy(leftBuf, totalBuf + (totalSize - leftLength), leftLength);
+        free(totalBuf);
+    } else {
+        memcpy(leftBuf + leftLength, audioData.bytes, audioData.length);
+        leftLength = leftLength + audioData.length;
     }
 }
 
