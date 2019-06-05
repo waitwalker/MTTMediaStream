@@ -47,7 +47,7 @@
 - (instancetype)initWithVideoStreamConfiguration:(MTTLiveVideoConfiguration *)configuration {
     if (self = [super init]) {
         _configuration = configuration;
-        
+        [self initCompressionSession];
     }
     return self;
 }
@@ -66,10 +66,10 @@
     
     _encoder = [MTTAVEncoder encoderForHeight:(int)_configuration.videoSize.height andWidth:(int)_configuration.videoSize.width bitrate:(int)_configuration.videoBitRate];
     [_encoder encodeWithBlock:^int(NSArray *data, CMTimeValue ptsValue) {
-        [self ];
+        [self incomingVideoFrames:data ptsValue:ptsValue];
         return 0;
     } onParams:^int(NSData *params) {
-        [self ];
+        [self generateSPSAndPPS];
         return 0;
     }];
 }
@@ -80,13 +80,14 @@
     nalu[0] = 0x00;
     nalu[1] = 0x00;
     nalu[2] = 0x00;
-    nalu[3] = 0x00;
+    nalu[3] = 0x01;
     _naluStartCode = [NSData dataWithBytesNoCopy:nalu length:naluLength freeWhenDone:true];
 }
 
 - (void)initForFilePath {
     NSString *path = [self getFilePathByFileName:@"iOSCameraDemo.H264"];
     NSLog(@"%@",path);
+    self->fp = fopen([path cStringUsingEncoding:NSUTF8StringEncoding], "wb");
 }
 
 - (NSString *)getFilePathByFileName:(NSString *)fileName {
