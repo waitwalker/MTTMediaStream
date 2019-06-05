@@ -213,7 +213,19 @@
     if (self->enabledWirteVideoFile) {
         fwrite(aggregateFrameData.bytes, 1, aggregateFrameData.length, self->fp);
     }
-    
+}
+
+- (void)setVideoBitRate:(NSInteger)videoBitRate {
+    _currentVideoBitRate = videoBitRate;
+    _encoder.bitrate = _currentVideoBitRate;
+}
+
+- (NSInteger)videoBitRate {
+    return _currentVideoBitRate;
+}
+
+- (void)setDelegate:(id<MTTVideoEncodeDelegate>)delegate {
+    _h264Delegate = delegate;
 }
 
 @end
