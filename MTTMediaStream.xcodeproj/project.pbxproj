@@ -206,6 +206,7 @@
 		CAA828B622A658CC00E49423 /* MTTFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA828B522A658CC00E49423 /* MTTFrame.m */; };
 		CAA828B922A669B200E49423 /* MTTAudioFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA828B822A669B200E49423 /* MTTAudioFrame.m */; };
 		CAA828BC22A66A0200E49423 /* MTTVideoFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA828BB22A66A0200E49423 /* MTTVideoFrame.m */; };
+		CAC1363F22A74A5B00CF4C6C /* MTTH264VideoEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC1363E22A74A5B00CF4C6C /* MTTH264VideoEncoder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -633,6 +634,8 @@
 		CAA828BA22A66A0200E49423 /* MTTVideoFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTVideoFrame.h; sourceTree = "<group>"; };
 		CAA828BB22A66A0200E49423 /* MTTVideoFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTTVideoFrame.m; sourceTree = "<group>"; };
 		CAA828BD22A66DE300E49423 /* MTTVideoEncodeInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTVideoEncodeInterface.h; sourceTree = "<group>"; };
+		CAC1363D22A74A5B00CF4C6C /* MTTH264VideoEncoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTH264VideoEncoder.h; sourceTree = "<group>"; };
+		CAC1363E22A74A5B00CF4C6C /* MTTH264VideoEncoder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTTH264VideoEncoder.m; sourceTree = "<group>"; };
 		F3F4CF4059F44607EDDD4FBE /* Pods-MTTMediaStreamUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MTTMediaStreamUITests.debug.xcconfig"; path = "Target Support Files/Pods-MTTMediaStreamUITests/Pods-MTTMediaStreamUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FC59C5E404CDEBBB677903C9 /* libPods-MTTMediaStream.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MTTMediaStream.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1194,6 +1197,8 @@
 			children = (
 				CA6F065822A623FE00FEECF9 /* MTTAudioEncodeInterface.h */,
 				CAA828BD22A66DE300E49423 /* MTTVideoEncodeInterface.h */,
+				CAC1363D22A74A5B00CF4C6C /* MTTH264VideoEncoder.h */,
+				CAC1363E22A74A5B00CF4C6C /* MTTH264VideoEncoder.m */,
 			);
 			path = 3.Encoder;
 			sourceTree = "<group>";
@@ -1434,6 +1439,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAC1363F22A74A5B00CF4C6C /* MTTH264VideoEncoder.m in Sources */,
 				CA22E21922A608F800FE7ABE /* GPUImageMovieComposition.m in Sources */,
 				CA22E22722A608F800FE7ABE /* GPUImageDirectionalNonMaximumSuppressionFilter.m in Sources */,
 				CA22E24D22A608F800FE7ABE /* GPUImageCGAColorspaceFilter.m in Sources */,
