@@ -215,6 +215,7 @@
     }
 }
 
+// MARK: - setter getter
 - (void)setVideoBitRate:(NSInteger)videoBitRate {
     _currentVideoBitRate = videoBitRate;
     _encoder.bitrate = _currentVideoBitRate;
@@ -226,6 +227,35 @@
 
 - (void)setDelegate:(id<MTTVideoEncodeDelegate>)delegate {
     _h264Delegate = delegate;
+}
+
+// MARK: - 开始视频编码
+- (void)encodeVideoData:(CVPixelBufferRef)pixelBuffer timeStamp:(uint64_t)timeStamp {
+    
+    CVPixelBufferLockBaseAddress(pixelBuffer, 0);
+    CMVideoFormatDescriptionRef videoInfo = NULL;
+    CMVideoFormatDescriptionCreateForImageBuffer(NULL, pixelBuffer, &videoInfo);
+    
+    CMTime frameTime = CMTimeMake(timeStamp, 1000);
+    CMTime duration = CMTimeMake(1, (int32_t)_configuration.videoFrameRate);
+    CMSampleTimingInfo timing = {duration, frameTime, kCMTimeInvalid};
+    
+    CMSampleBufferRef sampleBuffer = NULL;
+    CMSampleBufferCreateForImageBuffer(kCFAllocatorDefault, pixelBuffer, true, NULL, NULL, videoInfo, &timing, &sampleBuffer);
+    CVPixelBufferUnlockBaseAddress(pixelBuffer, 0);
+    [_encoder encodeFrame:sampleBuffer];
+    CFRelease(videoInfo);
+    CFRelease(sampleBuffer);
+    frameCount ++;
+}
+
+// MARK: - 停止编码
+- (void)shutdown {
+    [_encoder encodeWithBlock:nil onParams:nil];
+}
+
+- (void)dealloc {
+    [_encoder shutdown];
 }
 
 @end
