@@ -113,8 +113,12 @@
         for (NSData *frame in self.orphanedFrames) {
             CMTime fakePTSDiff = CMTimeMultiplyByFloat64(ptsDiff, 1.0 / (orphanedFramesCount + 1));
             CMTime fakePTS = CMTimeAdd(_lastPTS, fakePTSDiff);
+            [self writeVideoFrames:@[frame] pts:fakePTS];
         }
+        [self.orphanedFrames removeAllObjects];
     }
+    [self writeVideoFrames:frames pts:pts];
+    _lastPTS = pts;
 }
 
 - (void)addOrphanedFramesFromArray:(NSArray *)frames {
