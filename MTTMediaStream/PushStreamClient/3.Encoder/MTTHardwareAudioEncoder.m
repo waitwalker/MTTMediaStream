@@ -24,4 +24,37 @@
 
 @implementation MTTHardwareAudioEncoder
 
+- (instancetype)initWithAudioSteamConfiguration:(MTTLiveAudioConfiguration *)configuration {
+    if (self = [super init]) {
+        _configuration = configuration;
+        if (!leftBuf) {
+            leftBuf = malloc(_configuration.bufferLength);
+        }
+        if (!accBuf) {
+            accBuf = malloc(_configuration.bufferLength);
+        }
+        
+#if DEBUG
+        enabledWirteAudioFile = false;
+        [self initForFilePath];
+#endif
+        
+        
+    }
+    return self;
+}
+
+- (void)initForFilePath {
+    NSString *path = [self getFilePathWithFileName:@"iOSAudioDemo.acc"];
+    NSLog(@"%@",path);
+    self->fp = fopen([path cStringUsingEncoding:NSUTF8StringEncoding], "wb");
+}
+
+- (NSString *)getFilePathWithFileName:(NSString *)filename {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, true);
+    NSString *documentDirectory = [paths objectAtIndex:0];
+    NSString *writeabelPath = [documentDirectory stringByAppendingPathComponent:filename];
+    return writeabelPath;
+}
+
 @end
