@@ -109,10 +109,10 @@ private:
 
 
 // simple parser for the Sequence parameter set things that we need
-class LFSeqParamSet
+class MTTSeqParamSet
 {
 public:
-    LFSeqParamSet();
+    MTTSeqParamSet();
     bool Parse(MTTNALUnit *pnalu);
     int FrameBits(){
         return m_FrameBits;
@@ -223,10 +223,10 @@ private:
 };
 
 // avcC structure from MP4
-class LFavcCHeader
+class MTTavcCHeader
 {
 public:
-    LFavcCHeader(const BYTE* header, int cBytes);
+    MTTavcCHeader(const BYTE* header, int cBytes);
     MTTNALUnit *sps() {
         return &m_sps;
     }

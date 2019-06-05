@@ -99,6 +99,11 @@
 - (void)incomingVideoFrames:(NSArray *)frames ptsValue:(CMTimeValue)ptsValue {
     if (ptsValue == 0) {
         [self addOrphanedFramesFromArray:frames];
+        return;
+    }
+    
+    if (!_videoSPSAndPPS) {
+        [self generateSPSAndPPS];
     }
 }
 
@@ -113,6 +118,33 @@
             [self.orphanedSEIFrames addObject:data];
         }
     }
+}
+
+- (void)generateSPSAndPPS {
+    NSData *config = _encoder.getConfigData;
+    if (!config) {
+        return;
+    }
+    MTTavcCHeader avcC((const BYTE *)[config bytes],(int)[config length]);
+    MTTSeqParamSet seqParams;
+    seqParams.Parse(avcC.sps());
+    
+    NSData *spsData = [NSData dataWithBytes:avcC.sps()->Start() length:avcC.sps()->Length()];
+    NSData *ppsData = [NSData dataWithBytes:avcC.pps()->Start() length:avcC.pps()->Length()];
+    
+    _spsData = [NSMutableData dataWithCapacity:avcC.sps()->Length() + _naluStartCode.length];
+    _ppsData = [NSMutableData dataWithCapacity:avcC.pps()->Length() + _naluStartCode.length];
+    
+    [_spsData appendData:_naluStartCode];
+    [_spsData appendData:spsData];
+    [_ppsData appendData:_naluStartCode];
+    [_spsData appendData:ppsData];
+    
+    _videoSPSAndPPS = [NSMutableData dataWithCapacity:avcC.sps()->Length() + avcC.pps()->Length() + _naluStartCode.length * 2];
+    [_videoSPSAndPPS appendData:_naluStartCode];
+    [_videoSPSAndPPS appendData:spsData];
+    [_videoSPSAndPPS appendData:_naluStartCode];
+    [_videoSPSAndPPS appendData:ppsData];
 }
 
 @end

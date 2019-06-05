@@ -206,7 +206,7 @@ MTTNALUnit::GetSE(){
 }
 
 // --- sequence params parsing ---------------
-LFSeqParamSet::LFSeqParamSet()
+MTTSeqParamSet::MTTSeqParamSet()
     : m_cx(0),
     m_cy(0),
     m_FrameBits(0){
@@ -228,7 +228,7 @@ ScalingList(int size, MTTNALUnit *pnalu){
 }
 
 bool
-LFSeqParamSet::Parse(MTTNALUnit *pnalu){
+MTTSeqParamSet::Parse(MTTNALUnit *pnalu){
     if (pnalu->Type() != MTTNALUnit::NAL_Sequence_Params) {
         return false;
     }
@@ -387,7 +387,7 @@ LFSEIMessage::LFSEIMessage(MTTNALUnit *pnalu){
     m_idxPayload = int(p - m_pnalu->Start());
 }
 
-LFavcCHeader::LFavcCHeader(const BYTE *header, int cBytes){
+MTTavcCHeader::MTTavcCHeader(const BYTE *header, int cBytes){
     if (cBytes < 8) {
         return;
     }
