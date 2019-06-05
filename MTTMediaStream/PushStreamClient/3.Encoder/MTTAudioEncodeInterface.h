@@ -64,6 +64,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setDelegate:(nullable id<MTTAudioEncodeDelegate>)delegate;
 
 
+/**
+ 将编码后的数据写入本地
+
+ @param channel channel
+ @param rawDataLength 原始数据长度
+ @return 编码后的数据
+ */
 - (nullable NSData*)adtsData:(NSInteger)channel rawDataLength:(NSInteger)rawDataLength;
 
 @end

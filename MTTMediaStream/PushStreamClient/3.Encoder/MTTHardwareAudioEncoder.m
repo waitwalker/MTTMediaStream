@@ -38,8 +38,6 @@
         enabledWirteAudioFile = false;
         [self initForFilePath];
 #endif
-        
-        
     }
     return self;
 }
@@ -53,6 +51,7 @@
     }
 }
 
+// MARK: - set delegate
 - (void)setDelegate:(id<MTTAudioEncodeDelegate>)delegate {
     _accDelegate = delegate;
 }
@@ -104,6 +103,8 @@
     outBufferList.mBuffers[0].mDataByteSize = inBuffer.mDataByteSize;//设置缓冲区大小
     outBufferList.mBuffers[0].mData = accBuf;// 设置AAC缓冲区
     UInt32 outputDataPacketSize = 1;
+    
+    // 开始音频编码 编码后的回调在inputDataProc回调函数中
     if (AudioConverterFillComplexBuffer(m_converter, inputDataProc, &buffers, &outputDataPacketSize, &outBufferList, NULL) != noErr) {
         return;
     }
@@ -136,7 +137,10 @@ OSStatus inputDataProc(AudioConverterRef inConverter, UInt32 *ioNumberDataPacket
     return noErr;
 }
 
-
+// MARK: - 停止编码
+- (void)stopEncoder {
+    
+}
 
 - (BOOL)createAudioConvert {
     if (m_converter != nil) {
@@ -193,6 +197,75 @@ OSStatus inputDataProc(AudioConverterRef inConverter, UInt32 *ioNumberDataPacket
     NSString *documentDirectory = [paths objectAtIndex:0];
     NSString *writeabelPath = [documentDirectory stringByAppendingPathComponent:filename];
     return writeabelPath;
+}
+
+- (NSData *)adtsData:(NSInteger)channel rawDataLength:(NSInteger)rawDataLength {
+    int adtsLength = 7;
+    char *packet = malloc(sizeof(char) * adtsLength);
+    // Variables Recycled by addADTStoPacket
+    int profile = 2;  //AAC LC
+    //39=MediaCodecInfo.CodecProfileLevel.AACObjectELD;
+    NSInteger freqIdx = [self sampleRateIndex:self.configuration.audioSampleRate];  //44.1KHz
+    int chanCfg = (int)channel;  //MPEG-4 Audio Channel Configuration. 1 Channel front-center
+    NSUInteger fullLength = adtsLength + rawDataLength;
+    // fill in ADTS data
+    packet[0] = (char)0xFF;     // 11111111     = syncword
+    packet[1] = (char)0xF9;     // 1111 1 00 1  = syncword MPEG-2 Layer CRC
+    packet[2] = (char)(((profile-1)<<6) + (freqIdx<<2) +(chanCfg>>2));
+    packet[3] = (char)(((chanCfg&3)<<6) + (fullLength>>11));
+    packet[4] = (char)((fullLength&0x7FF) >> 3);
+    packet[5] = (char)(((fullLength&7)<<5) + 0x1F);
+    packet[6] = (char)0xFC;
+    NSData *data = [NSData dataWithBytesNoCopy:packet length:adtsLength freeWhenDone:YES];
+    return data;
+}
+
+- (NSInteger)sampleRateIndex:(NSInteger)frequencyInHz {
+    NSInteger sampleRateIndex = 0;
+    switch (frequencyInHz) {
+        case 96000:
+            sampleRateIndex = 0;
+            break;
+        case 88200:
+            sampleRateIndex = 1;
+            break;
+        case 64000:
+            sampleRateIndex = 2;
+            break;
+        case 48000:
+            sampleRateIndex = 3;
+            break;
+        case 44100:
+            sampleRateIndex = 4;
+            break;
+        case 32000:
+            sampleRateIndex = 5;
+            break;
+        case 24000:
+            sampleRateIndex = 6;
+            break;
+        case 22050:
+            sampleRateIndex = 7;
+            break;
+        case 16000:
+            sampleRateIndex = 8;
+            break;
+        case 12000:
+            sampleRateIndex = 9;
+            break;
+        case 11025:
+            sampleRateIndex = 10;
+            break;
+        case 8000:
+            sampleRateIndex = 11;
+            break;
+        case 7350:
+            sampleRateIndex = 12;
+            break;
+        default:
+            sampleRateIndex = 15;
+    }
+    return sampleRateIndex;
 }
 
 @end
