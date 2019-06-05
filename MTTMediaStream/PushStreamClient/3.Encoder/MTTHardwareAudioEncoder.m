@@ -57,11 +57,79 @@
     _accDelegate = delegate;
 }
 
+// MARK: - 开始音频编码
 - (void)encodeAudioData:(NSData *)audioData timeStamp:(uint64_t)timeStamp {
-    if (<#condition#>) {
-        <#statements#>
+    if (![self createAudioConvert]) {
+        return;
+    }
+    
+    if (leftLength + audioData.length >= self.configuration.bufferLength) {
+        NSInteger totalSize = leftLength + audioData.length;
+        NSInteger encodeCount = totalSize / self.configuration.bufferLength;
+        char *totalBuf = malloc(totalSize);
+        char *p = totalBuf;
+        
+        size_t nel = 0;
+        memset(totalBuf, (int)totalSize, nel);
+        memcpy(totalBuf, leftBuf, leftLength);
+        memcpy(totalBuf + leftLength, audioData.bytes, audioData.length);
+        
+        for (NSInteger index = 0; index < encodeCount; index ++) {
+            <#statements#>
+        }
+        
     }
 }
+
+- (void)encodeBuffer:(char *)buf timeStamp:(uint64_t)timeStamp {
+    AudioBuffer inBuffer;
+    inBuffer.mNumberChannels = 1;
+    inBuffer.mData = buf;
+    inBuffer.mDataByteSize = (UInt32)self.configuration.bufferLength;
+    
+    AudioBufferList buffers;
+    buffers.mNumberBuffers = 1;
+    buffers.mBuffers[0] = inBuffer;
+    
+    AudioBufferList outBufferList;
+    outBufferList.mNumberBuffers = 1;
+    outBufferList.mBuffers[0].mNumberChannels = inBuffer.mNumberChannels;
+    outBufferList.mBuffers[0].mDataByteSize = inBuffer.mDataByteSize;//设置缓冲区大小
+    outBufferList.mBuffers[0].mData = accBuf;// 设置AAC缓冲区
+    UInt32 outputDataPacketSize = 1;
+    if (AudioConverterFillComplexBuffer(m_converter, inputDataProc, &buffers, &outputDataPacketSize, &outBufferList, NULL) != noErr) {
+        return;
+    }
+    
+    MTTAudioFrame *audioFrame = [MTTAudioFrame new];
+    audioFrame.timeStamp = timeStamp;
+    audioFrame.data = [NSData dataWithBytes:accBuf length:outBufferList.mBuffers[0].mDataByteSize];
+    
+    char exeData[2];
+    exeData[0] = _configuration.asc[0];
+    exeData[1] = _configuration.asc[1];
+    audioFrame.audioInfo = [NSData dataWithBytes:exeData length:2];
+    
+    if (self.accDelegate && [self.accDelegate respondsToSelector:@selector(audioEncoder:audioFrame:)]) {
+        [self.accDelegate audioEncoder:self audioFrame:audioFrame];
+    }
+    
+    if (self->enabledWirteAudioFile) {
+        NSData *adts = [self adtsData:_configuration.numberOfChannels rawDataLength:audioFrame.data.length];
+        fwrite(adts.bytes, 1, adts.length, self->fp);
+        fwrite(audioFrame.data.bytes, 1, audioFrame.data.length, self->fp);
+    }
+}
+
+OSStatus inputDataProc(AudioConverterRef inConverter, UInt32 *ioNumberDataPackets, AudioBufferList *ioData, AudioStreamPacketDescription * *outDataPacketDescription, void *inUserData){
+    AudioBufferList bufferList = *(AudioBufferList *)inUserData;
+    ioData->mBuffers[0].mNumberChannels = 1;
+    ioData->mBuffers[0].mData = bufferList.mBuffers[0].mData;
+    ioData->mBuffers[0].mDataByteSize = bufferList.mBuffers[0].mDataByteSize;
+    return noErr;
+}
+
+
 
 - (BOOL)createAudioConvert {
     if (m_converter != nil) {
