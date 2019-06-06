@@ -76,6 +76,31 @@ typedef NS_ENUM(NSInteger,MTTLiveCaptureTypeMask) {
 
 @interface MTTLiveSession : NSObject
 
+@property (nonatomic, weak) id<MTTLiveSessionDelegate>delegate;
+@property (nonatomic, assign) BOOL running;
+@property (nonatomic, strong, null_resettable) UIView *preView;
+@property (nonatomic, assign) AVCaptureDevicePosition captureDevicePosition;
+@property (nonatomic, assign) BOOL beautyFace;
+@property (nonatomic, assign) CGFloat beautyLevel;
+@property (nonatomic, assign) CGFloat brightLevel;
+@property (nonatomic, assign) CGFloat zoomScale;
+@property (nonatomic, assign) BOOL torch;
+@property (nonatomic, assign) BOOL mirror;
+@property (nonatomic, assign) BOOL muted;
+@property (nonatomic, assign) BOOL adaptiveBitRate;
+@property (nonatomic, strong, readonly) MTTLiveStreamInfo *streamInfo;
+@property (nonatomic, assign, readonly) MTTLiveState state;
+@property (nonatomic, assign, readonly) MTTLiveCaptureTypeMask captureType;
+@property (nonatomic, assign) BOOL showDebugInfo;
+@property (nonatomic, assign) NSUInteger reconnectInterval;
+@property (nonatomic, assign) NSUInteger reconnectCount;
+@property (nonatomic, strong) UIView *waterMarkView;
+@property (nonatomic, strong, readonly) UIImage *currentImage;
+@property (nonatomic, assign) BOOL saveLocalVideo;
+@property (nonatomic, strong) NSURL *saveLocalVideoPath;
+
+
+
 @end
 
 NS_ASSUME_NONNULL_END
