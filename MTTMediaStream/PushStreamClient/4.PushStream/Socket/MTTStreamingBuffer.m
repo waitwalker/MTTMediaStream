@@ -56,6 +56,17 @@ static const NSUInteger defaultSendBufferMaxCount = 600;//最大缓冲区
         _startTimer = true;
         [self tick];
     }
+    
+    dispatch_semaphore_wait(_lock, DISPATCH_TIME_FOREVER);
+    if (self.sortList.count < defaultSortBufferMaxCount) {
+        [self.sortList addObject:frame];
+    } else {
+        // 排序
+        [self.sortList addObject:frame];
+        [self.sortList sortUsingFunction:frameDataCompare context:nil];
+        
+        //
+    }
 }
 
 // MARK: - 采样
@@ -110,6 +121,17 @@ static const NSUInteger defaultSendBufferMaxCount = 600;//最大缓冲区
     }
     
     return MTTLiveBufferUnknown;
+}
+
+NSInteger frameDataCompare(id obj1, id obj2, void *context) {
+    MTTFrame *frame1 = (MTTFrame *)obj1;
+    MTTFrame *frame2 = (MTTFrame *)obj2;
+    if (frame1.timeStamp == frame2.timeStamp) {
+        return NSOrderedSame;
+    } else if (frame1.timeStamp > frame2.timeStamp) {
+        return NSOrderedDescending;
+    }
+    return NSOrderedAscending;
 }
 
 @end
