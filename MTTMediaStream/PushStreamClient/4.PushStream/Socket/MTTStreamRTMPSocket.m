@@ -343,6 +343,223 @@ void ConnectionTimeCallBack(PILI_CONNECTION_TIME *conn_time, void *userData) {
     self.retryTimesNetworkBroken = 0;
 }
 
+- (void)sendFrame:(MTTFrame *)frame {
+    if (!frame) {
+        return;
+    }
+    
+    [self.buffer appendFrame:frame];
+    if (!self.isSending) {
+        [self sendFrame];
+    }
+}
+
+- (void)sendFrame {
+    __weak typeof(self) _self = self;
+    dispatch_async(self.rtmpSendQueue, ^{
+        if (!_self.isSending && _self.buffer.list.count > 0) {
+            _self.isSending = YES;
+            
+            if (!_self.isConnected || _self.isReconnecting || _self.isConnecting || !self->_rtmp){
+                _self.isSending = NO;
+                return;
+            }
+            
+            // 调用发送接口
+            MTTFrame *frame = [_self.buffer popFirstFrame];
+            if ([frame isKindOfClass:[MTTVideoFrame class]]) {
+                if (!_self.sendVideoHead) {
+                    _self.sendVideoHead = YES;
+                    if(!((MTTVideoFrame*)frame).sps || !((MTTVideoFrame*)frame).pps){
+                        _self.isSending = NO;
+                        return;
+                    }
+                    [_self sendVideoHeader:(MTTVideoFrame *)frame];
+                } else {
+                    [_self sendVideo:(MTTVideoFrame *)frame];
+                }
+            } else {
+                if (!_self.sendAudioHead) {
+                    _self.sendAudioHead = YES;
+                    if(!((MTTAudioFrame*)frame).audioInfo){
+                        _self.isSending = NO;
+                        return;
+                    }
+                    [_self sendAudioHeader:(MTTAudioFrame *)frame];
+                } else {
+                    [_self sendAudio:frame];
+                }
+            }
+            
+            //debug更新
+            _self.debugInfo.totalFrame++;
+            _self.debugInfo.dropFrame += _self.buffer.lastDropFrames;
+            _self.buffer.lastDropFrames = 0;
+            
+            _self.debugInfo.dataFlow += frame.data.length;
+            _self.debugInfo.elaspedMilli = CACurrentMediaTime() * 1000 - _self.debugInfo.timeStamp;
+            if (_self.debugInfo.elaspedMilli < 1000) {
+                _self.debugInfo.bandWidth += frame.data.length;
+                if ([frame isKindOfClass:[MTTAudioFrame class]]) {
+                    _self.debugInfo.capturedAudioCount++;
+                } else {
+                    _self.debugInfo.capturedVideoCount++;
+                }
+                
+                _self.debugInfo.unsendCount = _self.buffer.list.count;
+            } else {
+                _self.debugInfo.currentBandWidth = _self.debugInfo.bandWidth;
+                _self.debugInfo.currentCapturedAudioCount = _self.debugInfo.capturedAudioCount;
+                _self.debugInfo.currentCapturedVideoCount = _self.debugInfo.capturedVideoCount;
+                if (_self.delegate && [_self.delegate respondsToSelector:@selector(socketDebug:debugInfo:)]) {
+                    [_self.delegate socketDebug:_self debugInfo:_self.debugInfo];
+                }
+                _self.debugInfo.bandWidth = 0;
+                _self.debugInfo.capturedAudioCount = 0;
+                _self.debugInfo.capturedVideoCount = 0;
+                _self.debugInfo.timeStamp = CACurrentMediaTime() * 1000;
+            }
+            
+            //修改发送状态
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                ///< 这里只为了不循环调用sendFrame方法 调用栈是保证先出栈再进栈
+                _self.isSending = NO;
+            });
+            
+        }
+    });
+}
+
+- (void)sendVideoHeader:(MTTVideoFrame *)videoFrame {
+    
+    unsigned char *body = NULL;
+    NSInteger iIndex = 0;
+    NSInteger rtmpLength = 1024;
+    const char *sps = videoFrame.sps.bytes;
+    const char *pps = videoFrame.pps.bytes;
+    NSInteger sps_len = videoFrame.sps.length;
+    NSInteger pps_len = videoFrame.pps.length;
+    
+    body = (unsigned char *)malloc(rtmpLength);
+    memset(body, 0, rtmpLength);
+    
+    body[iIndex++] = 0x17;
+    body[iIndex++] = 0x00;
+    
+    body[iIndex++] = 0x00;
+    body[iIndex++] = 0x00;
+    body[iIndex++] = 0x00;
+    
+    body[iIndex++] = 0x01;
+    body[iIndex++] = sps[1];
+    body[iIndex++] = sps[2];
+    body[iIndex++] = sps[3];
+    body[iIndex++] = 0xff;
+    
+    /*sps*/
+    body[iIndex++] = 0xe1;
+    body[iIndex++] = (sps_len >> 8) & 0xff;
+    body[iIndex++] = sps_len & 0xff;
+    memcpy(&body[iIndex], sps, sps_len);
+    iIndex += sps_len;
+    
+    /*pps*/
+    body[iIndex++] = 0x01;
+    body[iIndex++] = (pps_len >> 8) & 0xff;
+    body[iIndex++] = (pps_len) & 0xff;
+    memcpy(&body[iIndex], pps, pps_len);
+    iIndex += pps_len;
+    
+    [self sendPacket:RTMP_PACKET_TYPE_VIDEO data:body size:iIndex nTimestamp:0];
+    free(body);
+}
+
+- (void)sendVideo:(MTTVideoFrame *)frame {
+    
+    NSInteger i = 0;
+    NSInteger rtmpLength = frame.data.length + 9;
+    unsigned char *body = (unsigned char *)malloc(rtmpLength);
+    memset(body, 0, rtmpLength);
+    
+    if (frame.isKeyFrame) {
+        body[i++] = 0x17;        // 1:Iframe  7:AVC
+    } else {
+        body[i++] = 0x27;        // 2:Pframe  7:AVC
+    }
+    body[i++] = 0x01;    // AVC NALU
+    body[i++] = 0x00;
+    body[i++] = 0x00;
+    body[i++] = 0x00;
+    body[i++] = (frame.data.length >> 24) & 0xff;
+    body[i++] = (frame.data.length >> 16) & 0xff;
+    body[i++] = (frame.data.length >>  8) & 0xff;
+    body[i++] = (frame.data.length) & 0xff;
+    memcpy(&body[i], frame.data.bytes, frame.data.length);
+    
+    [self sendPacket:RTMP_PACKET_TYPE_VIDEO data:body size:(rtmpLength) nTimestamp:frame.timeStamp];
+    free(body);
+}
+
+- (NSInteger)sendPacket:(unsigned int)nPacketType data:(unsigned char *)data size:(NSInteger)size nTimestamp:(uint64_t)nTimestamp {
+    NSInteger rtmpLength = size;
+    PILI_RTMPPacket rtmp_pack;
+    PILI_RTMPPacket_Reset(&rtmp_pack);
+    PILI_RTMPPacket_Alloc(&rtmp_pack, (uint32_t)rtmpLength);
+    
+    rtmp_pack.m_nBodySize = (uint32_t)size;
+    memcpy(rtmp_pack.m_body, data, size);
+    rtmp_pack.m_hasAbsTimestamp = 0;
+    rtmp_pack.m_packetType = nPacketType;
+    if (_rtmp) rtmp_pack.m_nInfoField2 = _rtmp->m_stream_id;
+    rtmp_pack.m_nChannel = 0x04;
+    rtmp_pack.m_headerType = RTMP_PACKET_SIZE_LARGE;
+    if (RTMP_PACKET_TYPE_AUDIO == nPacketType && size != 4) {
+        rtmp_pack.m_headerType = RTMP_PACKET_SIZE_MEDIUM;
+    }
+    rtmp_pack.m_nTimeStamp = (uint32_t)nTimestamp;
+    
+    NSInteger nRet = [self RtmpPacketSend:&rtmp_pack];
+    
+    PILI_RTMPPacket_Free(&rtmp_pack);
+    return nRet;
+}
+
+- (NSInteger)RtmpPacketSend:(PILI_RTMPPacket *)packet {
+    if (_rtmp && PILI_RTMP_IsConnected(_rtmp)) {
+        int success = PILI_RTMP_SendPacket(_rtmp, packet, 0, &_error);
+        return success;
+    }
+    return -1;
+}
+
+- (void)sendAudioHeader:(MTTAudioFrame *)audioFrame {
+    
+    NSInteger rtmpLength = audioFrame.audioInfo.length + 2;     /*spec data长度,一般是2*/
+    unsigned char *body = (unsigned char *)malloc(rtmpLength);
+    memset(body, 0, rtmpLength);
+    
+    /*AF 00 + AAC RAW data*/
+    body[0] = 0xAF;
+    body[1] = 0x00;
+    memcpy(&body[2], audioFrame.audioInfo.bytes, audioFrame.audioInfo.length);          /*spec_buf是AAC sequence header数据*/
+    [self sendPacket:RTMP_PACKET_TYPE_AUDIO data:body size:rtmpLength nTimestamp:0];
+    free(body);
+}
+
+- (void)sendAudio:(MTTFrame *)frame {
+    
+    NSInteger rtmpLength = frame.data.length + 2;    /*spec data长度,一般是2*/
+    unsigned char *body = (unsigned char *)malloc(rtmpLength);
+    memset(body, 0, rtmpLength);
+    
+    /*AF 01 + AAC RAW data*/
+    body[0] = 0xAF;
+    body[1] = 0x01;
+    memcpy(&body[2], frame.data.bytes, frame.data.length);
+    [self sendPacket:RTMP_PACKET_TYPE_AUDIO data:body size:rtmpLength nTimestamp:frame.timeStamp];
+    free(body);
+}
+
 - (dispatch_queue_t)rtmpSendQueue {
     if (!_rtmpSendQueue) {
         _rtmpSendQueue = dispatch_queue_create("cn.waitwalker.RTMPSendQueue", NULL);
