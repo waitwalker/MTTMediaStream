@@ -211,4 +211,26 @@ NSInteger frameDataCompare(id obj1, id obj2, void *context) {
     return iframes;
 }
 
+// MARK: - setter getter
+- (NSMutableArray<MTTFrame *> *)list {
+    if (!_list) {
+        _list = [NSMutableArray new];
+    }
+    return _list;
+}
+
+- (NSMutableArray<MTTFrame *> *)sortList {
+    if (!_sortList) {
+        _sortList = [NSMutableArray new];
+    }
+    return _sortList;
+}
+
+- (NSMutableArray *)thresholdList {
+    if (!_thresholdList) {
+        _thresholdList = [NSMutableArray new];
+    }
+    return _thresholdList;
+}
+
 @end
