@@ -48,9 +48,9 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  debug信息回调
 
- @param debugInfo debug info
+ @param debugInfo debug
  */
-- (void)socketDebug(nullable id<MTTStreamSocketInterface>)socket debugInfo:(nullable MTTLiveDebug *)debugInfo;
+- (void)socketDebug:(nullable id<MTTStreamSocketInterface>)socket debugInfo:(nullable MTTLiveDebug *)debugInfo;
 
 @end
 

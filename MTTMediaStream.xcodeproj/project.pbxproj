@@ -215,6 +215,7 @@
 		CABC3C4E22A8B7D600A432C7 /* MTTLiveDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = CABC3C4D22A8B7D600A432C7 /* MTTLiveDebug.m */; };
 		CABC3C5122A8C17300A432C7 /* MTTStreamingBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = CABC3C5022A8C17300A432C7 /* MTTStreamingBuffer.m */; };
 		CABC3C5422A8D64A00A432C7 /* NSMutableArray+MTTAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = CABC3C5222A8D64900A432C7 /* NSMutableArray+MTTAdd.m */; };
+		CABC3C5822A8F4DD00A432C7 /* MTTStreamRTMPSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = CABC3C5722A8F4DD00A432C7 /* MTTStreamRTMPSocket.m */; };
 		CAC1363F22A74A5B00CF4C6C /* MTTH264VideoEncoder.mm in Sources */ = {isa = PBXBuildFile; fileRef = CAC1363E22A74A5B00CF4C6C /* MTTH264VideoEncoder.mm */; };
 /* End PBXBuildFile section */
 
@@ -662,6 +663,8 @@
 		CABC3C5222A8D64900A432C7 /* NSMutableArray+MTTAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+MTTAdd.m"; sourceTree = "<group>"; };
 		CABC3C5322A8D64900A432C7 /* NSMutableArray+MTTAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+MTTAdd.h"; sourceTree = "<group>"; };
 		CABC3C5522A8EBD400A432C7 /* MTTStreamSocketInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTStreamSocketInterface.h; sourceTree = "<group>"; };
+		CABC3C5622A8F4DD00A432C7 /* MTTStreamRTMPSocket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTStreamRTMPSocket.h; sourceTree = "<group>"; };
+		CABC3C5722A8F4DD00A432C7 /* MTTStreamRTMPSocket.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTTStreamRTMPSocket.m; sourceTree = "<group>"; };
 		CAC1363D22A74A5B00CF4C6C /* MTTH264VideoEncoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTH264VideoEncoder.h; sourceTree = "<group>"; };
 		CAC1363E22A74A5B00CF4C6C /* MTTH264VideoEncoder.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MTTH264VideoEncoder.mm; sourceTree = "<group>"; };
 		F3F4CF4059F44607EDDD4FBE /* Pods-MTTMediaStreamUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MTTMediaStreamUITests.debug.xcconfig"; path = "Target Support Files/Pods-MTTMediaStreamUITests/Pods-MTTMediaStreamUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1297,6 +1300,8 @@
 				CABC3C4F22A8C17300A432C7 /* MTTStreamingBuffer.h */,
 				CABC3C5022A8C17300A432C7 /* MTTStreamingBuffer.m */,
 				CABC3C5522A8EBD400A432C7 /* MTTStreamSocketInterface.h */,
+				CABC3C5622A8F4DD00A432C7 /* MTTStreamRTMPSocket.h */,
+				CABC3C5722A8F4DD00A432C7 /* MTTStreamRTMPSocket.m */,
 			);
 			path = Socket;
 			sourceTree = "<group>";
@@ -1615,6 +1620,7 @@
 				CA22E1CB22A608F800FE7ABE /* GPUImageThresholdedNonMaximumSuppressionFilter.m in Sources */,
 				CA22E24022A608F800FE7ABE /* GPUImageExposureFilter.m in Sources */,
 				CA22E23A22A608F800FE7ABE /* GPUImageNobleCornerDetectionFilter.m in Sources */,
+				CABC3C5822A8F4DD00A432C7 /* MTTStreamRTMPSocket.m in Sources */,
 				CA22E20222A608F800FE7ABE /* GPUImageSaturationBlendFilter.m in Sources */,
 				CA22E1B722A608F800FE7ABE /* GPUImageEmbossFilter.m in Sources */,
 				CA22E23522A608F800FE7ABE /* GPUImageHSBFilter.m in Sources */,
