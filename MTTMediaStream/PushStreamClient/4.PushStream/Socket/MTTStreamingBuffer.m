@@ -87,6 +87,12 @@ static const NSUInteger defaultSendBufferMaxCount = 600;//最大缓冲区
     return first;
 }
 
+- (void)removeAllFrame {
+    dispatch_semaphore_wait(_lock, DISPATCH_TIME_FOREVER);
+    [self.list removeAllObjects];
+    dispatch_semaphore_signal(_lock);
+}
+
 // MARK: - 采样
 - (void)tick {
     _currentInterval += self.updateInterval;
