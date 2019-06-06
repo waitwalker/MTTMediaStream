@@ -65,7 +65,8 @@ static const NSUInteger defaultSendBufferMaxCount = 600;//最大缓冲区
         [self.sortList addObject:frame];
         [self.sortList sortUsingFunction:frameDataCompare context:nil];
         
-        //
+        // 丢帧
+        [self removeExpireFrame];
     }
 }
 
@@ -132,6 +133,53 @@ NSInteger frameDataCompare(id obj1, id obj2, void *context) {
         return NSOrderedDescending;
     }
     return NSOrderedAscending;
+}
+
+- (void)removeExpireFrame {
+    if (self.list.count < self.maxCount) {
+        return;
+    }
+    
+    NSArray *pFrames = [self expirePFrames];
+    self.lastDropFrames += pFrames.count;
+    if (pFrames && pFrames.count > 0) {
+        [self.list removeObjectsInArray:pFrames];
+        return;
+    }
+    
+    NSArray *iFrames = [self expireIFrames];
+}
+
+- (NSArray *)expirePFrames {
+    NSMutableArray *pFrames = [NSMutableArray new];
+    for (NSInteger index = 0; index < self.list.count; index++) {
+        MTTFrame *frame = [self.list objectAtIndex:index];
+        if ([frame isKindOfClass:[MTTVideoFrame class]]) {
+            MTTVideoFrame *videoFrame = (MTTVideoFrame *)frame;
+            if (videoFrame.isKeyFrame && pFrames.count > 0) {
+                break;
+            } else if (!videoFrame.isKeyFrame) {
+                [pFrames addObject:frame];
+            }
+        }
+    }
+    return pFrames;
+}
+
+- (NSArray *)expireIFrames {
+    NSMutableArray *iframes = [NSMutableArray new];
+    uint64_t timeStamp = 0;
+    for (NSInteger index = 0; index < self.list.count; index ++) {
+        MTTFrame *frame = [self.list objectAtIndex:index];
+        if ([frame isKindOfClass:[MTTVideoFrame class]] && ((MTTVideoFrame *)frame).isKeyFrame) {
+            if (timeStamp != 0 && timeStamp != frame.timeStamp) {
+                break;
+            }
+            [iframes addObject:frame];
+            timeStamp = frame.timeStamp;
+        }
+    }
+    return iframes;
 }
 
 @end
