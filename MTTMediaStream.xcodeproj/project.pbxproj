@@ -661,6 +661,7 @@
 		CABC3C5022A8C17300A432C7 /* MTTStreamingBuffer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTTStreamingBuffer.m; sourceTree = "<group>"; };
 		CABC3C5222A8D64900A432C7 /* NSMutableArray+MTTAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+MTTAdd.m"; sourceTree = "<group>"; };
 		CABC3C5322A8D64900A432C7 /* NSMutableArray+MTTAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+MTTAdd.h"; sourceTree = "<group>"; };
+		CABC3C5522A8EBD400A432C7 /* MTTStreamSocketInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTStreamSocketInterface.h; sourceTree = "<group>"; };
 		CAC1363D22A74A5B00CF4C6C /* MTTH264VideoEncoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTH264VideoEncoder.h; sourceTree = "<group>"; };
 		CAC1363E22A74A5B00CF4C6C /* MTTH264VideoEncoder.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MTTH264VideoEncoder.mm; sourceTree = "<group>"; };
 		F3F4CF4059F44607EDDD4FBE /* Pods-MTTMediaStreamUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MTTMediaStreamUITests.debug.xcconfig"; path = "Target Support Files/Pods-MTTMediaStreamUITests/Pods-MTTMediaStreamUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1295,6 +1296,7 @@
 				CABC3C5222A8D64900A432C7 /* NSMutableArray+MTTAdd.m */,
 				CABC3C4F22A8C17300A432C7 /* MTTStreamingBuffer.h */,
 				CABC3C5022A8C17300A432C7 /* MTTStreamingBuffer.m */,
+				CABC3C5522A8EBD400A432C7 /* MTTStreamSocketInterface.h */,
 			);
 			path = Socket;
 			sourceTree = "<group>";
