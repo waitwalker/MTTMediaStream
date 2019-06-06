@@ -79,6 +79,14 @@ static const NSUInteger defaultSendBufferMaxCount = 600;//最大缓冲区
     dispatch_semaphore_signal(_lock);
 }
 
+// MARK: - 弹出第一帧
+- (MTTFrame *)popFirstFrame {
+    dispatch_semaphore_wait(_lock, DISPATCH_TIME_FOREVER);
+    MTTFrame *first = [self.list mPopFirstObject];
+    dispatch_semaphore_signal(_lock);
+    return first;
+}
+
 // MARK: - 采样
 - (void)tick {
     _currentInterval += self.updateInterval;
