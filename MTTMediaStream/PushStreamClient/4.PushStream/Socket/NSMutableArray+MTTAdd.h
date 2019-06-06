@@ -16,6 +16,6 @@
 
    @return The first object, or nil.
  */
-- (nullable id)lfPopFirstObject;
+- (nullable id)mPopFirstObject;
 
 @end

@@ -10,17 +10,17 @@
 
 @implementation NSMutableArray (MTTAdd)
 
-- (void)lfRemoveFirstObject {
+- (void)mRemoveFirstObject {
     if (self.count) {
         [self removeObjectAtIndex:0];
     }
 }
 
-- (id)lfPopFirstObject {
+- (id)mPopFirstObject {
     id obj = nil;
     if (self.count) {
         obj = self.firstObject;
-        [self lfRemoveFirstObject];
+        [self mRemoveFirstObject];
     }
     return obj;
 }

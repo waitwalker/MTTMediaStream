@@ -47,6 +47,7 @@ static const NSUInteger defaultSendBufferMaxCount = 600;//最大缓冲区
     
 }
 
+// MARK: - 添加frame
 - (void)appendFrame:(MTTFrame *)frame {
     if (!frame) {
         return;
@@ -67,7 +68,15 @@ static const NSUInteger defaultSendBufferMaxCount = 600;//最大缓冲区
         
         // 丢帧
         [self removeExpireFrame];
+        
+        // 添加到缓冲区
+        MTTFrame *firstFrame = [self.sortList mPopFirstObject];
+        
+        if (firstFrame) {
+            [self.list addObject:firstFrame];
+        }
     }
+    dispatch_semaphore_signal(_lock);
 }
 
 // MARK: - 采样
