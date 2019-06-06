@@ -100,6 +100,59 @@ typedef NS_ENUM(NSInteger,MTTLiveCaptureTypeMask) {
 @property (nonatomic, strong) NSURL *saveLocalVideoPath;
 
 
+- (instancetype)init UNAVAILABLE_ATTRIBUTE;
++ (instancetype)new UNAVAILABLE_ATTRIBUTE;
+
+
+/**
+ 根据音视频配置生成session实例
+
+ @param audioConfiguration 音频配置
+ @param videoConfiguration 视频配置
+ @return instance
+ */
+- (instancetype)initWithAudioConfiguration:(MTTLiveAudioConfiguration *)audioConfiguration videoConfiguration:(MTTLiveVideoConfiguration *)videoConfiguration;
+
+
+/**
+ 根据音视频配置和采集类型生成session实例
+
+ @param audioConfiguration 音频配置
+ @param videoConfiguration 视频配置
+ @param captureType 采集类型
+ @return instance
+ */
+- (instancetype)initWithAudioConfiguration:(MTTLiveAudioConfiguration *)audioConfiguration videoConfiguration:(MTTLiveVideoConfiguration *)videoConfiguration captureType:(MTTLiveCaptureTypeMask)captureType NS_DESIGNATED_INITIALIZER;
+
+
+/**
+ 开始直播
+
+ @param streamInfo stream info
+ */
+- (void)startLive:(MTTLiveStreamInfo *)streamInfo;
+
+
+/**
+ 停止直播
+ */
+- (void)stopLive;
+
+
+/**
+ 发送视频缓存数据
+
+ @param pixelBuffer 缓存数据
+ */
+- (void)pushVideo:(CVPixelBufferRef)pixelBuffer;
+
+
+/**
+ 发送音频数据
+
+ @param audioData 音频数据
+ */
+- (void)pushAudio:(NSData *)audioData;
 
 @end
 
