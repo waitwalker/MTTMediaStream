@@ -308,6 +308,40 @@ void ConnectionTimeCallBack(PILI_CONNECTION_TIME *conn_time, void *userData) {
     [self RTMP264_Connect:(char *)[_stream.url cStringUsingEncoding:NSASCIIStringEncoding]];
 }
 
+// MARK: - 停止socket
+- (void)stop {
+    dispatch_async(self.rtmpSendQueue, ^{
+        [self _stop];
+        [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    });
+}
+
+- (void)_stop {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(socketStatus:status:)]) {
+        [self.delegate socketStatus:self status:MTTLiveStop];
+    }
+    
+    if (_rtmp != NULL) {
+        PILI_RTMP_Close(_rtmp, &_error);
+        PILI_RTMP_Free(_rtmp);
+        _rtmp = NULL;
+    }
+    
+    [self clean];
+}
+
+- (void)clean {
+    _isConnecting = false;
+    _isReconnecting = false;
+    _isSending = false;
+    _isConnected = false;
+    _sendAudioHead = false;
+    _sendVideoHead = false;
+    self.debugInfo = nil;
+    [self.buffer removeAllFrame];
+    
+    self.retryTimesNetworkBroken = 0;
+}
 
 - (dispatch_queue_t)rtmpSendQueue {
     if (!_rtmpSendQueue) {
