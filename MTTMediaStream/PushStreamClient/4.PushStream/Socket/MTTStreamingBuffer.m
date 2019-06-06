@@ -20,7 +20,7 @@ static const NSUInteger defaultSendBufferMaxCount = 600;//最大缓冲区
 
 @property (nonatomic, strong) NSMutableArray <MTTFrame *>*sortList;
 @property (nonatomic, strong, readwrite) NSMutableArray <MTTFrame *>*list;
-@property (nonatomic, strong) NSMutableArray *threadholdList;
+@property (nonatomic, strong) NSMutableArray *thresholdList;
 
 @property (nonatomic, assign) NSInteger currentInterval;
 @property (nonatomic, assign) NSInteger callBackInterval;
@@ -41,6 +41,75 @@ static const NSUInteger defaultSendBufferMaxCount = 600;//最大缓冲区
         self.startTimer = false;
     }
     return self;
+}
+
+- (void)dealloc {
+    
+}
+
+- (void)appendFrame:(MTTFrame *)frame {
+    if (!frame) {
+        return;
+    }
+    
+    if (!_startTimer) {
+        _startTimer = true;
+        [self tick];
+    }
+}
+
+// MARK: - 采样
+- (void)tick {
+    _currentInterval += self.updateInterval;
+    dispatch_semaphore_wait(_lock, DISPATCH_TIME_FOREVER);
+    [self.thresholdList addObject:@(self.list.count)];
+    dispatch_semaphore_signal(_lock);
+    
+    if (self.currentInterval >= self.callBackInterval) {
+        MTTLiveBufferState state = [self currentBufferState];
+        if (state == MTTLiveBufferIncrease) {
+            if (self.delegate && [self.delegate respondsToSelector:@selector(streamingBuffer:bufferState:)]) {
+                [self.delegate streamingBuffer:self bufferState:MTTLiveBufferIncrease];
+            } else if (state == MTTLiveBufferDeclines) {
+                if (self.delegate && [self.delegate respondsToSelector:@selector(streamingBuffer:bufferState:)]) {
+                    [self.delegate streamingBuffer:self bufferState:MTTLiveBufferDeclines];
+                }
+            }
+        }
+        
+        self.currentInterval = 0;
+        [self.thresholdList removeAllObjects];
+    }
+    __weak typeof(self) _self = self;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(self.updateInterval * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        __strong typeof(_self) self = _self;
+        [self tick];
+    });
+}
+
+- (MTTLiveBufferState)currentBufferState {
+    NSInteger currentCount = 0;
+    NSInteger increaseCount = 0;
+    NSInteger decreaseCount = 0;
+    
+    for (NSNumber *number in self.thresholdList) {
+        if (number.integerValue > currentCount) {
+            increaseCount++;
+        } else{
+            decreaseCount++;
+        }
+        currentCount = [number integerValue];
+    }
+    
+    if (increaseCount >= self.callBackInterval) {
+        return MTTLiveBufferIncrease;
+    }
+    
+    if (decreaseCount >= self.callBackInterval) {
+        return MTTLiveBufferDeclines;
+    }
+    
+    return MTTLiveBufferUnknown;
 }
 
 @end
