@@ -148,6 +148,12 @@ NSInteger frameDataCompare(id obj1, id obj2, void *context) {
     }
     
     NSArray *iFrames = [self expireIFrames];
+    self.lastDropFrames += iFrames.count;
+    if (iFrames && iFrames.count > 0) {
+        [self.list removeObjectsInArray:iFrames];
+        return;
+    }
+    [self.list removeAllObjects];
 }
 
 - (NSArray *)expirePFrames {
