@@ -10,6 +10,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+// MARK: - 缓冲区状态
+typedef NS_ENUM(NSUInteger, MTTLiveBufferState) {
+    // 未知
+    MTTLiveBufferUnknown = 0,
+    // 缓冲区状态差应该降低码率
+    MTTLiveBufferIncrease = 1,
+    // 缓冲区状态好应该提升码率
+    MTTLiveBufferDeclines = 2,
+};
+
 @interface MTTStreamingBuffer : NSObject
 
 @end
