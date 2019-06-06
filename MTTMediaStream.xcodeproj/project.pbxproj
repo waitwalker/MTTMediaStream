@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1AC5DACC22A94E07005928FB /* MTTLiveSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC5DACB22A94E07005928FB /* MTTLiveSession.m */; };
 		3CE5074631F66F2A2CCB5FDB /* libPods-MTTMediaStreamUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B581AFC23C2F5E6EF749343 /* libPods-MTTMediaStreamUITests.a */; };
 		528E7C0943CC9FB6A140C480 /* libPods-MTTMediaStream.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC59C5E404CDEBBB677903C9 /* libPods-MTTMediaStream.a */; };
 		A7ED307C19A5F77F90453DD1 /* libPods-MTTMediaStreamTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 062EBA31A87A82A2B938AA53 /* libPods-MTTMediaStreamTests.a */; };
@@ -238,6 +239,8 @@
 
 /* Begin PBXFileReference section */
 		062EBA31A87A82A2B938AA53 /* libPods-MTTMediaStreamTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MTTMediaStreamTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1AC5DACA22A94E07005928FB /* MTTLiveSession.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTLiveSession.h; sourceTree = "<group>"; };
+		1AC5DACB22A94E07005928FB /* MTTLiveSession.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTTLiveSession.m; sourceTree = "<group>"; };
 		223713DC0C2C754AA617EA49 /* Pods-MTTMediaStream.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MTTMediaStream.debug.xcconfig"; path = "Target Support Files/Pods-MTTMediaStream/Pods-MTTMediaStream.debug.xcconfig"; sourceTree = "<group>"; };
 		23664012C1EB0606768E736C /* Pods-MTTMediaStreamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MTTMediaStreamTests.debug.xcconfig"; path = "Target Support Files/Pods-MTTMediaStreamTests/Pods-MTTMediaStreamTests.debug.xcconfig"; sourceTree = "<group>"; };
 		45AFC58F6F090BAC404EBB66 /* Pods-MTTMediaStreamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MTTMediaStreamTests.release.xcconfig"; path = "Target Support Files/Pods-MTTMediaStreamTests/Pods-MTTMediaStreamTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -699,6 +702,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1AC5DAC922A94DF5005928FB /* LiveSession */ = {
+			isa = PBXGroup;
+			children = (
+				1AC5DACA22A94E07005928FB /* MTTLiveSession.h */,
+				1AC5DACB22A94E07005928FB /* MTTLiveSession.m */,
+			);
+			path = LiveSession;
+			sourceTree = "<group>";
+		};
 		2DFB62A5658E503B5E5923EB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1268,7 +1280,7 @@
 		CAA828B222A657E500E49423 /* 4.PushStream */ = {
 			isa = PBXGroup;
 			children = (
-				CABC3C4822A8AA2300A432C7 /* LiveSession */,
+				1AC5DAC922A94DF5005928FB /* LiveSession */,
 				CABC3C4722A8AA1000A432C7 /* Socket */,
 				CAA828B322A657EE00E49423 /* Model */,
 			);
@@ -1304,13 +1316,6 @@
 				CABC3C5722A8F4DD00A432C7 /* MTTStreamRTMPSocket.m */,
 			);
 			path = Socket;
-			sourceTree = "<group>";
-		};
-		CABC3C4822A8AA2300A432C7 /* LiveSession */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = LiveSession;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1623,6 +1628,7 @@
 				CABC3C5822A8F4DD00A432C7 /* MTTStreamRTMPSocket.m in Sources */,
 				CA22E20222A608F800FE7ABE /* GPUImageSaturationBlendFilter.m in Sources */,
 				CA22E1B722A608F800FE7ABE /* GPUImageEmbossFilter.m in Sources */,
+				1AC5DACC22A94E07005928FB /* MTTLiveSession.m in Sources */,
 				CA22E23522A608F800FE7ABE /* GPUImageHSBFilter.m in Sources */,
 				CA4AF85B22A4C74B00E15880 /* MTTGPUImageEmptyFilter.m in Sources */,
 				CA22E1CC22A608F800FE7ABE /* GPUImageBilateralFilter.m in Sources */,
