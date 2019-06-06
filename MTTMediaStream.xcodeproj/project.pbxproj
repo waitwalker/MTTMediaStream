@@ -211,6 +211,7 @@
 		CAA828B622A658CC00E49423 /* MTTFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA828B522A658CC00E49423 /* MTTFrame.m */; };
 		CAA828B922A669B200E49423 /* MTTAudioFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA828B822A669B200E49423 /* MTTAudioFrame.m */; };
 		CAA828BC22A66A0200E49423 /* MTTVideoFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA828BB22A66A0200E49423 /* MTTVideoFrame.m */; };
+		CABC3C4B22A8AA5200A432C7 /* MTTLiveStreamInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CABC3C4A22A8AA5200A432C7 /* MTTLiveStreamInfo.m */; };
 		CAC1363F22A74A5B00CF4C6C /* MTTH264VideoEncoder.mm in Sources */ = {isa = PBXBuildFile; fileRef = CAC1363E22A74A5B00CF4C6C /* MTTH264VideoEncoder.mm */; };
 /* End PBXBuildFile section */
 
@@ -649,6 +650,8 @@
 		CAA828BA22A66A0200E49423 /* MTTVideoFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTVideoFrame.h; sourceTree = "<group>"; };
 		CAA828BB22A66A0200E49423 /* MTTVideoFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTTVideoFrame.m; sourceTree = "<group>"; };
 		CAA828BD22A66DE300E49423 /* MTTVideoEncodeInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTVideoEncodeInterface.h; sourceTree = "<group>"; };
+		CABC3C4922A8AA5200A432C7 /* MTTLiveStreamInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTLiveStreamInfo.h; sourceTree = "<group>"; };
+		CABC3C4A22A8AA5200A432C7 /* MTTLiveStreamInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTTLiveStreamInfo.m; sourceTree = "<group>"; };
 		CAC1363D22A74A5B00CF4C6C /* MTTH264VideoEncoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTH264VideoEncoder.h; sourceTree = "<group>"; };
 		CAC1363E22A74A5B00CF4C6C /* MTTH264VideoEncoder.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MTTH264VideoEncoder.mm; sourceTree = "<group>"; };
 		F3F4CF4059F44607EDDD4FBE /* Pods-MTTMediaStreamUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MTTMediaStreamUITests.debug.xcconfig"; path = "Target Support Files/Pods-MTTMediaStreamUITests/Pods-MTTMediaStreamUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1252,6 +1255,8 @@
 		CAA828B222A657E500E49423 /* 4.PushStream */ = {
 			isa = PBXGroup;
 			children = (
+				CABC3C4822A8AA2300A432C7 /* LiveSession */,
+				CABC3C4722A8AA1000A432C7 /* Socket */,
 				CAA828B322A657EE00E49423 /* Model */,
 			);
 			path = 4.PushStream;
@@ -1266,8 +1271,24 @@
 				CAA828B822A669B200E49423 /* MTTAudioFrame.m */,
 				CAA828BA22A66A0200E49423 /* MTTVideoFrame.h */,
 				CAA828BB22A66A0200E49423 /* MTTVideoFrame.m */,
+				CABC3C4922A8AA5200A432C7 /* MTTLiveStreamInfo.h */,
+				CABC3C4A22A8AA5200A432C7 /* MTTLiveStreamInfo.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		CABC3C4722A8AA1000A432C7 /* Socket */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Socket;
+			sourceTree = "<group>";
+		};
+		CABC3C4822A8AA2300A432C7 /* LiveSession */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LiveSession;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1625,6 +1646,7 @@
 				CA22E1CE22A608F800FE7ABE /* GPUImageGammaFilter.m in Sources */,
 				CA22E1B322A608F800FE7ABE /* GPUImageWeakPixelInclusionFilter.m in Sources */,
 				CA22E25122A608F800FE7ABE /* rtmp.c in Sources */,
+				CABC3C4B22A8AA5200A432C7 /* MTTLiveStreamInfo.m in Sources */,
 				CA22E1AF22A608F800FE7ABE /* GPUImageTwoPassFilter.m in Sources */,
 				CA22E1DE22A608F800FE7ABE /* GPUImageDissolveBlendFilter.m in Sources */,
 				CA22E1A922A608F800FE7ABE /* GPUImageFilterGroup.m in Sources */,
