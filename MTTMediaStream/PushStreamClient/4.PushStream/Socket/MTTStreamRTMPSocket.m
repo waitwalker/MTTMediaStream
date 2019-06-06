@@ -70,4 +70,36 @@ SAVC(mp4a);
 
 @implementation MTTStreamRTMPSocket
 
+- (instancetype)initWithStream:(MTTLiveStreamInfo *)stream {
+    return [self initWithStream:stream reconnectInterval:0 reconnectCount:0];
+}
+
+- (instancetype)initWithStream:(MTTLiveStreamInfo *)stream reconnectInterval:(NSInteger)reconnectInterval reconnectCount:(NSInteger)reconnectCount {
+    if (!stream) {
+        @throw [NSException exceptionWithName:@"StreamRTMPSocket init error" reason:@"stream is nil" userInfo:nil];
+    }
+    
+    if (self = [super init]) {
+        _stream = stream;
+        if (reconnectInterval > 0) {
+            _reconnectInterval = reconnectInterval;
+        } else {
+            _reconnectInterval = kRetryTimesMargin;
+        }
+        
+        if (reconnectCount > 0) {
+            _reconnectCount = reconnectCount;
+        } else {
+            _reconnectCount = kRetryTimesBroken;
+        }
+        [self addObserver:self forKeyPath:@"isSending" options:NSKeyValueObservingOptionNew context:nil];
+        
+    }
+    return self;
+}
+
+- (void)dealloc {
+    [self removeObserver:self forKeyPath:@"isSending"];
+}
+
 @end
