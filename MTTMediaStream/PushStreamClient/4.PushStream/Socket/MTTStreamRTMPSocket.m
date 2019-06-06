@@ -52,6 +52,7 @@ SAVC(mp4a);
 @property (nonatomic, strong) MTTLiveStreamInfo *stream;
 @property (nonatomic, strong) MTTStreamingBuffer *buffer;
 @property (nonatomic, strong) MTTLiveDebug *debugInfo;
+@property (nonatomic, strong) dispatch_queue_t rtmpSendQueue;
 
 @property (nonatomic, assign) RTMPError error;
 @property (nonatomic, assign) NSInteger retryTimesNetworkBroken;
@@ -100,6 +101,170 @@ SAVC(mp4a);
 
 - (void)dealloc {
     [self removeObserver:self forKeyPath:@"isSending"];
+}
+
+// MARK: - 开始socket
+- (void)start {
+    dispatch_async(self.rtmpSendQueue, ^{
+        [self _start];
+    });
+}
+
+- (void)_start {
+    if (!_stream) {
+        return;
+    }
+    
+    if (_isConnecting) {
+        return;
+    }
+    
+    if (_rtmp != NULL) {
+        return;
+    }
+    
+    self.debugInfo.streamId = self.stream.streamId;
+    self.debugInfo.uploadUrl = self.stream.url;
+    self.debugInfo.isRTMP = true;
+    if (_isConnecting) {
+        return;
+    }
+    
+    _isConnecting = true;
+    if (self.delegate && [self.delegate respondsToSelector:@selector(socketStatus:status:)]) {
+        [self.delegate socketStatus:self status:MTTLivePending];
+    }
+    
+    if (_rtmp != NULL) {
+        PILI_RTMP_Close(_rtmp, &_error);
+        PILI_RTMP_Free(_rtmp);
+    }
+    
+    [self ];
+}
+
+- (NSInteger)RTMP264_Connect:(char *)push_url {
+    // 分配与初始化
+    _rtmp = PILI_RTMP_Alloc();
+    PILI_RTMP_Init(_rtmp);
+    
+    // 设置URL
+    if (PILI_RTMP_SetupURL(_rtmp, push_url, &_error) == false) {
+        goto Failed;
+    }
+    _rtmp->m_errorCallback = RTMPErrorCallBack;
+    _rtmp->m_connCallback = ConnectionTimeCallBack;
+    _rtmp->m_userData = (__bridge void *)self;
+    _rtmp->m_msgCounter = 1;
+    _rtmp->Link.timeout = RTMP_RECEIVE_TIMEOUT;
+    
+    // 设置可写, 即发布流,这个函数必须在重连前使用,否则无效
+    PILI_RTMP_EnableWrite(_rtmp);
+    
+    // 连接服务器
+    if (PILI_RTMP_Connect(_rtmp, NULL, &_error) == false) {
+        goto Failed;
+    }
+    
+    // 连接流
+    if (PILI_RTMP_ConnectStream(_rtmp, 0, &_error) == false) {
+        goto Failed;
+    }
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(socketStatus:status:)]) {
+        [self.delegate socketStatus:self status:MTTLiveStarted];
+    }
+    
+    [self sendMetaData];
+    
+    _isConnected = true;
+    _isConnecting = false;
+    _isReconnecting = false;
+    _isSending = false;
+    return 0;
+    
+Failed:
+    PILI_RTMP_Close(_rtmp, &_error);
+    PILI_RTMP_Free(_rtmp);
+    _rtmp = NULL;
+    [self reconnect];
+    return -1;
+}
+
+void RTMPErrorCallBack(RTMPError *error, void *userData) {
+    MTTStreamRTMPSocket *socket = (__bridge MTTStreamRTMPSocket *)userData;
+    if (error->code < 0) {
+        [socket reconnect];
+    }
+}
+
+void ConnectionTimeCallBack(PILI_CONNECTION_TIME *conn_time, void *userData) {
+    
+}
+
+- (void)sendMetaData {
+    PILI_RTMPPacket packet;
+    
+    char pbuf[2048], *pend = pbuf + sizeof(pbuf);
+    
+    packet.m_nChannel = 0x03;                   // control channel (invoke)
+    packet.m_headerType = RTMP_PACKET_SIZE_LARGE;
+    packet.m_packetType = RTMP_PACKET_TYPE_INFO;
+    packet.m_nTimeStamp = 0;
+    packet.m_nInfoField2 = _rtmp->m_stream_id;
+    packet.m_hasAbsTimestamp = TRUE;
+    packet.m_body = pbuf + RTMP_MAX_HEADER_SIZE;
+    
+    char *enc = packet.m_body;
+    enc = AMF_EncodeString(enc, pend, &av_setDataFrame);
+    enc = AMF_EncodeString(enc, pend, &av_onMetaData);
+    
+    *enc++ = AMF_OBJECT;
+    
+    enc = AMF_EncodeNamedNumber(enc, pend, &av_duration, 0.0);
+    enc = AMF_EncodeNamedNumber(enc, pend, &av_fileSize, 0.0);
+    
+    // videosize
+    enc = AMF_EncodeNamedNumber(enc, pend, &av_width, _stream.videoConfiguration.videoSize.width);
+    enc = AMF_EncodeNamedNumber(enc, pend, &av_height, _stream.videoConfiguration.videoSize.height);
+    
+    // video
+    enc = AMF_EncodeNamedString(enc, pend, &av_videocodecid, &av_avc1);
+    
+    enc = AMF_EncodeNamedNumber(enc, pend, &av_videodatarate, _stream.videoConfiguration.videoBitRate / 1000.f);
+    enc = AMF_EncodeNamedNumber(enc, pend, &av_framerate, _stream.videoConfiguration.videoFrameRate);
+    
+    // audio
+    enc = AMF_EncodeNamedString(enc, pend, &av_audiocodecid, &av_mp4a);
+    enc = AMF_EncodeNamedNumber(enc, pend, &av_audiodatarate, _stream.audioConfiguration.audioBitRate);
+    
+    enc = AMF_EncodeNamedNumber(enc, pend, &av_audiosamplerate, _stream.audioConfiguration.audioSampleRate);
+    enc = AMF_EncodeNamedNumber(enc, pend, &av_audiosamplesize, 16.0);
+    enc = AMF_EncodeNamedBoolean(enc, pend, &av_stereo, _stream.audioConfiguration.numberOfChannels == 2);
+    
+    // sdk version
+    enc = AMF_EncodeNamedString(enc, pend, &av_encoder, &av_SDKVersion);
+    
+    *enc++ = 0;
+    *enc++ = 0;
+    *enc++ = AMF_OBJECT_END;
+    
+    packet.m_nBodySize = (uint32_t)(enc - packet.m_body);
+    if (!PILI_RTMP_SendPacket(_rtmp, &packet, FALSE, &_error)) {
+        return;
+    }
+}
+
+- (void)reconnect {
+    
+}
+
+
+- (dispatch_queue_t)rtmpSendQueue {
+    if (!_rtmpSendQueue) {
+        _rtmpSendQueue = dispatch_queue_create("cn.waitwalker.RTMPSendQueue", NULL);
+    }
+    return _rtmpSendQueue;
 }
 
 @end
