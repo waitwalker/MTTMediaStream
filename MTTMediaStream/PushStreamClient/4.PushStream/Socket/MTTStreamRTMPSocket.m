@@ -256,7 +256,56 @@ void ConnectionTimeCallBack(PILI_CONNECTION_TIME *conn_time, void *userData) {
 }
 
 - (void)reconnect {
+    dispatch_async(self.rtmpSendQueue, ^{
+        if (self.retryTimesNetworkBroken++ < self.reconnectCount && !self.isReconnecting) {
+            self.isConnected = false;
+            self.isConnecting = false;
+            self.isReconnecting = true;
+            dispatch_async(dispatch_get_main_queue(), ^{
+               [self performSelector:@selector(_reconnect) withObject:nil afterDelay:self.reconnectInterval]; 
+            });
+        } else if (self.retryTimesNetworkBroken > self.reconnectCount){
+            if (self.delegate && [self.delegate respondsToSelector:@selector(socketStatus:status:)]) {
+                [self.delegate socketStatus:self status:MTTLiveError];
+            }
+            
+            if (self.delegate && [self.delegate respondsToSelector:@selector(socketDidError:errorCode:)]) {
+                [self.delegate socketDidError:self errorCode:MTTLiveSocketError_ReconnectTimeout];
+            }
+        }
+    });
+}
+
+- (void)_reconnect {
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    _isReconnecting = false;
+    if (_isConnected) {
+        return;
+    }
     
+    _isReconnecting = false;
+    if (_isConnected) {
+        return;
+    }
+    
+    if (_rtmp != NULL) {
+        PILI_RTMP_Close(_rtmp, &_error);
+        PILI_RTMP_Free(_rtmp);
+        _rtmp = NULL;
+    }
+    
+    _sendAudioHead = false;
+    _sendVideoHead = false;
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(socketStatus:status:)]) {
+        [self.delegate socketStatus:self status:MTTLiveRefresh];
+    }
+    
+    if (_rtmp != NULL) {
+        PILI_RTMP_Close(_rtmp, &_error);
+        PILI_RTMP_Free(_rtmp);
+    }
+    [self RTMP264_Connect:(char *)[_stream.url cStringUsingEncoding:NSASCIIStringEncoding]];
 }
 
 
