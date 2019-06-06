@@ -31,4 +31,16 @@ static const NSUInteger defaultSendBufferMaxCount = 600;//最大缓冲区
 
 @implementation MTTStreamingBuffer
 
+- (instancetype)init {
+    if (self = [super init]) {
+        _lock = dispatch_semaphore_create(1);
+        self.updateInterval = defaultUpdateInterval;
+        self.callBackInterval = defaultCallBackInterval;
+        self.maxCount = defaultSendBufferMaxCount;
+        self.lastDropFrames = 0;
+        self.startTimer = false;
+    }
+    return self;
+}
+
 @end
