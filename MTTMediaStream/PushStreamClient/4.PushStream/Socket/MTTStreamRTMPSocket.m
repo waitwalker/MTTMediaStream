@@ -140,7 +140,7 @@ SAVC(mp4a);
         PILI_RTMP_Free(_rtmp);
     }
     
-    [self ];
+    [self RTMP264_Connect:(char *)[_stream.url cStringUsingEncoding:NSASCIIStringEncoding]];
 }
 
 - (NSInteger)RTMP264_Connect:(char *)push_url {
