@@ -118,10 +118,20 @@
     self.socket = nil;
 }
 
+// MARK: - 推送视频数据
 - (void)pushVideo:(CVPixelBufferRef)pixelBuffer {
     if (self.captureType & MTTLiveInputMaskVideo) {
         if (self.uploading) {
             [self.videoEncoder encodeVideoData:pixelBuffer timeStamp:NOW];
+        }
+    }
+}
+
+// MARK: - 推送音频数据
+- (void)pushAudio:(NSData *)audioData {
+    if (self.captureType & MTTLiveCaptureMaskAudio) {
+        if (self.uploading) {
+            [self.audioEncoder encodeAudioData:audioData timeStamp:NOW];
         }
     }
 }
