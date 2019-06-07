@@ -38,4 +38,32 @@
 
 @implementation MTTLiveSession
 
+- (instancetype)initWithAudioConfiguration:(MTTLiveAudioConfiguration *)audioConfiguration videoConfiguration:(MTTLiveVideoConfiguration *)videoConfiguration {
+    return [self initWithAudioConfiguration:audioConfiguration videoConfiguration:videoConfiguration captureType:MTTLiveCaptureDefaultMask];
+}
+
+- (instancetype)initWithAudioConfiguration:(MTTLiveAudioConfiguration *)audioConfiguration videoConfiguration:(MTTLiveVideoConfiguration *)videoConfiguration captureType:(MTTLiveCaptureTypeMask)captureType {
+    if ((captureType & MTTLiveCaptureMaskAudio || captureType & MTTLiveInputMaskVideo) && !audioConfiguration) {
+        @throw [NSException exceptionWithName:@"MTTLiveSession init error" reason:@"audio configuration is nil" userInfo:nil];
+    }
+
+    if ((captureType & MTTLiveCaptureMaskVideo || captureType & MTTLiveInputMaskVideo) && !videoConfiguration) {
+        @throw [NSException exceptionWithName:@"MTTLiveSession init error" reason:@"video configuration is nil" userInfo:nil];
+    }
+
+    if (self = [super init]) {
+        _audioConfiguration = audioConfiguration;
+        _videoConfiguration = videoConfiguration;
+        _adaptiveBitRate = false;
+        _captureType = captureType;
+    }
+
+    return self;
+}
+
+- (void)dealloc {
+    _videoCaptureSource.running = false;
+    _audioCaptureSource.running = false;
+}
+
 @end
