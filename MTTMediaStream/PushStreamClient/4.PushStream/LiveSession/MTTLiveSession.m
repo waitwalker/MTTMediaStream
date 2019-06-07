@@ -51,9 +51,23 @@
 // 同步锁
 @property (nonatomic, strong) dispatch_semaphore_t lock;
 
+// 相对时间戳
+@property (nonatomic, assign) uint64_t relativeTimeStamps;
+
+// 音视频是否对齐
+@property (nonatomic, assign) BOOL AVAlignment;
+
+// 是否采集到了音频
+@property (nonatomic, assign) BOOL hasCaptureAudio;
+
+// 是否采集到了视频
+@property (nonatomic, assign) BOOL hasCaptureVideo;
 
 @end
 
+/**  时间戳 */
+#define NOW (CACurrentMediaTime()*1000)
+#define SYSTEM_VERSION_LESS_THAN(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
 @implementation MTTLiveSession
 
@@ -97,8 +111,11 @@
     [self.socket start];
 }
 
+// MARK: - 停止直播
 - (void)stopLive {
-    self.
+    self.uploading = false;
+    [self.socket stop];
+    self.socket = nil;
 }
 
 @end
