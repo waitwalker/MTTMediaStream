@@ -58,8 +58,8 @@
     }
 
     _currentVideoBitRate = _configuration.videoBitRate;
-    VTSessionSetProperty(compressionSession, kVTCompressionPropertyKey_MaxKeyFrameInterval, (__bridge CFTypeRef)@(_configuration.videoMaxKeyframeInterval));
-    VTSessionSetProperty(compressionSession, kVTCompressionPropertyKey_MaxKeyFrameIntervalDuration, (__bridge CFTypeRef)@(_configuration.videoMaxKeyframeInterval/_configuration.videoFrameRate));
+    VTSessionSetProperty(compressionSession, kVTCompressionPropertyKey_MaxKeyFrameInterval, (__bridge CFTypeRef)@(_configuration.videoMaxKeyFrameInterval));
+    VTSessionSetProperty(compressionSession, kVTCompressionPropertyKey_MaxKeyFrameIntervalDuration, (__bridge CFTypeRef)@(_configuration.videoMaxKeyFrameInterval/_configuration.videoFrameRate));
     VTSessionSetProperty(compressionSession, kVTCompressionPropertyKey_ExpectedFrameRate, (__bridge CFTypeRef)@(_configuration.videoFrameRate));
     VTSessionSetProperty(compressionSession, kVTCompressionPropertyKey_AverageBitRate, (__bridge CFTypeRef)@(_configuration.videoBitRate));
     NSArray *limit = @[@(_configuration.videoBitRate * 1.5/8), @(1)];
@@ -104,7 +104,7 @@
     CMTime duration = CMTimeMake(1, (int32_t)_configuration.videoFrameRate);
 
     NSDictionary *properties = nil;
-    if (frameCount % (int32_t)_configuration.videoMaxKeyframeInterval == 0) {
+    if (frameCount % (int32_t)_configuration.videoMaxKeyFrameInterval == 0) {
         if (@available(iOS 8.0, *)) {
             properties = @{(__bridge NSString *)kVTEncodeFrameOptionKey_ForceKeyFrame: @YES};
         } else {
@@ -205,7 +205,7 @@ static void VideoCompressonOutputCallback(void *VTref, void *VTFrameRef, OSStatu
             NALUnitLength = CFSwapInt32BigToHost(NALUnitLength);
 
             MTTVideoFrame *videoFrame = [MTTVideoFrame new];
-            videoFrame.timestamp = timeStamp;
+            videoFrame.timeStamp = timeStamp;
             videoFrame.data = [[NSData alloc] initWithBytes:(dataPointer + bufferOffset + AVCCHeaderLength) length:NALUnitLength];
             videoFrame.isKeyFrame = keyframe;
             videoFrame.sps = videoEncoder->sps;
