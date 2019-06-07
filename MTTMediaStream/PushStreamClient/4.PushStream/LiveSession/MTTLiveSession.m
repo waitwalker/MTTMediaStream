@@ -118,4 +118,12 @@
     self.socket = nil;
 }
 
+- (void)pushVideo:(CVPixelBufferRef)pixelBuffer {
+    if (self.captureType & MTTLiveInputMaskVideo) {
+        if (self.uploading) {
+            [self.videoEncoder encodeVideoData:pixelBuffer timeStamp:NOW];
+        }
+    }
+}
+
 @end
