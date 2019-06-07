@@ -66,4 +66,16 @@
     _audioCaptureSource.running = false;
 }
 
+// MARK: - 开始直播
+- (void)startLive:(MTTLiveStreamInfo *)streamInfo {
+    if (!streamInfo) {
+        return;
+    }
+
+    _streamInfo = streamInfo;
+    _streamInfo.videoConfiguration = _videoConfiguration;
+    _streamInfo.audioConfiguration = _audioConfiguration;
+    [self.socket start];
+}
+
 @end
