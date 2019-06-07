@@ -33,6 +33,25 @@
 // socket
 @property (nonatomic, strong) id<MTTStreamSocketInterface> socket;
 
+// debug
+@property (nonatomic, strong) MTTLiveDebug *debugInfo;
+
+// 流信息
+@property (nonatomic, strong) MTTLiveStreamInfo *streamInfo;
+
+// 是否正在上传
+@property (nonatomic, assign) BOOL uploading;
+
+// 直播状态
+@property (nonatomic, assign, readwrite) MTTLiveState state;
+
+// 采集类型
+@property (nonatomic, assign, readwrite) MTTLiveCaptureTypeMask captureType;
+
+// 同步锁
+@property (nonatomic, strong) dispatch_semaphore_t lock;
+
+
 @end
 
 
@@ -76,6 +95,10 @@
     _streamInfo.videoConfiguration = _videoConfiguration;
     _streamInfo.audioConfiguration = _audioConfiguration;
     [self.socket start];
+}
+
+- (void)stopLive {
+    self.
 }
 
 @end
