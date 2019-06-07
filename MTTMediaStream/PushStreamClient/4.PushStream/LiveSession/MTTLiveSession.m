@@ -7,6 +7,10 @@
 //
 
 #import "MTTLiveSession.h"
+#import "MTTVideoCapture.h"
+#import "MTTAudioCapture.h"
+#import "MTTHardwareAudioEncoder.h"
+
 
 @implementation MTTLiveSession
 
