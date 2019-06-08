@@ -283,7 +283,23 @@
     return self.videoCaptureSource.captureDevicePosition;
 }
 
+- (void)setBeautyFace:(BOOL)beautyFace {
+    [self willChangeValueForKey:@"beautyFace"];
+    [self.videoCaptureSource setBeautyFace:beautyFace];
+    [self didChangeValueForKey:@"beautyFace"];
+}
 
+- (BOOL)saveLocalVideo {
+    return self.videoCaptureSource.saveLocalVideo;
+}
+
+- (void)setSaveLocalVideo:(BOOL)saveLocalVideo {
+    [self.videoCaptureSource setSaveLocalVideo:saveLocalVideo];
+}
+
+- (NSURL *)saveLocalVideoPath {
+    return self.videoCaptureSource.saveLocalVideoPath;
+}
 
 
 @end
