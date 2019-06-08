@@ -431,9 +431,16 @@
 
 - (MTTLiveStreamInfo *)streamInfo {
     if (!_streamInfo) {
-        _streamInfov = [[MTTLiveStreamInfo alloc]init];
+        _streamInfo = [[MTTLiveStreamInfo alloc]init];
     }
     return _streamInfo;
+}
+
+- (dispatch_semaphore_t)lock {
+    if (!_lock) {
+        _lock = dispatch_semaphore_create(1);
+    }
+    return _lock;
 }
 
 @end
