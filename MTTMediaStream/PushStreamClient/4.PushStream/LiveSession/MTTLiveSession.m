@@ -219,4 +219,15 @@
     });
 }
 
+- (void)socketDebug:(id<MTTStreamSocketInterface>)socket debugInfo:(MTTLiveDebug *)debugInfo {
+    self.debugInfo = debugInfo;
+    if (self.showDebugInfo) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (self.delegate && [self.delegate respondsToSelector:@selector(liveSession:debugInfo:)]) {
+                [self.delegate liveSession:self debugInfo:debugInfo];
+            }
+        });
+    }
+}
+
 @end
