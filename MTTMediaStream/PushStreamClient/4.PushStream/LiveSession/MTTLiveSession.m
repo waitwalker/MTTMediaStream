@@ -167,4 +167,14 @@
     }
 }
 
+// MARK: - encoder delegate
+- (void)audioEncoder:(id<MTTAudioEncodeInterface>)encoder audioFrame:(MTTAudioFrame *)frame {
+    if (self.uploading) {
+        self.hasCaptureVideo = true;
+        if (self.AVAlignment) {
+            [self pushSendBuffer:frame];
+        }
+    }
+}
+
 @end
