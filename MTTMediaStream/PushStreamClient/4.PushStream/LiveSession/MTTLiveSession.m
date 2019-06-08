@@ -249,4 +249,19 @@
     }
 }
 
+
+// MARK: - setter getter
+- (void)setRunning:(BOOL)running {
+    if (_running == running) {
+        return;
+    }
+
+    [self willChangeValueForKey:@"running"];
+    _running = running;
+    [self didChangeValueForKey:@"running"];
+    self.videoCaptureSource.running = _running;
+    self.audioCaptureSource.running = _running;
+}
+
+
 @end
