@@ -401,5 +401,13 @@
     return _videoCaptureSource;
 }
 
+- (id<MTTAudioEncodeInterface>)audioEncoder {
+    if (!_audioEncoder) {
+        _audioEncoder = [[MTTHardwareAudioEncoder alloc]initWithAudioSteamConfiguration:_audioConfiguration];
+        [_audioEncoder setDelegate:self];
+    }
+    return _audioEncoder;
+}
+
 
 @end
