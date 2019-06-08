@@ -443,4 +443,16 @@
     return _lock;
 }
 
+- (BOOL)AVAlignment {
+    if ((self.captureType & MTTLiveCaptureMaskAudio || self.captureType & MTTLiveInputMaskAudio) && (self.captureType & MTTLiveCaptureMaskVideo || self.captureType & MTTLiveInputMaskVideo)) {
+        if (self.hasCaptureAudio && self.hasKeyFrameVideo) {
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+        return true;
+    }
+}
+
 @end
