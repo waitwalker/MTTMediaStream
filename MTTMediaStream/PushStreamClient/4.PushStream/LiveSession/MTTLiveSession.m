@@ -289,6 +289,10 @@
     [self didChangeValueForKey:@"beautyFace"];
 }
 
+- (BOOL)beautyFace {
+    return self.videoCaptureSource.beautyFace;
+}
+
 - (BOOL)saveLocalVideo {
     return self.videoCaptureSource.saveLocalVideo;
 }
