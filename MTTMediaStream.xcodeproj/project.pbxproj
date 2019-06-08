@@ -200,6 +200,12 @@
 		CA22E25222A608F800FE7ABE /* error.c in Sources */ = {isa = PBXBuildFile; fileRef = CA22E19D22A608F800FE7ABE /* error.c */; };
 		CA22E25322A608F800FE7ABE /* parseurl.c in Sources */ = {isa = PBXBuildFile; fileRef = CA22E1A022A608F800FE7ABE /* parseurl.c */; };
 		CA22E25422A608F800FE7ABE /* amf.c in Sources */ = {isa = PBXBuildFile; fileRef = CA22E1A122A608F800FE7ABE /* amf.c */; };
+		CA44D61822ABC8C60038E270 /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA44D60B22ABC8C60038E270 /* IJKMediaFramework.framework */; };
+		CA44D61922ABC8C60038E270 /* MTTMediaPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA44D60E22ABC8C60038E270 /* MTTMediaPlayerView.m */; };
+		CA44D61A22ABC8C60038E270 /* MTTMediaControl.m in Sources */ = {isa = PBXBuildFile; fileRef = CA44D60F22ABC8C60038E270 /* MTTMediaControl.m */; };
+		CA44D61B22ABC8C60038E270 /* UIView+MTTExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = CA44D61022ABC8C60038E270 /* UIView+MTTExtend.m */; };
+		CA44D61C22ABC8C60038E270 /* MTTMediaGesturesView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA44D61122ABC8C60038E270 /* MTTMediaGesturesView.m */; };
+		CA44D61D22ABC8C60038E270 /* MTTReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = CA44D61222ABC8C60038E270 /* MTTReachability.m */; };
 		CA4AF85822A4BDFE00E15880 /* MTTGPUImageBeautyFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4AF85722A4BDFE00E15880 /* MTTGPUImageBeautyFilter.m */; };
 		CA4AF85B22A4C74B00E15880 /* MTTGPUImageEmptyFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4AF85A22A4C74B00E15880 /* MTTGPUImageEmptyFilter.m */; };
 		CA4AF85F22A4C95100E15880 /* MTTAudioCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4AF85E22A4C95100E15880 /* MTTAudioCapture.m */; };
@@ -632,6 +638,17 @@
 		CA22E1A022A608F800FE7ABE /* parseurl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = parseurl.c; sourceTree = "<group>"; };
 		CA22E1A122A608F800FE7ABE /* amf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = amf.c; sourceTree = "<group>"; };
 		CA22E1A222A608F800FE7ABE /* rtmp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rtmp.h; sourceTree = "<group>"; };
+		CA44D60B22ABC8C60038E270 /* IJKMediaFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IJKMediaFramework.framework; sourceTree = "<group>"; };
+		CA44D60E22ABC8C60038E270 /* MTTMediaPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTMediaPlayerView.m; sourceTree = "<group>"; };
+		CA44D60F22ABC8C60038E270 /* MTTMediaControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTMediaControl.m; sourceTree = "<group>"; };
+		CA44D61022ABC8C60038E270 /* UIView+MTTExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MTTExtend.m"; sourceTree = "<group>"; };
+		CA44D61122ABC8C60038E270 /* MTTMediaGesturesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTMediaGesturesView.m; sourceTree = "<group>"; };
+		CA44D61222ABC8C60038E270 /* MTTReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTReachability.m; sourceTree = "<group>"; };
+		CA44D61322ABC8C60038E270 /* UIView+MTTExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MTTExtend.h"; sourceTree = "<group>"; };
+		CA44D61422ABC8C60038E270 /* MTTMediaControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTMediaControl.h; sourceTree = "<group>"; };
+		CA44D61522ABC8C60038E270 /* MTTMediaPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTMediaPlayerView.h; sourceTree = "<group>"; };
+		CA44D61622ABC8C60038E270 /* MTTReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTReachability.h; sourceTree = "<group>"; };
+		CA44D61722ABC8C60038E270 /* MTTMediaGesturesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTMediaGesturesView.h; sourceTree = "<group>"; };
 		CA4AF85622A4BDFE00E15880 /* MTTGPUImageBeautyFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTGPUImageBeautyFilter.h; sourceTree = "<group>"; };
 		CA4AF85722A4BDFE00E15880 /* MTTGPUImageBeautyFilter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTTGPUImageBeautyFilter.m; sourceTree = "<group>"; };
 		CA4AF85922A4C74B00E15880 /* MTTGPUImageEmptyFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTGPUImageEmptyFilter.h; sourceTree = "<group>"; };
@@ -683,6 +700,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				528E7C0943CC9FB6A140C480 /* libPods-MTTMediaStream.a in Frameworks */,
+				CA44D61822ABC8C60038E270 /* IJKMediaFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -762,9 +780,9 @@
 		CA0498BB229CE26F00409977 /* MTTMediaStream */ = {
 			isa = PBXGroup;
 			children = (
+				CA44D60922ABC8970038E270 /* PullStreamClient */,
 				CA22E03422A608F700FE7ABE /* ThirdParty */,
 				CA0498EF229CE4BF00409977 /* PushStreamClient */,
-				CA0498EE229CE45600409977 /* PullStreamClient */,
 				CA0498BC229CE26F00409977 /* AppDelegate.h */,
 				CA0498BD229CE26F00409977 /* AppDelegate.m */,
 				CA0498BF229CE26F00409977 /* ViewController.h */,
@@ -794,13 +812,6 @@
 				CA0498E2229CE27100409977 /* Info.plist */,
 			);
 			path = MTTMediaStreamUITests;
-			sourceTree = "<group>";
-		};
-		CA0498EE229CE45600409977 /* PullStreamClient */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = PullStreamClient;
 			sourceTree = "<group>";
 		};
 		CA0498EF229CE4BF00409977 /* PushStreamClient */ = {
@@ -1227,6 +1238,40 @@
 			path = "pili-librtmp";
 			sourceTree = "<group>";
 		};
+		CA44D60922ABC8970038E270 /* PullStreamClient */ = {
+			isa = PBXGroup;
+			children = (
+				CA44D60A22ABC8C60038E270 /* Framework */,
+				CA44D60C22ABC8C60038E270 /* StreamPlayer */,
+			);
+			path = PullStreamClient;
+			sourceTree = "<group>";
+		};
+		CA44D60A22ABC8C60038E270 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				CA44D60B22ABC8C60038E270 /* IJKMediaFramework.framework */,
+			);
+			path = Framework;
+			sourceTree = "<group>";
+		};
+		CA44D60C22ABC8C60038E270 /* StreamPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				CA44D61422ABC8C60038E270 /* MTTMediaControl.h */,
+				CA44D60F22ABC8C60038E270 /* MTTMediaControl.m */,
+				CA44D61722ABC8C60038E270 /* MTTMediaGesturesView.h */,
+				CA44D61122ABC8C60038E270 /* MTTMediaGesturesView.m */,
+				CA44D61522ABC8C60038E270 /* MTTMediaPlayerView.h */,
+				CA44D60E22ABC8C60038E270 /* MTTMediaPlayerView.m */,
+				CA44D61622ABC8C60038E270 /* MTTReachability.h */,
+				CA44D61222ABC8C60038E270 /* MTTReachability.m */,
+				CA44D61322ABC8C60038E270 /* UIView+MTTExtend.h */,
+				CA44D61022ABC8C60038E270 /* UIView+MTTExtend.m */,
+			);
+			path = StreamPlayer;
+			sourceTree = "<group>";
+		};
 		CA4AF85C22A4C93500E15880 /* 1.Capture */ = {
 			isa = PBXGroup;
 			children = (
@@ -1533,6 +1578,7 @@
 				CA22E22222A608F800FE7ABE /* GPUImageLowPassFilter.m in Sources */,
 				CA22E1E822A608F800FE7ABE /* GPUImageLineGenerator.m in Sources */,
 				CA22E1EE22A608F800FE7ABE /* GPUImageOutput.m in Sources */,
+				CA44D61B22ABC8C60038E270 /* UIView+MTTExtend.m in Sources */,
 				CA22E22822A608F800FE7ABE /* GPUImageLinearBurnBlendFilter.m in Sources */,
 				CA947697229FB7740095174D /* MTTGPUImageFilterManager.m in Sources */,
 				CA22E22522A608F800FE7ABE /* GPUImageMotionDetector.m in Sources */,
@@ -1581,6 +1627,7 @@
 				CA22E20622A608F800FE7ABE /* GPUImageSharpenFilter.m in Sources */,
 				CA22E1DA22A608F800FE7ABE /* GPUImageAdaptiveThresholdFilter.m in Sources */,
 				CA22E22322A608F800FE7ABE /* GPUImageMonochromeFilter.m in Sources */,
+				CA44D61A22ABC8C60038E270 /* MTTMediaControl.m in Sources */,
 				CA22E1F322A608F800FE7ABE /* GPUImageFilterPipeline.m in Sources */,
 				CA22E20522A608F800FE7ABE /* GPUImagePoissonBlendFilter.m in Sources */,
 				CA22E23422A608F800FE7ABE /* GPUImageHueBlendFilter.m in Sources */,
@@ -1598,6 +1645,7 @@
 				CA22E1FB22A608F800FE7ABE /* GPUImageFramebufferCache.m in Sources */,
 				CA22E24222A608F800FE7ABE /* GPUImageLuminanceRangeFilter.m in Sources */,
 				CA22E24322A608F800FE7ABE /* GPUImageChromaKeyBlendFilter.m in Sources */,
+				CA44D61D22ABC8C60038E270 /* MTTReachability.m in Sources */,
 				CA22E1FC22A608F800FE7ABE /* GPUImageTiltShiftFilter.m in Sources */,
 				CA22E21E22A608F800FE7ABE /* GPUImageRGBOpeningFilter.m in Sources */,
 				CA4D05EE22A74EBE00AE7E01 /* MTTVideoEncoder.m in Sources */,
@@ -1702,6 +1750,7 @@
 				CA22E1ED22A608F800FE7ABE /* GPUImageDivideBlendFilter.m in Sources */,
 				CA22E24722A608F800FE7ABE /* GPUImageLookupFilter.m in Sources */,
 				CA22E21D22A608F800FE7ABE /* GPUImageThresholdSketchFilter.m in Sources */,
+				CA44D61C22ABC8C60038E270 /* MTTMediaGesturesView.m in Sources */,
 				CA22E21B22A608F800FE7ABE /* GPUImageShiTomasiFeatureDetectionFilter.m in Sources */,
 				CA22E1B122A608F800FE7ABE /* GPUImageColorPackingFilter.m in Sources */,
 				CA22E21422A608F800FE7ABE /* GPUImageHalftoneFilter.m in Sources */,
@@ -1710,6 +1759,7 @@
 				CA22E1FF22A608F800FE7ABE /* GPUImagePicture.m in Sources */,
 				CA22E1B422A608F800FE7ABE /* GPUImageUIElement.m in Sources */,
 				CA22E23B22A608F800FE7ABE /* GPUImageCrosshatchFilter.m in Sources */,
+				CA44D61922ABC8C60038E270 /* MTTMediaPlayerView.m in Sources */,
 				CA22E1C322A608F800FE7ABE /* GPUImageHistogramEqualizationFilter.m in Sources */,
 				CA22E1F222A608F800FE7ABE /* GPUImageLanczosResamplingFilter.m in Sources */,
 				CA22E1A722A608F800FE7ABE /* GPUImageChromaKeyFilter.m in Sources */,
@@ -1902,6 +1952,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NV5J27ZQZQ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MTTMediaStream/PullStreamClient/Framework",
+				);
 				INFOPLIST_FILE = MTTMediaStream/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1921,6 +1975,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NV5J27ZQZQ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MTTMediaStream/PullStreamClient/Framework",
+				);
 				INFOPLIST_FILE = MTTMediaStream/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
