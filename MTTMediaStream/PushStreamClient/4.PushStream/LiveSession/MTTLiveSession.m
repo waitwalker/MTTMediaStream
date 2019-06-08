@@ -421,5 +421,12 @@
     return _videoEncoder;
 }
 
+- (id<MTTStreamSocketInterface>)socket {
+    if (!_socket) {
+        _socket = [[MTTStreamRTMPSocket alloc]initWithStream:self.streamInfo reconnectInterval:self.reconnectInterval reconnectCount:self.reconnectCount];
+        [_socket setDelegate:self];
+    }
+    return _socket;
+}
 
 @end
