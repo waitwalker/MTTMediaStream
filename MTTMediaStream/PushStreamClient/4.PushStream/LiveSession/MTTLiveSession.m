@@ -136,4 +136,22 @@
     }
 }
 
+// MARK: - 私有方法
+- (void)pushSendBuffer:(MTTFrame *)frame {
+    if (self.relativeTimeStamps == 0) {
+        self.relativeTimeStamps = frame.timeStamp;
+    }
+
+    frame.timeStamp = [self uoloadTimeStamp:frame.timeStamp];
+    [self.socket sendFrame:frame];
+}
+
+- (uint64_t)uoloadTimeStamp:(uint64_t)captureTimeStamp {
+    dispatch_semaphore_wait(self.lock, DISPATCH_TIME_FOREVER);
+    uint64_t currents = 0;
+    currents = captureTimeStamp - self.relativeTimeStamps;
+    dispatch_semaphore_signal(self.lock);
+    return currents;
+}
+
 @end
