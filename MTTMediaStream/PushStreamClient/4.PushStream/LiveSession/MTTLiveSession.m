@@ -329,4 +329,14 @@
     return self.videoCaptureSource.brightLevel;
 }
 
+- (void)setZoomScale:(CGFloat)zoomScale {
+    [self willChangeValueForKey:@"zoomScale"];
+    [self.videoCaptureSource setZoomScale:zoomScale];
+    [self didChangeValueForKey:@"zoomScale"];
+}
+
+- (CGFloat)zoomScale {
+    return self.videoCaptureSource.zoomScale;
+}
+
 @end
