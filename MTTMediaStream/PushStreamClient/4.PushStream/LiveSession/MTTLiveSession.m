@@ -429,4 +429,11 @@
     return _socket;
 }
 
+- (MTTLiveStreamInfo *)streamInfo {
+    if (!_streamInfo) {
+        _streamInfov = [[MTTLiveStreamInfo alloc]init];
+    }
+    return _streamInfo;
+}
+
 @end
