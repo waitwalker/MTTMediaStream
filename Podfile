@@ -7,6 +7,7 @@ target 'MTTMediaStream' do
 
   # Pods for MTTMediaStream
   #pod 'GPUImage'
+  pod 'SDWebImage'
 
 
   target 'MTTMediaStreamTests' do
