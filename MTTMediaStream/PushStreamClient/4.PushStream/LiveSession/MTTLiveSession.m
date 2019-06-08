@@ -359,5 +359,15 @@
     return self.videoCaptureSource.mirror;
 }
 
+- (void)setMuted:(BOOL)muted {
+    [self willChangeValueForKey:@"muted"];
+    [self.audioCaptureSource setMuted:muted];
+    [self didChangeValueForKey:@"muted"];
+}
+
+- (BOOL)muted {
+    return self.audioCaptureSource.muted;
+}
+
 
 @end
