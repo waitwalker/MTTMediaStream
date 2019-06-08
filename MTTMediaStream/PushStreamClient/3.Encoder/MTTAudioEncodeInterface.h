@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
 开始音频编码
 
- @return void
+ @return v
  */
 - (void)encodeAudioData:(nullable NSData*)audioData timeStamp:(uint64_t)timeStamp;
 
