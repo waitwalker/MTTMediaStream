@@ -161,4 +161,10 @@
     }
 }
 
+- (void)captureOutput:(MTTVideoCapture *)videoCapture pixelBuffer:(CVPixelBufferRef)pixelBuffer {
+    if (self.uploading) {
+        [self.videoEncoder encodeVideoData:pixelBuffer timeStamp:NOW];
+    }
+}
+
 @end
