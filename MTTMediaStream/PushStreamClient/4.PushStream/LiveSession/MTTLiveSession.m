@@ -381,4 +381,15 @@
     return self.videoCaptureSource.currentImage;
 }
 
+- (MTTAudioCapture *)audioCaptureSource {
+    if (!_audioCaptureSource) {
+        if (self.captureType & MTTLiveCaptureMaskAudio) {
+            _audioCaptureSource = [[MTTAudioCapture alloc]initWithAudioConfiguration:_audioConfiguration];
+            _audioCaptureSource.delegate = self;
+        }
+    }
+    return _audioCaptureSource;
+}
+
+
 @end
