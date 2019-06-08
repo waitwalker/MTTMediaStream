@@ -263,5 +263,11 @@
     self.audioCaptureSource.running = _running;
 }
 
+- (void)setPreView:(UIView *)preView {
+    [self willChangeValueForKey:@"preView"];
+    [self.videoCaptureSource setPreView:preView];
+    [self didChangeValueForKey:@"preView"];
+}
+
 
 @end
