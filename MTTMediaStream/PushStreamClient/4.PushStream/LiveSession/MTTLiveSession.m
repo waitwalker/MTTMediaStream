@@ -319,5 +319,14 @@
     return self.videoCaptureSource.beautyLevel;
 }
 
+- (void)setBrightLevel:(CGFloat)brightLevel {
+    [self willChangeValueForKey:@"brightLevel"];
+    [self.videoCaptureSource setBrightLevel:brightLevel];
+    [self didChangeValueForKey:@"brightLevel"];
+}
+
+- (CGFloat)brightLevel {
+    return self.videoCaptureSource.brightLevel;
+}
 
 @end
