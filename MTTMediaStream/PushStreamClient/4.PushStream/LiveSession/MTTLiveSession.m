@@ -339,4 +339,15 @@
     return self.videoCaptureSource.zoomScale;
 }
 
+- (void)setTorch:(BOOL)torch {
+    [self willChangeValueForKey:@"torch"];
+    [self.videoCaptureSource setTorch:torch];
+    [self didChangeValueForKey:@"torch"];
+}
+
+- (BOOL)torch {
+    return self.videoCaptureSource.torch;
+}
+
+
 @end
