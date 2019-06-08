@@ -230,4 +230,23 @@
     }
 }
 
+- (void)socketBufferStatus:(id<MTTStreamSocketInterface>)socket status:(MTTLiveBufferState)status {
+    if ((self.captureType & MTTLiveCaptureMaskVideo || self.captureType & MTTLiveInputMaskVideo) && self.adaptiveBitRate) {
+        NSUInteger videoBitRate = [self.videoEncoder videoBitRate];
+        if (status == MTTLiveBufferDeclines) {
+            if (videoBitRate < _videoConfiguration.videoBitRate) {
+                videoBitRate = videoBitRate + 50 * 1000;
+                [self.videoEncoder setVideoBitRate:videoBitRate];
+                NSLog(@"Increase bitrate : %@",@(videoBitRate));
+            }
+        } else {
+            if (videoBitRate > self.videoConfiguration.videoMinBitRate) {
+                videoBitRate = videoBitRate - 100 * 1000;
+                [self.videoEncoder setVideoBitRate:videoBitRate];
+                NSLog(@"Decline bitrate :%@",@(videoBitRate));
+            }
+        }
+    }
+}
+
 @end
