@@ -377,5 +377,8 @@
     return self.videoCaptureSource.waterMarkView;
 }
 
+- (UIImage *)currentImage {
+    return self.videoCaptureSource.currentImage;
+}
 
 @end
