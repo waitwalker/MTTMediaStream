@@ -391,5 +391,15 @@
     return _audioCaptureSource;
 }
 
+- (MTTVideoCapture *)videoCaptureSource {
+    if (!_videoCaptureSource) {
+        if (self.captureType & MTTLiveCaptureMaskVideo) {
+            _videoCaptureSource = [[MTTVideoCapture alloc]initWithVideoConfiguration:_videoConfiguration];
+            _videoCaptureSource.delegate = self;
+        }
+    }
+    return _videoCaptureSource;
+}
+
 
 @end
