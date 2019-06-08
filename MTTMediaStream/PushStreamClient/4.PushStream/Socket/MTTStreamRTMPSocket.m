@@ -236,7 +236,7 @@ void ConnectionTimeCallBack(PILI_CONNECTION_TIME *conn_time, void *userData) {
     
     // audio
     enc = AMF_EncodeNamedString(enc, pend, &av_audiocodecid, &av_mp4a);
-    enc = AMF_EncodeNamedNumber(enc, pend, &av_audiodatarate, _stream.audioConfiguration.audioBitRate);
+    enc = AMF_EncodeNamedNumber(enc, pend, &av_audiodatarate, _stream.audioConfiguration.audioBitrate);
     
     enc = AMF_EncodeNamedNumber(enc, pend, &av_audiosamplerate, _stream.audioConfiguration.audioSampleRate);
     enc = AMF_EncodeNamedNumber(enc, pend, &av_audiosamplesize, 16.0);

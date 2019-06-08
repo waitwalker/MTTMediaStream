@@ -1,89 +1,84 @@
 //
-//  MTTVideoCapture.h
-//  MTTMediaStream
+//  LFVideoCapture.h
+//   
 //
-//  Created by LiuChuanan on 2019/6/3.
-//  Copyright © 2019 waitwalker. All rights reserved.
+//  Created by waitwalker on 19/5/20.
+//  Copyright © 2019年 waitwalker All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 #import "MTTLiveVideoConfiguration.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @class MTTVideoCapture;
+/** MTTVideoCapture callback videoData */
 @protocol MTTVideoCaptureDelegate <NSObject>
-
-
-/**
- 视频采集回调
-
- @param videoCapture 视频采集对象
- @param pixelBuffer 采集数据buffer
- */
-- (void)captureOutput:(nullable MTTVideoCapture *)videoCapture pixelBuffer:(nullable CVPixelBufferRef)pixelBuffer;
-
+- (void)captureOutput:(nullable MTTVideoCapture *)capture pixelBuffer:(nullable CVPixelBufferRef)pixelBuffer;
 @end
 
 @interface MTTVideoCapture : NSObject
 
-@property (nonatomic, weak) id<MTTVideoCaptureDelegate> delegate;
+#pragma mark - Attribute
+///=============================================================================
+/// @name Attribute
+///=============================================================================
 
-// 是否正在采集
+/** The delegate of the capture. captureData callback */
+@property (nullable, nonatomic, weak) id<MTTVideoCaptureDelegate> delegate;
+
+/** The running control start capture or stop capture*/
 @property (nonatomic, assign) BOOL running;
 
-// 预览
+/** The preView will show OpenGL ES view*/
 @property (null_resettable, nonatomic, strong) UIView *preView;
 
-// 摄像头方向
+/** The captureDevicePosition control camraPosition ,default front*/
 @property (nonatomic, assign) AVCaptureDevicePosition captureDevicePosition;
 
-// 是否美颜
+/** The beautyFace control capture shader filter empty or beautiy */
 @property (nonatomic, assign) BOOL beautyFace;
 
-// 是否打开手电筒
+/** The torch control capture flash is on or off */
 @property (nonatomic, assign) BOOL torch;
 
-// The mirror control mirror of front camera is on or off
+/** The mirror control mirror of front camera is on or off */
 @property (nonatomic, assign) BOOL mirror;
 
-// 美颜强度
+/** The beautyLevel control beautyFace Level, default 0.5, between 0.0 ~ 1.0 */
 @property (nonatomic, assign) CGFloat beautyLevel;
 
-// 亮度强度
+/** The brightLevel control brightness Level, default 0.5, between 0.0 ~ 1.0 */
 @property (nonatomic, assign) CGFloat brightLevel;
 
-// 缩放比例 1.0-3.0
+/** The torch control camera zoom scale default 1.0, between 1.0 ~ 3.0 */
 @property (nonatomic, assign) CGFloat zoomScale;
 
-// fps
+/** The videoFrameRate control videoCapture output data count */
 @property (nonatomic, assign) NSInteger videoFrameRate;
 
-// 水印
-@property (nonatomic, strong, nullable) UIView *waterMarkView;
+/*** The warterMarkView control whether the watermark is displayed or not ,if set ni,will remove watermark,otherwise add *.*/
+@property (nonatomic, strong, nullable) UIView *warterMarkView;
 
-// 当前snapshot
+/* The currentImage is videoCapture shot */
 @property (nonatomic, strong, nullable) UIImage *currentImage;
 
-// 视频是否保存到本地
+/* The saveLocalVideo is save the local video */
 @property (nonatomic, assign) BOOL saveLocalVideo;
 
-// 本地视频路径
+/* The saveLocalVideoPath is save the local video  path */
 @property (nonatomic, strong, nullable) NSURL *saveLocalVideoPath;
 
-- (instancetype)init UNAVAILABLE_ATTRIBUTE;
-+ (instancetype)new UNAVAILABLE_ATTRIBUTE;
-
+#pragma mark - Initializer
+///=============================================================================
+/// @name Initializer
+///=============================================================================
+- (nullable instancetype)init UNAVAILABLE_ATTRIBUTE;
++ (nullable instancetype)new UNAVAILABLE_ATTRIBUTE;
 
 /**
- 根据视频配置生成视频采集对象
-
- @param configuration 视频配置
- @return 采集对象
+   The designated initializer. Multiple instances with the same configuration will make the
+   capture unstable.
  */
-- (instancetype)initWithVideoConfiguration:(nullable MTTLiveVideoConfiguration *)configuration;
+- (nullable instancetype)initWithVideoConfiguration:(nullable MTTLiveVideoConfiguration *)configuration NS_DESIGNATED_INITIALIZER;
 
 @end
-
-NS_ASSUME_NONNULL_END

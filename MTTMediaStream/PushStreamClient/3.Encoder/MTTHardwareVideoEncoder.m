@@ -1,5 +1,5 @@
 //
-//  LFHardwareVideoEncoder.m
+//  MTTHardwareVideoEncoder.m
 //   
 //
 //  Created by waitwalker on 19/5/20.
@@ -26,10 +26,9 @@
 
 @implementation MTTHardwareVideoEncoder
 
-#pragma mark -- LifeCycle
 - (instancetype)initWithVideoStreamConfiguration:(MTTLiveVideoConfiguration *)configuration {
     if (self = [super init]) {
-        NSLog(@"USE LFHardwareVideoEncoder");
+        NSLog(@"USE MTTHardwareVideoEncoder");
         _configuration = configuration;
         [self resetCompressionSession];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willEnterBackground:) name:UIApplicationWillResignActiveNotification object:nil];
@@ -58,8 +57,8 @@
     }
 
     _currentVideoBitRate = _configuration.videoBitRate;
-    VTSessionSetProperty(compressionSession, kVTCompressionPropertyKey_MaxKeyFrameInterval, (__bridge CFTypeRef)@(_configuration.videoMaxKeyFrameInterval));
-    VTSessionSetProperty(compressionSession, kVTCompressionPropertyKey_MaxKeyFrameIntervalDuration, (__bridge CFTypeRef)@(_configuration.videoMaxKeyFrameInterval/_configuration.videoFrameRate));
+    VTSessionSetProperty(compressionSession, kVTCompressionPropertyKey_MaxKeyFrameInterval, (__bridge CFTypeRef)@(_configuration.videoMaxKeyframeInterval));
+    VTSessionSetProperty(compressionSession, kVTCompressionPropertyKey_MaxKeyFrameIntervalDuration, (__bridge CFTypeRef)@(_configuration.videoMaxKeyframeInterval/_configuration.videoFrameRate));
     VTSessionSetProperty(compressionSession, kVTCompressionPropertyKey_ExpectedFrameRate, (__bridge CFTypeRef)@(_configuration.videoFrameRate));
     VTSessionSetProperty(compressionSession, kVTCompressionPropertyKey_AverageBitRate, (__bridge CFTypeRef)@(_configuration.videoBitRate));
     NSArray *limit = @[@(_configuration.videoBitRate * 1.5/8), @(1)];
@@ -104,7 +103,7 @@
     CMTime duration = CMTimeMake(1, (int32_t)_configuration.videoFrameRate);
 
     NSDictionary *properties = nil;
-    if (frameCount % (int32_t)_configuration.videoMaxKeyFrameInterval == 0) {
+    if (frameCount % (int32_t)_configuration.videoMaxKeyframeInterval == 0) {
         if (@available(iOS 8.0, *)) {
             properties = @{(__bridge NSString *)kVTEncodeFrameOptionKey_ForceKeyFrame: @YES};
         } else {

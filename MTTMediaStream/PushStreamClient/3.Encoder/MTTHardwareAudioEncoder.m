@@ -178,7 +178,7 @@ OSStatus inputDataProc(AudioConverterRef inConverter, UInt32 *ioNumberDataPacket
         }
     };
     OSStatus result = AudioConverterNewSpecific(&inputFormat, &outputFormat, 2, requestCodecs, &m_converter);
-    UInt32 outputBitrate = _configuration.audioBitRate;
+    UInt32 outputBitrate = _configuration.audioBitrate;
     UInt32 propSize = sizeof(outputBitrate);
     if (result == noErr) {
         result = AudioConverterSetProperty(m_converter, kAudioConverterEncodeBitRate, propSize, &outputBitrate);

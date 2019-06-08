@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "MTTTabBarViewController.h"
+
 
 @interface AppDelegate ()
 
@@ -15,8 +17,19 @@
 @implementation AppDelegate
 
 
+- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
+    
+    if (self.fullScreen == YES) {
+        return UIInterfaceOrientationMaskAll;
+    }
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.rootViewController = [MTTTabBarViewController new];
+    
+    
     return YES;
 }
 

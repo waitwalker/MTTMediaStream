@@ -1,5 +1,5 @@
 //
-//  LFHardwareVideoEncoder.h
+//  MTTHardwareVideoEncoder.h
 //   
 //
 //  Created by waitwalker on 19/5/20.

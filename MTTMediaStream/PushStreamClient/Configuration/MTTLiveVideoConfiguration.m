@@ -1,304 +1,306 @@
 //
-//  MTTLiveVideoConfiguration.m
-//  MTTMediaStream
+//  LFLiveVideoConfiguration.m
+//   
 //
-//  Created by LiuChuanan on 2019/5/28.
-//  Copyright © 2019 waitwalker. All rights reserved.
+//  Created by waitwalker on 19/5/20.
+//  Copyright © 2019年 waitwalker All rights reserved.
 //
 
 #import "MTTLiveVideoConfiguration.h"
 #import <AVFoundation/AVFoundation.h>
 
+
 @implementation MTTLiveVideoConfiguration
 
+#pragma mark -- LifeCycle
+
 + (instancetype)defaultConfiguration {
-    return [MTTLiveVideoConfiguration defaultConfigurationForQuality:MTTLiveVideoQuality_Default];
+    MTTLiveVideoConfiguration *configuration = [MTTLiveVideoConfiguration defaultConfigurationForQuality:MTTLiveVideoQuality_Default];
+    return configuration;
 }
 
 + (instancetype)defaultConfigurationForQuality:(MTTLiveVideoQuality)videoQuality {
-    return [MTTLiveVideoConfiguration defaultConfigurationForQuality:videoQuality outputOrientation:UIInterfaceOrientationPortrait];
+    MTTLiveVideoConfiguration *configuration = [MTTLiveVideoConfiguration defaultConfigurationForQuality:videoQuality outputImageOrientation:UIInterfaceOrientationPortrait];
+    return configuration;
 }
 
-+ (instancetype)defaultConfigurationForQuality:(MTTLiveVideoQuality)videoQuality outputOrientation:(UIInterfaceOrientation)orientation {
++ (instancetype)defaultConfigurationForQuality:(MTTLiveVideoQuality)videoQuality outputImageOrientation:(UIInterfaceOrientation)outputImageOrientation {
     MTTLiveVideoConfiguration *configuration = [MTTLiveVideoConfiguration new];
     switch (videoQuality) {
-        case MTTLiveVideoQuality_Low1:
-            configuration.sessionPreset = MTTCaptureSessionPreset360x640;
-            configuration.videoFrameRate = 15;
-            configuration.videoMaxFrameRate = 15;
-            configuration.videoMinFrameRate = 10;
-            configuration.videoBitRate = 500 * 1000;
-            configuration.videoMaxBitRate = 600 * 1000;
-            configuration.videoMinBitRate = 400 * 1000;
-            configuration.videoSize = CGSizeMake(360, 640);
-            break;
-        case MTTLiveVideoQuality_Low2:
-            configuration.sessionPreset = MTTCaptureSessionPreset360x640;
-            configuration.videoFrameRate = 24;
-            configuration.videoMaxFrameRate = 24;
-            configuration.videoMinFrameRate = 12;
-            configuration.videoBitRate = 600 * 1000;
-            configuration.videoMaxBitRate = 720 * 1000;
-            configuration.videoMinBitRate = 500 * 1000;
-            configuration.videoSize = CGSizeMake(360, 640);
-            break;
-        case MTTLiveVideoQuality_Low3:
-            configuration.sessionPreset = MTTCaptureSessionPreset360x640;
-            configuration.videoFrameRate = 30;
-            configuration.videoMaxFrameRate = 30;
-            configuration.videoMinFrameRate = 15;
-            configuration.videoBitRate = 800 * 1000;
-            configuration.videoMaxBitRate = 960 * 1000;
-            configuration.videoMinBitRate = 600 * 1000;
-            configuration.videoSize = CGSizeMake(360, 640);
-            break;
-            
-        case MTTLiveVideoQuality_Medium1:
-            configuration.sessionPreset = MTTCaptureSessionPreset540x960;
-            configuration.videoFrameRate = 15;
-            configuration.videoMaxFrameRate = 15;
-            configuration.videoMinFrameRate = 10;
-            configuration.videoBitRate = 800 * 1000;
-            configuration.videoMaxBitRate = 960 * 1000;
-            configuration.videoMinBitRate = 500 * 1000;
-            configuration.videoSize = CGSizeMake(540, 960);
-            break;
-        case MTTLiveVideoQuality_Medium2:
-            configuration.sessionPreset = MTTCaptureSessionPreset540x960;
-            configuration.videoFrameRate = 24;
-            configuration.videoMaxFrameRate = 24;
-            configuration.videoMinFrameRate = 12;
-            configuration.videoBitRate = 800 * 1000;
-            configuration.videoMaxBitRate = 960 * 1000;
-            configuration.videoMinBitRate = 500 * 1000;
-            configuration.videoSize = CGSizeMake(540, 960);
-            break;
-        case MTTLiveVideoQuality_Medium3:
-            configuration.sessionPreset = MTTCaptureSessionPreset540x960;
-            configuration.videoFrameRate = 30;
-            configuration.videoMaxFrameRate = 30;
-            configuration.videoMinFrameRate = 15;
-            configuration.videoBitRate = 1000 * 1000;
-            configuration.videoMaxBitRate = 120 * 1000;
-            configuration.videoMinBitRate = 500 * 1000;
-            configuration.videoSize = CGSizeMake(540, 960);
-            break;
-        case MTTLiveVideoQuality_High1:
-            configuration.sessionPreset = MTTCaptureSessionPreset720x1280;
-            configuration.videoFrameRate = 15;
-            configuration.videoMaxFrameRate = 15;
-            configuration.videoMinFrameRate = 10;
-            configuration.videoBitRate = 1000 * 1000;
-            configuration.videoMaxBitRate = 1200 * 1000;
-            configuration.videoMinBitRate = 500 * 1000;
-            configuration.videoSize = CGSizeMake(720, 1280);
-            break;
-        case MTTLiveVideoQuality_High2:
-            configuration.sessionPreset = MTTCaptureSessionPreset720x1280;
-            configuration.videoFrameRate = 24;
-            configuration.videoMaxFrameRate = 24;
-            configuration.videoMinFrameRate = 12;
-            configuration.videoBitRate = 1200 * 1000;
-            configuration.videoMaxBitRate = 1440 * 1000;
-            configuration.videoMinBitRate = 800 * 1000;
-            configuration.videoSize = CGSizeMake(720, 1280);
-            break;
-        case MTTLiveVideoQuality_High3:
-            configuration.sessionPreset = MTTCaptureSessionPreset720x1280;
-            configuration.videoFrameRate = 30;
-            configuration.videoMaxFrameRate = 30;
-            configuration.videoMinFrameRate = 15;
-            configuration.videoBitRate = 1200 * 1000;
-            configuration.videoMaxBitRate = 1440* 1000;
-            configuration.videoMinBitRate = 800 * 1000;
-            configuration.videoSize = CGSizeMake(720, 1280);
-            break;
-            
-        default:
-            break;
+    case MTTLiveVideoQuality_Low1:{
+        configuration.sessionPreset = MTTCaptureSessionPreset360x640;
+        configuration.videoFrameRate = 15;
+        configuration.videoMaxFrameRate = 15;
+        configuration.videoMinFrameRate = 10;
+        configuration.videoBitRate = 500 * 1000;
+        configuration.videoMaxBitRate = 600 * 1000;
+        configuration.videoMinBitRate = 400 * 1000;
+        configuration.videoSize = CGSizeMake(360, 640);
+    }
+        break;
+    case MTTLiveVideoQuality_Low2:{
+        configuration.sessionPreset = MTTCaptureSessionPreset360x640;
+        configuration.videoFrameRate = 24;
+        configuration.videoMaxFrameRate = 24;
+        configuration.videoMinFrameRate = 12;
+        configuration.videoBitRate = 600 * 1000;
+        configuration.videoMaxBitRate = 720 * 1000;
+        configuration.videoMinBitRate = 500 * 1000;
+        configuration.videoSize = CGSizeMake(360, 640);
+    }
+        break;
+    case MTTLiveVideoQuality_Low3: {
+        configuration.sessionPreset = MTTCaptureSessionPreset360x640;
+        configuration.videoFrameRate = 30;
+        configuration.videoMaxFrameRate = 30;
+        configuration.videoMinFrameRate = 15;
+        configuration.videoBitRate = 800 * 1000;
+        configuration.videoMaxBitRate = 960 * 1000;
+        configuration.videoMinBitRate = 600 * 1000;
+        configuration.videoSize = CGSizeMake(360, 640);
+    }
+        break;
+    case MTTLiveVideoQuality_Medium1:{
+        configuration.sessionPreset = MTTCaptureSessionPreset540x960;
+        configuration.videoFrameRate = 15;
+        configuration.videoMaxFrameRate = 15;
+        configuration.videoMinFrameRate = 10;
+        configuration.videoBitRate = 800 * 1000;
+        configuration.videoMaxBitRate = 960 * 1000;
+        configuration.videoMinBitRate = 500 * 1000;
+        configuration.videoSize = CGSizeMake(540, 960);
+    }
+        break;
+    case MTTLiveVideoQuality_Medium2:{
+        configuration.sessionPreset = MTTCaptureSessionPreset540x960;
+        configuration.videoFrameRate = 24;
+        configuration.videoMaxFrameRate = 24;
+        configuration.videoMinFrameRate = 12;
+        configuration.videoBitRate = 800 * 1000;
+        configuration.videoMaxBitRate = 960 * 1000;
+        configuration.videoMinBitRate = 500 * 1000;
+        configuration.videoSize = CGSizeMake(540, 960);
+    }
+        break;
+    case MTTLiveVideoQuality_Medium3:{
+        configuration.sessionPreset = MTTCaptureSessionPreset540x960;
+        configuration.videoFrameRate = 30;
+        configuration.videoMaxFrameRate = 30;
+        configuration.videoMinFrameRate = 15;
+        configuration.videoBitRate = 1000 * 1000;
+        configuration.videoMaxBitRate = 1200 * 1000;
+        configuration.videoMinBitRate = 500 * 1000;
+        configuration.videoSize = CGSizeMake(540, 960);
+    }
+        break;
+    case MTTLiveVideoQuality_High1:{
+        configuration.sessionPreset = MTTCaptureSessionPreset720x1280;
+        configuration.videoFrameRate = 15;
+        configuration.videoMaxFrameRate = 15;
+        configuration.videoMinFrameRate = 10;
+        configuration.videoBitRate = 1000 * 1000;
+        configuration.videoMaxBitRate = 1200 * 1000;
+        configuration.videoMinBitRate = 500 * 1000;
+        configuration.videoSize = CGSizeMake(720, 1280);
+    }
+        break;
+    case MTTLiveVideoQuality_High2:{
+        configuration.sessionPreset = MTTCaptureSessionPreset720x1280;
+        configuration.videoFrameRate = 24;
+        configuration.videoMaxFrameRate = 24;
+        configuration.videoMinFrameRate = 12;
+        configuration.videoBitRate = 1200 * 1000;
+        configuration.videoMaxBitRate = 1440 * 1000;
+        configuration.videoMinBitRate = 800 * 1000;
+        configuration.videoSize = CGSizeMake(720, 1280);
+    }
+        break;
+    case MTTLiveVideoQuality_High3:{
+        configuration.sessionPreset = MTTCaptureSessionPreset720x1280;
+        configuration.videoFrameRate = 30;
+        configuration.videoMaxFrameRate = 30;
+        configuration.videoMinFrameRate = 15;
+        configuration.videoBitRate = 1200 * 1000;
+        configuration.videoMaxBitRate = 1440 * 1000;
+        configuration.videoMinBitRate = 500 * 1000;
+        configuration.videoSize = CGSizeMake(720, 1280);
+    }
+        break;
+    default:
+        break;
     }
     configuration.sessionPreset = [configuration supportSessionPreset:configuration.sessionPreset];
-    configuration.videoMaxKeyFrameInterval = configuration.videoFrameRate * 2;
-    configuration.outputOrientation = orientation;
+    configuration.videoMaxKeyframeInterval = configuration.videoFrameRate*2;
+    configuration.outputImageOrientation = outputImageOrientation;
     CGSize size = configuration.videoSize;
-    if (configuration.landscape) {
+    if(configuration.landscape) {
         configuration.videoSize = CGSizeMake(size.height, size.width);
     } else {
         configuration.videoSize = CGSizeMake(size.width, size.height);
     }
     return configuration;
-}
-
-- (MTTCaptureSessionPreset)supportSessionPreset:(MTTCaptureSessionPreset)sessionPreset {
-    AVCaptureSession *session = [AVCaptureSession new];
-    AVCaptureDevice *inputDevice;
-    AVCaptureDeviceDiscoverySession *deviceDiscoverySession = [AVCaptureDeviceDiscoverySession discoverySessionWithDeviceTypes:@[AVCaptureDeviceTypeBuiltInWideAngleCamera] mediaType:AVMediaTypeVideo position:AVCaptureDevicePositionFront];
-    NSArray *devices = deviceDiscoverySession.devices;
-    for (AVCaptureDevice *device in devices) {
-        if (device.position == AVCaptureDevicePositionFront) {
-            inputDevice = device;
-        }
-    }
     
-    NSError *error;
-    AVCaptureDeviceInput *videoInput = [[AVCaptureDeviceInput alloc]initWithDevice:inputDevice error:&error];
-    if (!error) {
-        if ([session canAddInput:videoInput]) {
-            [session addInput:videoInput];
-        }
-        
-        if (![session canSetSessionPreset:self.avSessionPreset]) {
-            if (sessionPreset == MTTCaptureSessionPreset720x1280) {
-                sessionPreset = MTTCaptureSessionPreset540x960;
-                if (![session canSetSessionPreset:self.avSessionPreset]) {
-                    sessionPreset = MTTCaptureSessionPreset360x640;
-                }
-            } else if (sessionPreset == MTTCaptureSessionPreset540x960) {
-                sessionPreset = MTTCaptureSessionPreset360x640;
-            }
-        } else {
-            sessionPreset = MTTCaptureSessionPreset360x640;
-        }
-    }
-    return sessionPreset;
 }
 
-// MARK: - setter getter
+#pragma mark -- Setter Getter
 - (NSString *)avSessionPreset {
     NSString *avSessionPreset = nil;
     switch (self.sessionPreset) {
-        case MTTCaptureSessionPreset360x640:
-            avSessionPreset = AVCaptureSessionPreset640x480;
-            break;
-        case MTTCaptureSessionPreset540x960:
-            avSessionPreset = AVCaptureSessionPresetiFrame960x540;
-            break;
-        case MTTCaptureSessionPreset720x1280:
-            avSessionPreset = AVCaptureSessionPresetiFrame1280x720;
-            break;
-            
-        default:
-            avSessionPreset = AVCaptureSessionPreset640x480;
-            break;
+    case MTTCaptureSessionPreset360x640:{
+        avSessionPreset = AVCaptureSessionPreset640x480;
+    }
+        break;
+    case MTTCaptureSessionPreset540x960:{
+        avSessionPreset = AVCaptureSessionPresetiFrame960x540;
+    }
+        break;
+    case MTTCaptureSessionPreset720x1280:{
+        avSessionPreset = AVCaptureSessionPreset1280x720;
+    }
+        break;
+    default: {
+        avSessionPreset = AVCaptureSessionPreset640x480;
+    }
+        break;
     }
     return avSessionPreset;
 }
 
-- (BOOL)landscape {
-    return (self.outputOrientation == UIInterfaceOrientationLandscapeLeft || self.outputOrientation == UIInterfaceOrientationLandscapeRight) ? true : false;
+- (BOOL)landscape{
+    return (self.outputImageOrientation == UIInterfaceOrientationLandscapeLeft || self.outputImageOrientation == UIInterfaceOrientationLandscapeRight) ? YES : NO;
 }
 
-- (CGSize)videoSize {
-    if (_videoSizeRespectingAspectRatio) {
+- (CGSize)videoSize{
+    if(_videoSizeRespectingAspectRatio){
         return self.aspectRatioVideoSize;
     }
     return _videoSize;
 }
 
 - (void)setVideoMaxBitRate:(NSUInteger)videoMaxBitRate {
-    if (videoMaxBitRate <= _videoBitRate) {
-        return;
-    }
+    if (videoMaxBitRate <= _videoBitRate) return;
     _videoMaxBitRate = videoMaxBitRate;
 }
 
 - (void)setVideoMinBitRate:(NSUInteger)videoMinBitRate {
-    if (videoMinBitRate >= _videoBitRate) {
-        return;
-    }
+    if (videoMinBitRate >= _videoBitRate) return;
     _videoMinBitRate = videoMinBitRate;
 }
 
 - (void)setVideoMaxFrameRate:(NSUInteger)videoMaxFrameRate {
-    if (videoMaxFrameRate <= _videoFrameRate) {
-        return;
-    }
+    if (videoMaxFrameRate <= _videoFrameRate) return;
     _videoMaxFrameRate = videoMaxFrameRate;
-}       
+}
 
 - (void)setVideoMinFrameRate:(NSUInteger)videoMinFrameRate {
-    if (videoMinFrameRate >= _videoFrameRate) {
-        return;
-    }
+    if (videoMinFrameRate >= _videoFrameRate) return;
     _videoMinFrameRate = videoMinFrameRate;
 }
 
-- (void)setSessionPreset:(MTTCaptureSessionPreset)sessionPreset {
+- (void)setSessionPreset:(MTTCaptureSessionPreset)sessionPreset{
     _sessionPreset = sessionPreset;
     _sessionPreset = [self supportSessionPreset:sessionPreset];
 }
 
-- (CGSize)captureOutVideoSize {
+#pragma mark -- Custom Method
+- (MTTCaptureSessionPreset)supportSessionPreset:(MTTCaptureSessionPreset)sessionPreset {
+    AVCaptureSession *session = [[AVCaptureSession alloc] init];
+    AVCaptureDevice *inputCamera;
+    
+    AVCaptureDeviceDiscoverySession *deviceDiscoverySession = [AVCaptureDeviceDiscoverySession discoverySessionWithDeviceTypes:@[AVCaptureDeviceTypeBuiltInWideAngleCamera] mediaType:AVMediaTypeVideo position:AVCaptureDevicePositionFront];
+    NSArray *devices = deviceDiscoverySession.devices;
+    for (AVCaptureDevice *device in devices) {
+        if (device.position == AVCaptureDevicePositionFront) {
+            inputCamera = device;
+        }
+    }
+    
+    AVCaptureDeviceInput *videoInput = [[AVCaptureDeviceInput alloc] initWithDevice:inputCamera error:nil];
+    
+    if ([session canAddInput:videoInput]){
+        [session addInput:videoInput];
+    }
+    
+    if (![session canSetSessionPreset:self.avSessionPreset]) {
+        if (sessionPreset == MTTCaptureSessionPreset720x1280) {
+            sessionPreset = MTTCaptureSessionPreset540x960;
+            if (![session canSetSessionPreset:self.avSessionPreset]) {
+                sessionPreset = MTTCaptureSessionPreset360x640;
+            }
+        } else if (sessionPreset == MTTCaptureSessionPreset540x960) {
+            sessionPreset = MTTCaptureSessionPreset360x640;
+        }
+    }
+    return sessionPreset;
+}
+
+- (CGSize)captureOutVideoSize{
     CGSize videoSize = CGSizeZero;
     switch (_sessionPreset) {
-        case MTTCaptureSessionPreset360x640:
+        case MTTCaptureSessionPreset360x640:{
             videoSize = CGSizeMake(360, 640);
+        }
             break;
-        case MTTCaptureSessionPreset540x960:
+        case MTTCaptureSessionPreset540x960:{
             videoSize = CGSizeMake(540, 960);
+        }
             break;
-        case MTTCaptureSessionPreset720x1280:
+        case MTTCaptureSessionPreset720x1280:{
             videoSize = CGSizeMake(720, 1280);
+        }
             break;
-        default:
+            
+        default:{
             videoSize = CGSizeMake(360, 640);
+        }
             break;
     }
-    if (self.landscape) {
+    
+    if (self.landscape){
         return CGSizeMake(videoSize.height, videoSize.width);
     }
     return videoSize;
 }
 
-- (CGSize)aspectRatioVideoSize {
-    CGSize size = AVMakeRectWithAspectRatioInsideRect([self captureOutVideoSize], CGRectMake(0, 0, _videoSize.width, _videoSize.height)).size;
+- (CGSize)aspectRatioVideoSize{
+    CGSize size = AVMakeRectWithAspectRatioInsideRect(self.captureOutVideoSize, CGRectMake(0, 0, _videoSize.width, _videoSize.height)).size;
     NSInteger width = ceil(size.width);
     NSInteger height = ceil(size.height);
-    if (width % 2 != 0) {
-        width = width - 1;
-    }
-    if (height % 2 != 0) {
-        height = height - 1;
-    }
+    if(width %2 != 0) width = width - 1;
+    if(height %2 != 0) height = height - 1;
     return CGSizeMake(width, height);
 }
 
-
-- (nonnull id)copyWithZone:(nullable NSZone *)zone { 
-    MTTLiveVideoConfiguration *copyConfiguration = [self.class defaultConfiguration];
-    return copyConfiguration;
-}
-
-- (void)encodeWithCoder:(nonnull NSCoder *)aCoder { 
+#pragma mark -- encoder
+- (void)encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:[NSValue valueWithCGSize:self.videoSize] forKey:@"videoSize"];
     [aCoder encodeObject:@(self.videoFrameRate) forKey:@"videoFrameRate"];
     [aCoder encodeObject:@(self.videoMaxFrameRate) forKey:@"videoMaxFrameRate"];
     [aCoder encodeObject:@(self.videoMinFrameRate) forKey:@"videoMinFrameRate"];
-    [aCoder encodeObject:@(self.videoMaxKeyFrameInterval) forKey:@"videoNaxKeyFrameInterval"];
+    [aCoder encodeObject:@(self.videoMaxKeyframeInterval) forKey:@"videoMaxKeyframeInterval"];
     [aCoder encodeObject:@(self.videoBitRate) forKey:@"videoBitRate"];
     [aCoder encodeObject:@(self.videoMaxBitRate) forKey:@"videoMaxBitRate"];
     [aCoder encodeObject:@(self.videoMinBitRate) forKey:@"videoMinBitRate"];
     [aCoder encodeObject:@(self.sessionPreset) forKey:@"sessionPreset"];
-    [aCoder encodeObject:@(self.outputOrientation) forKey:@"outputOrientation"];
+    [aCoder encodeObject:@(self.outputImageOrientation) forKey:@"outputImageOrientation"];
     [aCoder encodeObject:@(self.autorotate) forKey:@"autorotate"];
     [aCoder encodeObject:@(self.videoSizeRespectingAspectRatio) forKey:@"videoSizeRespectingAspectRatio"];
 }
 
-- (nullable instancetype)initWithCoder:(nonnull NSCoder *)aDecoder { 
-    if (self = [super init]) {
-        _videoSize = [[aDecoder decodeObjectForKey:@"videoSize"]CGSizeValue];
-        _videoFrameRate = [[aDecoder decodeObjectForKey:@"videoFrameRate"] unsignedIntegerValue];
-        _videoMaxBitRate = [[aDecoder decodeObjectForKey:@"videoMaxFrameRate"]unsignedIntegerValue];
-        _videoMaxFrameRate = [[aDecoder decodeObjectForKey:@"videoMaxFrameRate"]unsignedIntegerValue];
-        _videoMinFrameRate = [[aDecoder decodeObjectForKey:@"videoMinFrameRate"]unsignedIntegerValue];
-        _videoBitRate = [[aDecoder decodeObjectForKey:@"videoBitRate"]unsignedIntegerValue];
-        _videoMaxBitRate = [[aDecoder decodeObjectForKey:@"videoMaxBitRate"]unsignedIntegerValue];
-        _videoMinBitRate = [[aDecoder decodeObjectForKey:@"videoMinBitRate"]unsignedIntegerValue];
-        _sessionPreset = [[aDecoder decodeObjectForKey:@"sessionPreset"]unsignedIntegerValue];
-        _outputOrientation = [[aDecoder decodeObjectForKey:@"outputOrientation"]unsignedIntegerValue];
-        _autorotate = [[aDecoder decodeObjectForKey:@"autorate"]boolValue];
-        _videoSizeRespectingAspectRatio = [[aDecoder decodeObjectForKey:@"videoSizeRespectingAspectRatio"]unsignedIntegerValue];
-    }
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super init];
+    _videoSize = [[aDecoder decodeObjectForKey:@"videoSize"] CGSizeValue];
+    _videoFrameRate = [[aDecoder decodeObjectForKey:@"videoFrameRate"] unsignedIntegerValue];
+    _videoMaxFrameRate = [[aDecoder decodeObjectForKey:@"videoMaxFrameRate"] unsignedIntegerValue];
+    _videoMinFrameRate = [[aDecoder decodeObjectForKey:@"videoMinFrameRate"] unsignedIntegerValue];
+    _videoMaxKeyframeInterval = [[aDecoder decodeObjectForKey:@"videoMaxKeyframeInterval"] unsignedIntegerValue];
+    _videoBitRate = [[aDecoder decodeObjectForKey:@"videoBitRate"] unsignedIntegerValue];
+    _videoMaxBitRate = [[aDecoder decodeObjectForKey:@"videoMaxBitRate"] unsignedIntegerValue];
+    _videoMinBitRate = [[aDecoder decodeObjectForKey:@"videoMinBitRate"] unsignedIntegerValue];
+    _sessionPreset = [[aDecoder decodeObjectForKey:@"sessionPreset"] unsignedIntegerValue];
+    _outputImageOrientation = [[aDecoder decodeObjectForKey:@"outputImageOrientation"] unsignedIntegerValue];
+    _autorotate = [[aDecoder decodeObjectForKey:@"autorotate"] boolValue];
+    _videoSizeRespectingAspectRatio = [[aDecoder decodeObjectForKey:@"videoSizeRespectingAspectRatio"] unsignedIntegerValue];
     return self;
 }
 
@@ -308,62 +310,66 @@
                         @(self.videoFrameRate),
                         @(self.videoMaxFrameRate),
                         @(self.videoMinFrameRate),
-                        @(self.videoMaxKeyFrameInterval),
+                        @(self.videoMaxKeyframeInterval),
                         @(self.videoBitRate),
                         @(self.videoMaxBitRate),
                         @(self.videoMinBitRate),
                         self.avSessionPreset,
                         @(self.sessionPreset),
-                        @(self.outputOrientation),
+                        @(self.outputImageOrientation),
                         @(self.autorotate),
-                        @(self.videoSizeRespectingAspectRatio)
-                        ];
+                        @(self.videoSizeRespectingAspectRatio)];
+
     for (NSObject *value in values) {
         hash ^= value.hash;
     }
     return hash;
 }
 
-- (BOOL)isEqual:(id)object {
-    if (object == self) {
-        return true;
-    } else if (![super isEqual:object]) {
-        return false;
+- (BOOL)isEqual:(id)other {
+    if (other == self) {
+        return YES;
+    } else if (![super isEqual:other]) {
+        return NO;
     } else {
-        MTTLiveVideoConfiguration *obj = object;
-        return CGSizeEqualToSize(obj.videoSize, self.videoSize) &&
-        obj.videoFrameRate == self.videoFrameRate && 
-        obj.videoMaxFrameRate == self.videoMaxFrameRate && 
-        obj.videoMinFrameRate == self.videoMinFrameRate && 
-        obj.videoMaxKeyFrameInterval == self.videoMaxKeyFrameInterval && 
-        obj.videoBitRate == self.videoBitRate && 
-        obj.videoMaxBitRate == self.videoMaxBitRate &&
-        obj.videoMinBitRate == self.videoMinBitRate &&
-        [obj.avSessionPreset isEqualToString:self.avSessionPreset] &&
-        obj.sessionPreset == self.sessionPreset &&
-        obj.outputOrientation == self.outputOrientation &&
-        obj.autorotate == self.autorotate &&
-        obj.videoSizeRespectingAspectRatio == self.videoSizeRespectingAspectRatio;
-        
+        MTTLiveVideoConfiguration *object = other;
+        return CGSizeEqualToSize(object.videoSize, self.videoSize) &&
+               object.videoFrameRate == self.videoFrameRate &&
+               object.videoMaxFrameRate == self.videoMaxFrameRate &&
+               object.videoMinFrameRate == self.videoMinFrameRate &&
+               object.videoMaxKeyframeInterval == self.videoMaxKeyframeInterval &&
+               object.videoBitRate == self.videoBitRate &&
+               object.videoMaxBitRate == self.videoMaxBitRate &&
+               object.videoMinBitRate == self.videoMinBitRate &&
+               [object.avSessionPreset isEqualToString:self.avSessionPreset] &&
+               object.sessionPreset == self.sessionPreset &&
+               object.outputImageOrientation == self.outputImageOrientation &&
+               object.autorotate == self.autorotate &&
+               object.videoSizeRespectingAspectRatio == self.videoSizeRespectingAspectRatio;
     }
+}
+
+- (id)copyWithZone:(nullable NSZone *)zone {
+    MTTLiveVideoConfiguration *other = [self.class defaultConfiguration];
+    return other;
 }
 
 - (NSString *)description {
     NSMutableString *desc = @"".mutableCopy;
-    [desc appendFormat:@"<MTTLiveVideoConfiguration: %p>",self];
-    [desc appendFormat:@" videoSize:%@",NSStringFromCGSize(self.videoSize)];
-    [desc appendFormat:@" videoSizeRespectingAspectRation:%d",self.videoSizeRespectingAspectRatio];
-    [desc appendFormat:@" videoFrameRate:%zi",self.videoFrameRate];
-    [desc appendFormat:@" videoMaxFrameRate:%zi",self.videoMaxFrameRate];
-    [desc appendFormat:@" videoMinFrameRate:%zi",self.videoMinFrameRate];
-    [desc appendFormat:@" videoMaxKeyFrameInteravl:%zi",self.videoMaxKeyFrameInterval];
-    [desc appendFormat:@" videoBitRate:%zi",self.videoBitRate];
-    [desc appendFormat:@" videoMaxBitRate:%zi",self.videoMaxBitRate];
-    [desc appendFormat:@" videoMinBitRate:%zi",self.videoMinBitRate];
-    [desc appendFormat:@" avSessionPreset:%@",self.avSessionPreset];
-    [desc appendFormat:@" sessionPreset:%zi",self.sessionPreset];
-    [desc appendFormat:@" outputOrientation:%zi",self.outputOrientation];
-    [desc appendFormat:@" autorotate:%d",self.autorotate];
+    [desc appendFormat:@"<LFLiveVideoConfiguration: %p>", self];
+    [desc appendFormat:@" videoSize:%@", NSStringFromCGSize(self.videoSize)];
+    [desc appendFormat:@" videoSizeRespectingAspectRatio:%d",self.videoSizeRespectingAspectRatio];
+    [desc appendFormat:@" videoFrameRate:%zi", self.videoFrameRate];
+    [desc appendFormat:@" videoMaxFrameRate:%zi", self.videoMaxFrameRate];
+    [desc appendFormat:@" videoMinFrameRate:%zi", self.videoMinFrameRate];
+    [desc appendFormat:@" videoMaxKeyframeInterval:%zi", self.videoMaxKeyframeInterval];
+    [desc appendFormat:@" videoBitRate:%zi", self.videoBitRate];
+    [desc appendFormat:@" videoMaxBitRate:%zi", self.videoMaxBitRate];
+    [desc appendFormat:@" videoMinBitRate:%zi", self.videoMinBitRate];
+    [desc appendFormat:@" avSessionPreset:%@", self.avSessionPreset];
+    [desc appendFormat:@" sessionPreset:%zi", self.sessionPreset];
+    [desc appendFormat:@" outputImageOrientation:%zi", self.outputImageOrientation];
+    [desc appendFormat:@" autorotate:%d", self.autorotate];
     return desc;
 }
 

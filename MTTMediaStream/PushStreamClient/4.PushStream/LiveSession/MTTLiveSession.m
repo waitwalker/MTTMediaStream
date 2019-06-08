@@ -370,11 +370,11 @@
 }
 
 - (void)setWaterMarkView:(UIView *)waterMarkView {
-    [self.videoCaptureSource setWaterMarkView:waterMarkView];
+    [self.videoCaptureSource setWarterMarkView:waterMarkView];
 }
 
 - (UIView *)waterMarkView {
-    return self.videoCaptureSource.waterMarkView;
+    return self.videoCaptureSource.warterMarkView;
 }
 
 - (UIImage *)currentImage {

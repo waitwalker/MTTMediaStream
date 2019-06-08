@@ -1,55 +1,53 @@
 //
-//  MTTAudioCapture.h
-//  MTTMediaStream
+//  LFAudioCapture.h
+//   
 //
-//  Created by LiuChuanan on 2019/6/3.
-//  Copyright © 2019 waitwalker. All rights reserved.
+//  Created by waitwalker on 19/5/20.
+//  Copyright © 2019年 waitwalker All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import <AVFoundation/AVFoundation.h>
 #import "MTTLiveAudioConfiguration.h"
 
-NS_ASSUME_NONNULL_BEGIN
+#pragma mark -- AudioCaptureNotification
+/** compoentFialed will post the notification */
+extern NSString *_Nullable const kAudioComponentFailedToCreateNotification;
 
-/// componentFailed notification post name
-extern NSString * _Nullable const kAudioComponentFailedToCreateNotification;
-
-// MARK: - audio capture delegate
 @class MTTAudioCapture;
+/** LFAudioCapture callback audioData */
 @protocol MTTAudioCaptureDelegate <NSObject>
-
-/**
- 音频采集回调
-
- @param audioCapture 采集对象
- @param audioData 采集到的数据
- */
-- (void)captureOutput:(nullable MTTAudioCapture *)audioCapture audioData:(nullable NSData *)audioData;
-
+- (void)captureOutput:(nullable MTTAudioCapture *)capture audioData:(nullable NSData*)audioData;
 @end
+
 
 @interface MTTAudioCapture : NSObject
-// delegate
-@property (nonatomic, weak) id<MTTAudioCaptureDelegate>delegate;
 
-// 静音
+#pragma mark - Attribute
+///=============================================================================
+/// @name Attribute
+///=============================================================================
+
+/** The delegate of the capture. captureData callback */
+@property (nullable, nonatomic, weak) id<MTTAudioCaptureDelegate> delegate;
+
+/** The muted control callbackAudioData,muted will memset 0.*/
 @property (nonatomic, assign) BOOL muted;
 
-// 是否正在采集
+/** The running control start capture or stop capture*/
 @property (nonatomic, assign) BOOL running;
 
-- (instancetype)init UNAVAILABLE_ATTRIBUTE;
-+ (instancetype)new UNAVAILABLE_ATTRIBUTE;
-
+#pragma mark - Initializer
+///=============================================================================
+/// @name Initializer
+///=============================================================================
+- (nullable instancetype)init UNAVAILABLE_ATTRIBUTE;
++ (nullable instancetype)new UNAVAILABLE_ATTRIBUTE;
 
 /**
- 根据音频配置生成实例
-
- @param configuration 音频配置
- @return 实例
+   The designated initializer. Multiple instances with the same configuration will make the
+   capture unstable.
  */
-- (instancetype)initWithAudioConfiguration:(nullable MTTLiveAudioConfiguration *)configuration;
+- (nullable instancetype)initWithAudioConfiguration:(nullable MTTLiveAudioConfiguration *)configuration NS_DESIGNATED_INITIALIZER;
 
 @end
-
-NS_ASSUME_NONNULL_END
