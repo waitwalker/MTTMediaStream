@@ -293,16 +293,30 @@
     return self.videoCaptureSource.beautyFace;
 }
 
-- (BOOL)saveLocalVideo {
-    return self.videoCaptureSource.saveLocalVideo;
-}
-
 - (void)setSaveLocalVideo:(BOOL)saveLocalVideo {
     [self.videoCaptureSource setSaveLocalVideo:saveLocalVideo];
 }
 
+- (BOOL)saveLocalVideo {
+    return self.videoCaptureSource.saveLocalVideo;
+}
+
+- (void)setSaveLocalVideoPath:(NSURL *)saveLocalVideoPath {
+    [self.videoCaptureSource setSaveLocalVideoPath:saveLocalVideoPath];
+}
+
 - (NSURL *)saveLocalVideoPath {
     return self.videoCaptureSource.saveLocalVideoPath;
+}
+
+- (void)setBeautyLevel:(CGFloat)beautyLevel {
+    [self willChangeValueForKey:@"beautyLevel"];
+    [self.videoCaptureSource setBeautyLevel:beautyLevel];
+    [self didChangeValueForKey:@"beautyLevel"];
+}
+
+- (CGFloat)beautyLevel {
+    return self.videoCaptureSource.beautyLevel;
 }
 
 
