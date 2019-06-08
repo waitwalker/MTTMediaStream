@@ -269,5 +269,21 @@
     [self didChangeValueForKey:@"preView"];
 }
 
+- (UIView *)preView {
+    return self.videoCaptureSource.preView;
+}
+
+- (void)setCaptureDevicePosition:(AVCaptureDevicePosition)captureDevicePosition {
+    [self willChangeValueForKey:@"captureDevicePosition"];
+    [self.videoCaptureSource setCaptureDevicePosition:captureDevicePosition];
+    [self didChangeValueForKey:@"captureDevicePosition"];
+}
+
+- (AVCaptureDevicePosition)captureDevicePosition {
+    return self.videoCaptureSource.captureDevicePosition;
+}
+
+
+
 
 @end
