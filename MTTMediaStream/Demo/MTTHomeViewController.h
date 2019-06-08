@@ -1,5 +1,5 @@
 //
-//  MTTLiveListViewController.h
+//  MTTHomeViewController.h
 //  MTTMediaStream
 //
 //  Created by 刘传安 on 2019/6/8.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MTTLiveListViewController : UIViewController
+@interface MTTHomeViewController : UIViewController
 
 @end
 

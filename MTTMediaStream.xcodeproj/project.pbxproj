@@ -20,6 +20,8 @@
 		CA0498CC229CE27100409977 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0498CB229CE27100409977 /* main.m */; };
 		CA0498D6229CE27100409977 /* MTTMediaStreamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0498D5229CE27100409977 /* MTTMediaStreamTests.m */; };
 		CA0498E1229CE27100409977 /* MTTMediaStreamUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0498E0229CE27100409977 /* MTTMediaStreamUITests.m */; };
+		CA209C6922ABFA3100677426 /* MTTHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA209C6822ABFA3100677426 /* MTTHomeViewController.m */; };
+		CA209C6C22ABFA6F00677426 /* MTTLiveListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA209C6B22ABFA6F00677426 /* MTTLiveListViewController.m */; };
 		CA22E1A322A608F800FE7ABE /* GPUImageColorBurnBlendFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = CA22E03722A608F700FE7ABE /* GPUImageColorBurnBlendFilter.m */; };
 		CA22E1A422A608F800FE7ABE /* GPUImageTwoPassTextureSamplingFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = CA22E03822A608F700FE7ABE /* GPUImageTwoPassTextureSamplingFilter.m */; };
 		CA22E1A522A608F800FE7ABE /* GPUImageUnsharpMaskFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = CA22E03922A608F700FE7ABE /* GPUImageUnsharpMaskFilter.m */; };
@@ -204,7 +206,7 @@
 		CA44D61B22ABC8C60038E270 /* UIView+MTTExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = CA44D61022ABC8C60038E270 /* UIView+MTTExtend.m */; };
 		CA44D61C22ABC8C60038E270 /* MTTMediaGesturesView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA44D61122ABC8C60038E270 /* MTTMediaGesturesView.m */; };
 		CA44D61D22ABC8C60038E270 /* MTTReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = CA44D61222ABC8C60038E270 /* MTTReachability.m */; };
-		CA44D62A22ABCA500038E270 /* MTTLiveListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA44D62122ABCA4F0038E270 /* MTTLiveListViewController.m */; };
+		CA44D62A22ABCA500038E270 /* MTTLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA44D62122ABCA4F0038E270 /* MTTLiveViewController.m */; };
 		CA44D62B22ABCA500038E270 /* BasePlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA44D62222ABCA4F0038E270 /* BasePlayerViewController.m */; };
 		CA44D62C22ABCA500038E270 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA44D62322ABCA4F0038E270 /* FirstViewController.m */; };
 		CA44D62D22ABCA500038E270 /* MTTLivePreview.m in Sources */ = {isa = PBXBuildFile; fileRef = CA44D62722ABCA500038E270 /* MTTLivePreview.m */; };
@@ -288,6 +290,10 @@
 		CA0498DC229CE27100409977 /* MTTMediaStreamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MTTMediaStreamUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA0498E0229CE27100409977 /* MTTMediaStreamUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTTMediaStreamUITests.m; sourceTree = "<group>"; };
 		CA0498E2229CE27100409977 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA209C6722ABFA3100677426 /* MTTHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTHomeViewController.h; sourceTree = "<group>"; };
+		CA209C6822ABFA3100677426 /* MTTHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTTHomeViewController.m; sourceTree = "<group>"; };
+		CA209C6A22ABFA6F00677426 /* MTTLiveListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTLiveListViewController.h; sourceTree = "<group>"; };
+		CA209C6B22ABFA6F00677426 /* MTTLiveListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTTLiveListViewController.m; sourceTree = "<group>"; };
 		CA22E03622A608F700FE7ABE /* GPUImageBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageBuffer.h; sourceTree = "<group>"; };
 		CA22E03722A608F700FE7ABE /* GPUImageColorBurnBlendFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageColorBurnBlendFilter.m; sourceTree = "<group>"; };
 		CA22E03822A608F700FE7ABE /* GPUImageTwoPassTextureSamplingFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageTwoPassTextureSamplingFilter.m; sourceTree = "<group>"; };
@@ -662,10 +668,10 @@
 		CA44D61622ABC8C60038E270 /* MTTReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTReachability.h; sourceTree = "<group>"; };
 		CA44D61722ABC8C60038E270 /* MTTMediaGesturesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTMediaGesturesView.h; sourceTree = "<group>"; };
 		CA44D62022ABCA4F0038E270 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		CA44D62122ABCA4F0038E270 /* MTTLiveListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTLiveListViewController.m; sourceTree = "<group>"; };
+		CA44D62122ABCA4F0038E270 /* MTTLiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTLiveViewController.m; sourceTree = "<group>"; };
 		CA44D62222ABCA4F0038E270 /* BasePlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasePlayerViewController.m; sourceTree = "<group>"; };
 		CA44D62322ABCA4F0038E270 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		CA44D62422ABCA4F0038E270 /* MTTLiveListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTLiveListViewController.h; sourceTree = "<group>"; };
+		CA44D62422ABCA4F0038E270 /* MTTLiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTLiveViewController.h; sourceTree = "<group>"; };
 		CA44D62522ABCA4F0038E270 /* BasePlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasePlayerViewController.h; sourceTree = "<group>"; };
 		CA44D62622ABCA4F0038E270 /* MTTLivePreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTLivePreview.h; sourceTree = "<group>"; };
 		CA44D62722ABCA500038E270 /* MTTLivePreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTLivePreview.m; sourceTree = "<group>"; };
@@ -845,8 +851,6 @@
 				CA0498EF229CE4BF00409977 /* PushStreamClient */,
 				CA0498BC229CE26F00409977 /* AppDelegate.h */,
 				CA0498BD229CE26F00409977 /* AppDelegate.m */,
-				CA0498BF229CE26F00409977 /* ViewController.h */,
-				CA0498C0229CE26F00409977 /* ViewController.m */,
 				CA0498C2229CE26F00409977 /* Main.storyboard */,
 				CA0498C5229CE27100409977 /* Assets.xcassets */,
 				CA0498C7229CE27100409977 /* LaunchScreen.storyboard */,
@@ -1335,16 +1339,22 @@
 		CA44D61F22ABC9A30038E270 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				CA0498BF229CE26F00409977 /* ViewController.h */,
+				CA0498C0229CE26F00409977 /* ViewController.m */,
 				CA44D62522ABCA4F0038E270 /* BasePlayerViewController.h */,
 				CA44D62222ABCA4F0038E270 /* BasePlayerViewController.m */,
 				CA44D62022ABCA4F0038E270 /* FirstViewController.h */,
 				CA44D62322ABCA4F0038E270 /* FirstViewController.m */,
-				CA44D62422ABCA4F0038E270 /* MTTLiveListViewController.h */,
-				CA44D62122ABCA4F0038E270 /* MTTLiveListViewController.m */,
+				CA44D62422ABCA4F0038E270 /* MTTLiveViewController.h */,
+				CA44D62122ABCA4F0038E270 /* MTTLiveViewController.m */,
 				CA44D62622ABCA4F0038E270 /* MTTLivePreview.h */,
 				CA44D62722ABCA500038E270 /* MTTLivePreview.m */,
 				CA44D62822ABCA500038E270 /* MTTTabBarViewController.h */,
 				CA44D62922ABCA500038E270 /* MTTTabBarViewController.m */,
+				CA209C6722ABFA3100677426 /* MTTHomeViewController.h */,
+				CA209C6822ABFA3100677426 /* MTTHomeViewController.m */,
+				CA209C6A22ABFA6F00677426 /* MTTLiveListViewController.h */,
+				CA209C6B22ABFA6F00677426 /* MTTLiveListViewController.m */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1690,7 +1700,7 @@
 				CA22E1C822A608F800FE7ABE /* GPUImageHueFilter.m in Sources */,
 				CA22E23922A608F800FE7ABE /* GPUImage3x3ConvolutionFilter.m in Sources */,
 				CA22E20F22A608F800FE7ABE /* GPUImageAverageColor.m in Sources */,
-				CA44D62A22ABCA500038E270 /* MTTLiveListViewController.m in Sources */,
+				CA44D62A22ABCA500038E270 /* MTTLiveViewController.m in Sources */,
 				CA22E1A622A608F800FE7ABE /* GPUImageThresholdEdgeDetectionFilter.m in Sources */,
 				CA22E22922A608F800FE7ABE /* GPUImageMedianFilter.m in Sources */,
 				CA22E1A322A608F800FE7ABE /* GPUImageColorBurnBlendFilter.m in Sources */,
@@ -1709,6 +1719,7 @@
 				CA22E23422A608F800FE7ABE /* GPUImageHueBlendFilter.m in Sources */,
 				CA22E1F422A608F800FE7ABE /* GPUImageXYDerivativeFilter.m in Sources */,
 				CA22E1E922A608F800FE7ABE /* GLProgram.m in Sources */,
+				CA209C6C22ABFA6F00677426 /* MTTLiveListViewController.m in Sources */,
 				CA22E25322A608F800FE7ABE /* parseurl.c in Sources */,
 				CA22E20022A608F800FE7ABE /* GPUImagePicture+TextureSubimage.m in Sources */,
 				CA44D62D22ABCA500038E270 /* MTTLivePreview.m in Sources */,
@@ -1843,6 +1854,7 @@
 				CA44D61922ABC8C60038E270 /* MTTMediaPlayerView.m in Sources */,
 				CA22E1C322A608F800FE7ABE /* GPUImageHistogramEqualizationFilter.m in Sources */,
 				CA22E1F222A608F800FE7ABE /* GPUImageLanczosResamplingFilter.m in Sources */,
+				CA209C6922ABFA3100677426 /* MTTHomeViewController.m in Sources */,
 				CA22E1A722A608F800FE7ABE /* GPUImageChromaKeyFilter.m in Sources */,
 				CA22E1F722A608F800FE7ABE /* GPUImageLaplacianFilter.m in Sources */,
 				CA22E1B522A608F800FE7ABE /* GPUImageNonMaximumSuppressionFilter.m in Sources */,

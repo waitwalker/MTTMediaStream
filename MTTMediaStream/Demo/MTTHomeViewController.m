@@ -1,25 +1,25 @@
 //
-//  MTTLiveListViewController.m
+//  MTTHomeViewController.m
 //  MTTMediaStream
 //
 //  Created by 刘传安 on 2019/6/8.
 //  Copyright © 2019 waitwalker. All rights reserved.
 //
 
-#import "MTTLiveListViewController.h"
-#import "MTTLiveViewController.h"
+#import "MTTHomeViewController.h"
+#import "ViewController.h"
 
-@interface MTTLiveListViewController ()
+@interface MTTHomeViewController ()
 
 @end
 
-@implementation MTTLiveListViewController
+@implementation MTTHomeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(([UIScreen mainScreen].bounds.size.width - 180) / 2.0, ([UIScreen mainScreen].bounds.size.height - 100) / 2.0, 180, 100)];
-    [button setTitle:@"观看直播" forState:UIControlStateNormal];
+    [button setTitle:@"开启直播" forState:UIControlStateNormal];
     [button setBackgroundColor:[UIColor yellowColor]];
     button.layer.cornerRadius = 10.0;
     button.clipsToBounds = true;
@@ -33,9 +33,10 @@
 }
 
 - (void)buttonAction:(UIButton *)button {
-    MTTLiveViewController *vc = [MTTLiveViewController new];
+    ViewController *vc = [ViewController new];
     vc.hidesBottomBarWhenPushed = true;
     [self.navigationController pushViewController:vc animated:true];
 }
+
 
 @end

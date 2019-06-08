@@ -8,7 +8,7 @@
 
 #import "MTTTabBarViewController.h"
 #import "MTTLiveListViewController.h"
-#import "ViewController.h"
+#import "MTTHomeViewController.h"
 
 @interface MTTTabBarViewController ()
 
@@ -20,8 +20,8 @@
     
     [super viewDidLoad];
     //主页
-    ViewController *home = [[ViewController alloc]init];
-    [self addChildViewController:home image:@"tabbar_home" selectedImage:@"tabbar_home_selected" title:@"开始直播"];
+    MTTHomeViewController *home = [[MTTHomeViewController alloc]init];
+    [self addChildViewController:home image:@"tabbar_home" selectedImage:@"tabbar_home_selected" title:@"开启直播"];
     
     //消息
     MTTLiveListViewController *list = [[MTTLiveListViewController alloc]init];
@@ -54,7 +54,7 @@
     
     //选中状态
     NSMutableDictionary *selectedText = [NSMutableDictionary dictionary];
-    selectedText[NSForegroundColorAttributeName] = [UIColor orangeColor];
+    selectedText[NSForegroundColorAttributeName] = [UIColor colorWithRed:51/255.0 green:153/255.0 blue:255/255.0 alpha:1.0];
     [childViewController.tabBarItem setTitleTextAttributes:selectedText forState:UIControlStateSelected];
     
     //导航控制器
