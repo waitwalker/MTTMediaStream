@@ -60,8 +60,8 @@
 // 是否采集到了音频
 @property (nonatomic, assign) BOOL hasCaptureAudio;
 
-// 是否采集到了视频
-@property (nonatomic, assign) BOOL hasCaptureVideo;
+// 是否采集到了视频关键帧
+@property (nonatomic, assign) BOOL hasKeyFrameVideo;
 
 @end
 
@@ -170,11 +170,24 @@
 // MARK: - encoder delegate
 - (void)audioEncoder:(id<MTTAudioEncodeInterface>)encoder audioFrame:(MTTAudioFrame *)frame {
     if (self.uploading) {
-        self.hasCaptureVideo = true;
+        self.hasCaptureAudio = true;
         if (self.AVAlignment) {
             [self pushSendBuffer:frame];
         }
     }
 }
+
+- (void)videoEncoder:(id<MTTVideoEncodeInterface>)encoder videoFrame:(MTTVideoFrame *)frame {
+    if (self.uploading) {
+        if (frame.isKeyFrame && self.hasCaptureAudio) {
+            self.hasKeyFrameVideo = true;
+        }
+
+        if (self.AVAlignment) {
+            [self pushSendBuffer:frame];
+        }
+    }
+}
+
 
 @end
