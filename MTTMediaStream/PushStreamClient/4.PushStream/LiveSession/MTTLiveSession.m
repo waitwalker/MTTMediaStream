@@ -154,4 +154,11 @@
     return currents;
 }
 
+// MARK: - capture delegate
+- (void)captureOutput:(MTTAudioCapture *)audioCapture audioData:(NSData *)audioData {
+    if (self.uploading) {
+        [self.audioEncoder encodeAudioData:audioData timeStamp:NOW];
+    }
+}
+
 @end
