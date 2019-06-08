@@ -369,5 +369,13 @@
     return self.audioCaptureSource.muted;
 }
 
+- (void)setWaterMarkView:(UIView *)waterMarkView {
+    [self.videoCaptureSource setWaterMarkView:waterMarkView];
+}
+
+- (UIView *)waterMarkView {
+    return self.videoCaptureSource.waterMarkView;
+}
+
 
 @end
