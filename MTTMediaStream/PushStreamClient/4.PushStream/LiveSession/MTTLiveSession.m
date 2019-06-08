@@ -211,5 +211,12 @@
     });
 }
 
+- (void)socketDidError:(id<MTTStreamSocketInterface>)socket errorCode:(MTTLiveSocketErrorCode)errorCode {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (self.delegate && [self.delegate respondsToSelector:@selector(liveSession:errorCode:)]) {
+            [self.delegate liveSession:self errorCode:errorCode];
+        }
+    });
+}
 
 @end
