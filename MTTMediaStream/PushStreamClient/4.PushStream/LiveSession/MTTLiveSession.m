@@ -409,5 +409,17 @@
     return _audioEncoder;
 }
 
+- (id<MTTVideoEncodeInterface>)videoEncoder {
+    if (!_videoEncoder) {
+        if ([[UIDevice currentDevice].systemVersion floatValue] < 8.0) {
+            _videoEncoder = [[MTTH264VideoEncoder alloc]initWithVideoStreamConfiguration:_videoConfiguration];
+        } else {
+            _videoEncoder = [[MTTHardwareVideoEncoder alloc]initWithVideoStreamConfiguration:_videoConfiguration];
+        }
+        [_videoEncoder setDelegate:self];
+    }
+    return _videoEncoder;
+}
+
 
 @end
