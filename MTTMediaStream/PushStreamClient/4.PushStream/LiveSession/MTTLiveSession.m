@@ -349,5 +349,15 @@
     return self.videoCaptureSource.torch;
 }
 
+- (void)setMirror:(BOOL)mirror {
+    [self willChangeValueForKey:@"mirror"];
+    [self.videoCaptureSource setMirror:mirror];
+    [self didChangeValueForKey:@"mirror"];
+}
+
+- (BOOL)mirror {
+    return self.videoCaptureSource.mirror;
+}
+
 
 @end
