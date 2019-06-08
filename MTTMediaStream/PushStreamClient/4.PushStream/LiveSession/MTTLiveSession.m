@@ -189,5 +189,27 @@
     }
 }
 
+// MARK: - Stream Scoket delegate
+- (void)socketStatus:(id<MTTStreamSocketInterface>)socket status:(MTTLiveState)status {
+    if (status == MTTLiveStarted) {
+        if (!self.uploading) {
+            self.AVAlignment = false;
+            self.hasCaptureAudio = false;
+            self.hasKeyFrameVideo = false;
+            self.relativeTimeStamps = 0;
+            self.uploading = true;
+        }
+    } else if (status == MTTLiveStop || status == MTTLiveError) {
+        self.uploading = false;
+    }
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.state = status;
+        if (self.delegate && [self.delegate respondsToSelector:@selector(liveSession:liveStateDidChange:)]) {
+            [self.delegate liveSession:self liveStateDidChange:status];
+        }
+    });
+}
+
 
 @end
