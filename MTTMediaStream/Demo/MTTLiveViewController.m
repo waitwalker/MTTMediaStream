@@ -24,7 +24,7 @@
    
     // 测试链接 http、rtmp、hls(m3u8)、本地视频等多种格式
 //     NSString *testUrl = @"http://flv2.bn.netease.com/videolib3/1604/28/fVobI0704/SD/fVobI0704-mobile.mp4";
-    NSString *testUrl = @"rtmp://192.168.199.233:1935/rtmplive/room";
+    NSString *testUrl = @"rtmp://192.168.199.183:1935/rtmplive/room";
 //    NSString *testUrl = @"http://dlhls.cdn.zhanqi.tv/zqlive/49427_jmACJ.m3u8";
     [self showPlayerViewWithUrl:testUrl title:@"视频的标题"];
     [self autoPlay];

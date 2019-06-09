@@ -325,7 +325,7 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
     if (self.startLiveButton.selected) {
         [self.startLiveButton setTitle:@"结束直播" forState:UIControlStateNormal];
         MTTLiveStreamInfo *stream = [MTTLiveStreamInfo new];
-        stream.url = @"rtmp://192.168.199.233:1935/rtmplive/room";//@"rtmp://live.hkstv.hk.lxdns.com:1935/live/stream153";
+        stream.url = @"rtmp://192.168.199.183:1935/rtmplive/room";//@"rtmp://live.hkstv.hk.lxdns.com:1935/live/stream153";
         [self.session startLive:stream];
     } else {
         [self.startLiveButton setTitle:@"开始直播" forState:UIControlStateNormal];
