@@ -12,6 +12,7 @@
 		3CE5074631F66F2A2CCB5FDB /* libPods-MTTMediaStreamUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B581AFC23C2F5E6EF749343 /* libPods-MTTMediaStreamUITests.a */; };
 		528E7C0943CC9FB6A140C480 /* libPods-MTTMediaStream.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC59C5E404CDEBBB677903C9 /* libPods-MTTMediaStream.a */; };
 		A7ED307C19A5F77F90453DD1 /* libPods-MTTMediaStreamTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 062EBA31A87A82A2B938AA53 /* libPods-MTTMediaStreamTests.a */; };
+		BF8FC76622BC887800FFC7CB /* MTTCallBackManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8FC76522BC887800FFC7CB /* MTTCallBackManager.m */; };
 		CA0498BE229CE26F00409977 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0498BD229CE26F00409977 /* AppDelegate.m */; };
 		CA0498C1229CE26F00409977 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0498C0229CE26F00409977 /* ViewController.m */; };
 		CA0498C4229CE26F00409977 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA0498C2229CE26F00409977 /* Main.storyboard */; };
@@ -274,6 +275,8 @@
 		4A116D7278FF0263A61498C8 /* Pods-MTTMediaStream.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MTTMediaStream.release.xcconfig"; path = "Target Support Files/Pods-MTTMediaStream/Pods-MTTMediaStream.release.xcconfig"; sourceTree = "<group>"; };
 		5B581AFC23C2F5E6EF749343 /* libPods-MTTMediaStreamUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MTTMediaStreamUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		77E1C3C9C65E6AF6DEE31131 /* Pods-MTTMediaStreamUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MTTMediaStreamUITests.release.xcconfig"; path = "Target Support Files/Pods-MTTMediaStreamUITests/Pods-MTTMediaStreamUITests.release.xcconfig"; sourceTree = "<group>"; };
+		BF8FC76422BC887800FFC7CB /* MTTCallBackManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTCallBackManager.h; sourceTree = "<group>"; };
+		BF8FC76522BC887800FFC7CB /* MTTCallBackManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTTCallBackManager.m; sourceTree = "<group>"; };
 		CA0498B9229CE26F00409977 /* MTTMediaStream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MTTMediaStream.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA0498BC229CE26F00409977 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CA0498BD229CE26F00409977 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -856,6 +859,8 @@
 				CA0498C7229CE27100409977 /* LaunchScreen.storyboard */,
 				CA0498CA229CE27100409977 /* Info.plist */,
 				CA0498CB229CE27100409977 /* main.m */,
+				BF8FC76422BC887800FFC7CB /* MTTCallBackManager.h */,
+				BF8FC76522BC887800FFC7CB /* MTTCallBackManager.m */,
 			);
 			path = MTTMediaStream;
 			sourceTree = "<group>";
@@ -1752,6 +1757,7 @@
 				CA22E24A22A608F800FE7ABE /* GPUImageColourFASTFeatureDetector.m in Sources */,
 				CA44D65522ABF0390038E270 /* MTTVideoCapture.m in Sources */,
 				CA22E20A22A608F800FE7ABE /* GPUImageSwirlFilter.m in Sources */,
+				BF8FC76622BC887800FFC7CB /* MTTCallBackManager.m in Sources */,
 				CA22E25022A608F800FE7ABE /* hashswf.c in Sources */,
 				CA22E24922A608F800FE7ABE /* GPUImageFilter.m in Sources */,
 				CA22E1CD22A608F800FE7ABE /* GPUImageHistogramGenerator.m in Sources */,
